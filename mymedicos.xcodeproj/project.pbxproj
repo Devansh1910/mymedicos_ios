@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0660E5FC2C56B861008125E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E5FB2C56B861008125E9 /* AppDelegate.swift */; };
+		0660E5FE2C56B861008125E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E5FD2C56B861008125E9 /* SceneDelegate.swift */; };
+		0660E6002C56B861008125E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E5FF2C56B861008125E9 /* ViewController.swift */; };
+		0660E6032C56B861008125E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0660E6022C56B861008125E9 /* Base */; };
+		0660E6052C56B863008125E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0660E6042C56B863008125E9 /* Assets.xcassets */; };
+		0660E6082C56B863008125E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0660E6072C56B863008125E9 /* Base */; };
+		0660E6132C56B863008125E9 /* mymedicosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E6122C56B863008125E9 /* mymedicosTests.swift */; };
+		0660E61D2C56B863008125E9 /* mymedicosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E61C2C56B863008125E9 /* mymedicosUITests.swift */; };
+		0660E61F2C56B863008125E9 /* mymedicosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E61E2C56B863008125E9 /* mymedicosUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0660E60F2C56B863008125E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0660E5F02C56B861008125E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0660E5F72C56B861008125E9;
+			remoteInfo = mymedicos;
+		};
+		0660E6192C56B863008125E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0660E5F02C56B861008125E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0660E5F72C56B861008125E9;
+			remoteInfo = mymedicos;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0660E5F82C56B861008125E9 /* mymedicos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mymedicos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0660E5FB2C56B861008125E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0660E5FD2C56B861008125E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0660E5FF2C56B861008125E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0660E6022C56B861008125E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0660E6042C56B863008125E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0660E6072C56B863008125E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0660E6092C56B863008125E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0660E60E2C56B863008125E9 /* mymedicosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mymedicosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0660E6122C56B863008125E9 /* mymedicosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymedicosTests.swift; sourceTree = "<group>"; };
+		0660E6182C56B863008125E9 /* mymedicosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mymedicosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0660E61C2C56B863008125E9 /* mymedicosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymedicosUITests.swift; sourceTree = "<group>"; };
+		0660E61E2C56B863008125E9 /* mymedicosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymedicosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0660E5F52C56B861008125E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0660E60B2C56B863008125E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0660E6152C56B863008125E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0660E5EF2C56B861008125E9 = {
+			isa = PBXGroup;
+			children = (
+				0660E5FA2C56B861008125E9 /* mymedicos */,
+				0660E6112C56B863008125E9 /* mymedicosTests */,
+				0660E61B2C56B863008125E9 /* mymedicosUITests */,
+				0660E5F92C56B861008125E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0660E5F92C56B861008125E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0660E5F82C56B861008125E9 /* mymedicos.app */,
+				0660E60E2C56B863008125E9 /* mymedicosTests.xctest */,
+				0660E6182C56B863008125E9 /* mymedicosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0660E5FA2C56B861008125E9 /* mymedicos */ = {
+			isa = PBXGroup;
+			children = (
+				0660E5FB2C56B861008125E9 /* AppDelegate.swift */,
+				0660E5FD2C56B861008125E9 /* SceneDelegate.swift */,
+				0660E5FF2C56B861008125E9 /* ViewController.swift */,
+				0660E6012C56B861008125E9 /* Main.storyboard */,
+				0660E6042C56B863008125E9 /* Assets.xcassets */,
+				0660E6062C56B863008125E9 /* LaunchScreen.storyboard */,
+				0660E6092C56B863008125E9 /* Info.plist */,
+			);
+			path = mymedicos;
+			sourceTree = "<group>";
+		};
+		0660E6112C56B863008125E9 /* mymedicosTests */ = {
+			isa = PBXGroup;
+			children = (
+				0660E6122C56B863008125E9 /* mymedicosTests.swift */,
+			);
+			path = mymedicosTests;
+			sourceTree = "<group>";
+		};
+		0660E61B2C56B863008125E9 /* mymedicosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0660E61C2C56B863008125E9 /* mymedicosUITests.swift */,
+				0660E61E2C56B863008125E9 /* mymedicosUITestsLaunchTests.swift */,
+			);
+			path = mymedicosUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0660E5F72C56B861008125E9 /* mymedicos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0660E6222C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicos" */;
+			buildPhases = (
+				0660E5F42C56B861008125E9 /* Sources */,
+				0660E5F52C56B861008125E9 /* Frameworks */,
+				0660E5F62C56B861008125E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mymedicos;
+			productName = mymedicos;
+			productReference = 0660E5F82C56B861008125E9 /* mymedicos.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0660E60D2C56B863008125E9 /* mymedicosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0660E6252C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicosTests" */;
+			buildPhases = (
+				0660E60A2C56B863008125E9 /* Sources */,
+				0660E60B2C56B863008125E9 /* Frameworks */,
+				0660E60C2C56B863008125E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0660E6102C56B863008125E9 /* PBXTargetDependency */,
+			);
+			name = mymedicosTests;
+			productName = mymedicosTests;
+			productReference = 0660E60E2C56B863008125E9 /* mymedicosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0660E6172C56B863008125E9 /* mymedicosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0660E6282C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicosUITests" */;
+			buildPhases = (
+				0660E6142C56B863008125E9 /* Sources */,
+				0660E6152C56B863008125E9 /* Frameworks */,
+				0660E6162C56B863008125E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0660E61A2C56B863008125E9 /* PBXTargetDependency */,
+			);
+			name = mymedicosUITests;
+			productName = mymedicosUITests;
+			productReference = 0660E6182C56B863008125E9 /* mymedicosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0660E5F02C56B861008125E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					0660E5F72C56B861008125E9 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					0660E60D2C56B863008125E9 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 0660E5F72C56B861008125E9;
+					};
+					0660E6172C56B863008125E9 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 0660E5F72C56B861008125E9;
+					};
+				};
+			};
+			buildConfigurationList = 0660E5F32C56B861008125E9 /* Build configuration list for PBXProject "mymedicos" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0660E5EF2C56B861008125E9;
+			productRefGroup = 0660E5F92C56B861008125E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0660E5F72C56B861008125E9 /* mymedicos */,
+				0660E60D2C56B863008125E9 /* mymedicosTests */,
+				0660E6172C56B863008125E9 /* mymedicosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0660E5F62C56B861008125E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0660E6052C56B863008125E9 /* Assets.xcassets in Resources */,
+				0660E6082C56B863008125E9 /* Base in Resources */,
+				0660E6032C56B861008125E9 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0660E60C2C56B863008125E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0660E6162C56B863008125E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0660E5F42C56B861008125E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0660E6002C56B861008125E9 /* ViewController.swift in Sources */,
+				0660E5FC2C56B861008125E9 /* AppDelegate.swift in Sources */,
+				0660E5FE2C56B861008125E9 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0660E60A2C56B863008125E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0660E6132C56B863008125E9 /* mymedicosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0660E6142C56B863008125E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0660E61D2C56B863008125E9 /* mymedicosUITests.swift in Sources */,
+				0660E61F2C56B863008125E9 /* mymedicosUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0660E6102C56B863008125E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0660E5F72C56B861008125E9 /* mymedicos */;
+			targetProxy = 0660E60F2C56B863008125E9 /* PBXContainerItemProxy */;
+		};
+		0660E61A2C56B863008125E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0660E5F72C56B861008125E9 /* mymedicos */;
+			targetProxy = 0660E6192C56B863008125E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0660E6012C56B861008125E9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0660E6022C56B861008125E9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0660E6062C56B863008125E9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0660E6072C56B863008125E9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0660E6202C56B863008125E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0660E6212C56B863008125E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0660E6232C56B863008125E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = mymedicos/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = medical.mymedicos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0660E6242C56B863008125E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = mymedicos/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = medical.mymedicos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0660E6262C56B863008125E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = medical.mymedicosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mymedicos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mymedicos";
+			};
+			name = Debug;
+		};
+		0660E6272C56B863008125E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = medical.mymedicosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mymedicos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mymedicos";
+			};
+			name = Release;
+		};
+		0660E6292C56B863008125E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = medical.mymedicosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = mymedicos;
+			};
+			name = Debug;
+		};
+		0660E62A2C56B863008125E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = medical.mymedicosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = mymedicos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0660E5F32C56B861008125E9 /* Build configuration list for PBXProject "mymedicos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0660E6202C56B863008125E9 /* Debug */,
+				0660E6212C56B863008125E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0660E6222C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0660E6232C56B863008125E9 /* Debug */,
+				0660E6242C56B863008125E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0660E6252C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0660E6262C56B863008125E9 /* Debug */,
+				0660E6272C56B863008125E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0660E6282C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0660E6292C56B863008125E9 /* Debug */,
+				0660E62A2C56B863008125E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0660E5F02C56B861008125E9 /* Project object */;
+}
