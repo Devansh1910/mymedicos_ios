@@ -1,0 +1,77 @@
+{
+    "medical_specialties": [
+      {
+        "name": "Anatomy",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351034/skull_ftoqrx.png"
+      },
+      {
+        "name": "Biochemistry",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351032/dna_krck9j.png"
+      },
+      {
+        "name": "Pathology",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351033/lab_rlehis.png"
+      },
+      {
+        "name": "Pharmacology",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351034/pharmacy_dwu4wn.png"
+      },
+      {
+        "name": "Microbiology",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351035/virus_x53una.png"
+      },
+      {
+        "name": "Forensic Medicine",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351033/design-thinking_mqddno.png"
+      },
+      {
+        "name": "PSM",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351032/geography_ynygoy.png"
+      },
+      {
+        "name": "ENT",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351032/body-parts_xufekf.png"
+      },
+      {
+        "name": "Ophthalmology",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351033/eye_uaia8j.png"
+      },
+      {
+        "name": "Gynaecology & Obstetrics",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351034/pregnancy_voer9t.png"
+      },
+      {
+        "name": "Pediatrics",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351034/maternity_c4ksir.png"
+      },
+      {
+        "name": "Surgery",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351034/nurses-day_fxtovb.png"
+      },
+      {
+        "name": "Medicine",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351033/heart_sjxe8h.png"
+      },
+      {
+        "name": "Radiology",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351032/hand_claikv.png"
+      },
+      {
+        "name": "Anaesthesia",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351034/weight-scale_e8gybb.png"
+      },
+      {
+        "name": "Orthopaedics",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351034/radiography_dxbogy.png"
+      },
+      {
+        "name": "Psychiatry",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351033/brain_nilcyu.png"
+      },
+      {
+        "name": "Dermatology",
+        "icon": "https://res.cloudinary.com/dmzp6notl/image/upload/v1722351034/skin_hitat5.png"
+      }
+    ]
+  }
+  
