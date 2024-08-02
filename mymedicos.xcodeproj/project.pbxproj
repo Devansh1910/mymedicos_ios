@@ -7,15 +7,130 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0604420F2C5CBF3A00CDE979 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0604420E2C5CBF3A00CDE979 /* CountryPickerViewController.swift */; };
+		060442122C5D2B7700CDE979 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060442112C5D2B7700CDE979 /* SideViewController.swift */; };
 		0660E5FC2C56B861008125E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E5FB2C56B861008125E9 /* AppDelegate.swift */; };
 		0660E5FE2C56B861008125E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E5FD2C56B861008125E9 /* SceneDelegate.swift */; };
-		0660E6002C56B861008125E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E5FF2C56B861008125E9 /* ViewController.swift */; };
-		0660E6032C56B861008125E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0660E6022C56B861008125E9 /* Base */; };
 		0660E6052C56B863008125E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0660E6042C56B863008125E9 /* Assets.xcassets */; };
 		0660E6082C56B863008125E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0660E6072C56B863008125E9 /* Base */; };
 		0660E6132C56B863008125E9 /* mymedicosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E6122C56B863008125E9 /* mymedicosTests.swift */; };
 		0660E61D2C56B863008125E9 /* mymedicosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E61C2C56B863008125E9 /* mymedicosUITests.swift */; };
 		0660E61F2C56B863008125E9 /* mymedicosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E61E2C56B863008125E9 /* mymedicosUITestsLaunchTests.swift */; };
+		0660E62C2C56B94A008125E9 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E62B2C56B94A008125E9 /* MainTabbarViewController.swift */; };
+		0660E62F2C56B999008125E9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E62E2C56B999008125E9 /* HomeViewController.swift */; };
+		0660E6312C56B9B4008125E9 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E6302C56B9B4008125E9 /* CommunityViewController.swift */; };
+		0660E6332C56B9CF008125E9 /* SlideshareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E6322C56B9CF008125E9 /* SlideshareViewController.swift */; };
+		0660E6362C56BAC0008125E9 /* HeroImageUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E6352C56BAC0008125E9 /* HeroImageUIView.swift */; };
+		0660E6392C56BB5F008125E9 /* DailyQuestionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E6382C56BB5F008125E9 /* DailyQuestionUIView.swift */; };
+		0660E63B2C56BC5F008125E9 /* LiveExaminationsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E63A2C56BC5F008125E9 /* LiveExaminationsUIView.swift */; };
+		0660E63D2C56BC8A008125E9 /* RecentUpdatesUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E63C2C56BC8A008125E9 /* RecentUpdatesUIView.swift */; };
+		0660E63F2C56BCC3008125E9 /* QuickLinkUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E63E2C56BCC3008125E9 /* QuickLinkUIView.swift */; };
+		0660E6412C56BD1B008125E9 /* PraticeQuestionsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E6402C56BD1B008125E9 /* PraticeQuestionsUIView.swift */; };
+		0660E6462C56C48E008125E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E6452C56C48E008125E9 /* Constants.swift */; };
+		0674CC622C5753CB008101C0 /* CustomUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC612C5753CB008101C0 /* CustomUIColor.swift */; };
+		0674CC652C576729008101C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC642C576729008101C0 /* LoginViewController.swift */; };
+		0674CC672C576733008101C0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC662C576733008101C0 /* RegistrationViewController.swift */; };
+		0674CC692C57673F008101C0 /* EnterOtpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC682C57673F008101C0 /* EnterOtpViewController.swift */; };
+		0674CC6B2C57674C008101C0 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC6A2C57674C008101C0 /* GetStartedViewController.swift */; };
+		0674CC6F2C57691B008101C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0674CC6E2C57691B008101C0 /* GoogleService-Info.plist */; };
+		06B9DF662C57AF4D009B3DAD /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9DF652C57AF4D009B3DAD /* BottomSheetViewController.swift */; };
+		06B9DF692C57AFA5009B3DAD /* TermsandConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9DF682C57AFA5009B3DAD /* TermsandConditionsViewController.swift */; };
+		06B9DF6B2C57AFB2009B3DAD /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9DF6A2C57AFB2009B3DAD /* PrivacyViewController.swift */; };
+		06B9DFC42C57B790009B3DAD /* anim.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF6F2C57B790009B3DAD /* anim.json */; };
+		06B9DFC52C57B790009B3DAD /* apppvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF702C57B790009B3DAD /* apppvideo.mp4 */; };
+		06B9DFC62C57B790009B3DAD /* appvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF712C57B790009B3DAD /* appvideo.mp4 */; };
+		06B9DFC72C57B790009B3DAD /* arrowright.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF722C57B790009B3DAD /* arrowright.json */; };
+		06B9DFC82C57B790009B3DAD /* asorryforcredits.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF732C57B790009B3DAD /* asorryforcredits.json */; };
+		06B9DFC92C57B790009B3DAD /* award.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF742C57B790009B3DAD /* award.json */; };
+		06B9DFCA2C57B790009B3DAD /* beepsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF752C57B790009B3DAD /* beepsound.mp3 */; };
+		06B9DFCB2C57B790009B3DAD /* best.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF762C57B790009B3DAD /* best.json */; };
+		06B9DFCC2C57B790009B3DAD /* bestseller.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF772C57B790009B3DAD /* bestseller.json */; };
+		06B9DFCD2C57B790009B3DAD /* bestsellernew.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF782C57B790009B3DAD /* bestsellernew.json */; };
+		06B9DFCE2C57B790009B3DAD /* bkvideovideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF792C57B790009B3DAD /* bkvideovideo.mp4 */; };
+		06B9DFCF2C57B790009B3DAD /* bookk.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF7A2C57B790009B3DAD /* bookk.json */; };
+		06B9DFD02C57B790009B3DAD /* bookoftheday.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF7B2C57B790009B3DAD /* bookoftheday.json */; };
+		06B9DFD12C57B790009B3DAD /* clock.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF7C2C57B790009B3DAD /* clock.json */; };
+		06B9DFD22C57B790009B3DAD /* congrats.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF7D2C57B790009B3DAD /* congrats.json */; };
+		06B9DFD32C57B790009B3DAD /* correct.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF7E2C57B790009B3DAD /* correct.json */; };
+		06B9DFD42C57B790009B3DAD /* coupon_like.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF7F2C57B790009B3DAD /* coupon_like.json */; };
+		06B9DFD52C57B790009B3DAD /* coupon_not.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF802C57B790009B3DAD /* coupon_not.json */; };
+		06B9DFD62C57B790009B3DAD /* creadited.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF812C57B790009B3DAD /* creadited.json */; };
+		06B9DFD72C57B790009B3DAD /* dashboard.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF822C57B790009B3DAD /* dashboard.json */; };
+		06B9DFD82C57B790009B3DAD /* done.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF832C57B790009B3DAD /* done.json */; };
+		06B9DFD92C57B790009B3DAD /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF842C57B790009B3DAD /* empty.json */; };
+		06B9DFDA2C57B790009B3DAD /* first_new.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF852C57B790009B3DAD /* first_new.json */; };
+		06B9DFDB2C57B790009B3DAD /* flag.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF862C57B790009B3DAD /* flag.mp4 */; };
+		06B9DFDC2C57B790009B3DAD /* fmgc.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF872C57B790009B3DAD /* fmgc.json */; };
+		06B9DFDD2C57B790009B3DAD /* fmge.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF882C57B790009B3DAD /* fmge.json */; };
+		06B9DFDE2C57B790009B3DAD /* frontlogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF892C57B790009B3DAD /* frontlogo.gif */; };
+		06B9DFDF2C57B790009B3DAD /* getstartedanime1.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF8A2C57B790009B3DAD /* getstartedanime1.json */; };
+		06B9DFE02C57B790009B3DAD /* gopro.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF8B2C57B790009B3DAD /* gopro.json */; };
+		06B9DFE12C57B790009B3DAD /* guide.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF8C2C57B790009B3DAD /* guide.json */; };
+		06B9DFE22C57B790009B3DAD /* happyrobot.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF8D2C57B790009B3DAD /* happyrobot.json */; };
+		06B9DFE32C57B790009B3DAD /* incorrec.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF8E2C57B790009B3DAD /* incorrec.json */; };
+		06B9DFE42C57B790009B3DAD /* ioio.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF8F2C57B790009B3DAD /* ioio.json */; };
+		06B9DFE52C57B790009B3DAD /* like_coupon.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF902C57B790009B3DAD /* like_coupon.json */; };
+		06B9DFE62C57B790009B3DAD /* liveanime.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF912C57B790009B3DAD /* liveanime.json */; };
+		06B9DFE72C57B790009B3DAD /* loader_new_first_time.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF922C57B790009B3DAD /* loader_new_first_time.json */; };
+		06B9DFE82C57B790009B3DAD /* loaderforlib.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF932C57B790009B3DAD /* loaderforlib.json */; };
+		06B9DFE92C57B790009B3DAD /* loaderforloading.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF942C57B790009B3DAD /* loaderforloading.json */; };
+		06B9DFEA2C57B790009B3DAD /* loaderheart.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF952C57B790009B3DAD /* loaderheart.json */; };
+		06B9DFEB2C57B790009B3DAD /* log1234.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF962C57B790009B3DAD /* log1234.json */; };
+		06B9DFEC2C57B790009B3DAD /* log12344.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF972C57B790009B3DAD /* log12344.json */; };
+		06B9DFED2C57B790009B3DAD /* logoani.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF982C57B790009B3DAD /* logoani.json */; };
+		06B9DFEE2C57B790009B3DAD /* logoanilottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF992C57B790009B3DAD /* logoanilottie.json */; };
+		06B9DFEF2C57B790009B3DAD /* mbk.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF9A2C57B790009B3DAD /* mbk.json */; };
+		06B9DFF02C57B790009B3DAD /* medrobot.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF9B2C57B790009B3DAD /* medrobot.json */; };
+		06B9DFF12C57B790009B3DAD /* meetss.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF9C2C57B790009B3DAD /* meetss.json */; };
+		06B9DFF22C57B790009B3DAD /* missed.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF9D2C57B790009B3DAD /* missed.json */; };
+		06B9DFF32C57B790009B3DAD /* modechange.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF9E2C57B790009B3DAD /* modechange.json */; };
+		06B9DFF42C57B790009B3DAD /* money.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DF9F2C57B790009B3DAD /* money.json */; };
+		06B9DFF52C57B790009B3DAD /* moneynew.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFA02C57B790009B3DAD /* moneynew.json */; };
+		06B9DFF62C57B790009B3DAD /* neetpg.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFA12C57B790009B3DAD /* neetpg.json */; };
+		06B9DFF72C57B790009B3DAD /* neetss.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFA22C57B790009B3DAD /* neetss.json */; };
+		06B9DFF82C57B790009B3DAD /* new_dc.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFA32C57B790009B3DAD /* new_dc.json */; };
+		06B9DFF92C57B790009B3DAD /* new_job.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFA42C57B790009B3DAD /* new_job.mp3 */; };
+		06B9DFFA2C57B790009B3DAD /* nodata.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFA52C57B790009B3DAD /* nodata.json */; };
+		06B9DFFB2C57B790009B3DAD /* nointernet.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFA62C57B790009B3DAD /* nointernet.json */; };
+		06B9DFFC2C57B790009B3DAD /* notfound.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFA72C57B790009B3DAD /* notfound.json */; };
+		06B9DFFD2C57B790009B3DAD /* nouniversity.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFA82C57B790009B3DAD /* nouniversity.json */; };
+		06B9DFFE2C57B790009B3DAD /* ok.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFA92C57B790009B3DAD /* ok.json */; };
+		06B9DFFF2C57B790009B3DAD /* opop.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFAA2C57B790009B3DAD /* opop.json */; };
+		06B9E0002C57B790009B3DAD /* pgpgp.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFAB2C57B790009B3DAD /* pgpgp.json */; };
+		06B9E0012C57B790009B3DAD /* questionnn.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFAC2C57B790009B3DAD /* questionnn.json */; };
+		06B9E0022C57B790009B3DAD /* result.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFAD2C57B790009B3DAD /* result.json */; };
+		06B9E0032C57B790009B3DAD /* scoreboard.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFAE2C57B790009B3DAD /* scoreboard.json */; };
+		06B9E0042C57B790009B3DAD /* scoreboardnew.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFAF2C57B790009B3DAD /* scoreboardnew.json */; };
+		06B9E0052C57B790009B3DAD /* shimmer_download.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFB02C57B790009B3DAD /* shimmer_download.json */; };
+		06B9E0062C57B790009B3DAD /* shimmer.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFB12C57B790009B3DAD /* shimmer.json */; };
+		06B9E0072C57B790009B3DAD /* showcase.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFB22C57B790009B3DAD /* showcase.json */; };
+		06B9E0082C57B790009B3DAD /* sky.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFB32C57B790009B3DAD /* sky.json */; };
+		06B9E0092C57B790009B3DAD /* streak.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFB42C57B790009B3DAD /* streak.json */; };
+		06B9E00A2C57B790009B3DAD /* suggest.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFB52C57B790009B3DAD /* suggest.json */; };
+		06B9E00B2C57B790009B3DAD /* suggestanime.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFB62C57B790009B3DAD /* suggestanime.json */; };
+		06B9E00C2C57B790009B3DAD /* timer.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFB72C57B790009B3DAD /* timer.json */; };
+		06B9E00D2C57B790009B3DAD /* topbk.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFB82C57B790009B3DAD /* topbk.json */; };
+		06B9E00E2C57B790009B3DAD /* uc.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFB92C57B790009B3DAD /* uc.json */; };
+		06B9E00F2C57B790009B3DAD /* underconstruction.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFBA2C57B790009B3DAD /* underconstruction.mp4 */; };
+		06B9E0102C57B790009B3DAD /* universal_loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFBB2C57B790009B3DAD /* universal_loader.json */; };
+		06B9E0112C57B790009B3DAD /* upcoming.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFBC2C57B790009B3DAD /* upcoming.json */; };
+		06B9E0122C57B790009B3DAD /* updated.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFBD2C57B790009B3DAD /* updated.json */; };
+		06B9E0132C57B790009B3DAD /* updating.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFBE2C57B790009B3DAD /* updating.json */; };
+		06B9E0142C57B790009B3DAD /* verifiedanime.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFBF2C57B790009B3DAD /* verifiedanime.json */; };
+		06B9E0152C57B790009B3DAD /* waterdrop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFC02C57B790009B3DAD /* waterdrop.mp3 */; };
+		06B9E0162C57B790009B3DAD /* wrong.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFC12C57B790009B3DAD /* wrong.json */; };
+		06B9E0172C57B790009B3DAD /* zx.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9DFC22C57B790009B3DAD /* zx.json */; };
+		06B9E0192C57C280009B3DAD /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9E0182C57C280009B3DAD /* CustomPresentationController.swift */; };
+		06B9E01D2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9E01C2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift */; };
+		06B9E01F2C580D1F009B3DAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B9E01E2C580D1F009B3DAD /* Main.storyboard */; };
+		06B9E0292C58BC9B009B3DAD /* CountryCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 06B9E0282C58BC9B009B3DAD /* CountryCode.json */; };
+		06DC83622C58EC9100822AD7 /* States.json in Resources */ = {isa = PBXBuildFile; fileRef = 06DC83612C58EC9100822AD7 /* States.json */; };
+		06DC83662C58F22700822AD7 /* StateBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC83652C58F22700822AD7 /* StateBottomSheetViewController.swift */; };
+		06DC83682C593B8700822AD7 /* Interest.json in Resources */ = {isa = PBXBuildFile; fileRef = 06DC83672C593B8700822AD7 /* Interest.json */; };
+		06DC836A2C59457300822AD7 /* Prefix.json in Resources */ = {isa = PBXBuildFile; fileRef = 06DC83692C59457300822AD7 /* Prefix.json */; };
+		0FED3A4EB289D5CEE21E644B /* Pods_mymedicos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971965A96C5A51FAAA39DBB3 /* Pods_mymedicos.framework */; };
+		19DF0C5D4D06BFF5E09583FD /* Pods_mymedicosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F55B86FDE03E708D97F2F43 /* Pods_mymedicosTests.framework */; };
+		28072C54E282FEB509C3BD82 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4C32DD8681A04AED0381DC /* Pods_mymedicos_mymedicosUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +151,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0604420E2C5CBF3A00CDE979 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
+		060442112C5D2B7700CDE979 /* SideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
 		0660E5F82C56B861008125E9 /* mymedicos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mymedicos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0660E5FB2C56B861008125E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0660E5FD2C56B861008125E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0660E5FF2C56B861008125E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0660E6022C56B861008125E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0660E6042C56B863008125E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0660E6072C56B863008125E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0660E6092C56B863008125E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +164,128 @@
 		0660E6182C56B863008125E9 /* mymedicosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mymedicosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0660E61C2C56B863008125E9 /* mymedicosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymedicosUITests.swift; sourceTree = "<group>"; };
 		0660E61E2C56B863008125E9 /* mymedicosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mymedicosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0660E62B2C56B94A008125E9 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
+		0660E62E2C56B999008125E9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0660E6302C56B9B4008125E9 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		0660E6322C56B9CF008125E9 /* SlideshareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideshareViewController.swift; sourceTree = "<group>"; };
+		0660E6352C56BAC0008125E9 /* HeroImageUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageUIView.swift; sourceTree = "<group>"; };
+		0660E6382C56BB5F008125E9 /* DailyQuestionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyQuestionUIView.swift; sourceTree = "<group>"; };
+		0660E63A2C56BC5F008125E9 /* LiveExaminationsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveExaminationsUIView.swift; sourceTree = "<group>"; };
+		0660E63C2C56BC8A008125E9 /* RecentUpdatesUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUpdatesUIView.swift; sourceTree = "<group>"; };
+		0660E63E2C56BCC3008125E9 /* QuickLinkUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLinkUIView.swift; sourceTree = "<group>"; };
+		0660E6402C56BD1B008125E9 /* PraticeQuestionsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraticeQuestionsUIView.swift; sourceTree = "<group>"; };
+		0660E6452C56C48E008125E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0674CC612C5753CB008101C0 /* CustomUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColor.swift; sourceTree = "<group>"; };
+		0674CC642C576729008101C0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0674CC662C576733008101C0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		0674CC682C57673F008101C0 /* EnterOtpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterOtpViewController.swift; sourceTree = "<group>"; };
+		0674CC6A2C57674C008101C0 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
+		0674CC6E2C57691B008101C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		067AFFFE2C5775E200CB7D82 /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06B9DF652C57AF4D009B3DAD /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		06B9DF682C57AFA5009B3DAD /* TermsandConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsandConditionsViewController.swift; sourceTree = "<group>"; };
+		06B9DF6A2C57AFB2009B3DAD /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		06B9DF6F2C57B790009B3DAD /* anim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = anim.json; sourceTree = "<group>"; };
+		06B9DF702C57B790009B3DAD /* apppvideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = apppvideo.mp4; sourceTree = "<group>"; };
+		06B9DF712C57B790009B3DAD /* appvideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = appvideo.mp4; sourceTree = "<group>"; };
+		06B9DF722C57B790009B3DAD /* arrowright.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrowright.json; sourceTree = "<group>"; };
+		06B9DF732C57B790009B3DAD /* asorryforcredits.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = asorryforcredits.json; sourceTree = "<group>"; };
+		06B9DF742C57B790009B3DAD /* award.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = award.json; sourceTree = "<group>"; };
+		06B9DF752C57B790009B3DAD /* beepsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beepsound.mp3; sourceTree = "<group>"; };
+		06B9DF762C57B790009B3DAD /* best.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = best.json; sourceTree = "<group>"; };
+		06B9DF772C57B790009B3DAD /* bestseller.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bestseller.json; sourceTree = "<group>"; };
+		06B9DF782C57B790009B3DAD /* bestsellernew.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bestsellernew.json; sourceTree = "<group>"; };
+		06B9DF792C57B790009B3DAD /* bkvideovideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bkvideovideo.mp4; sourceTree = "<group>"; };
+		06B9DF7A2C57B790009B3DAD /* bookk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookk.json; sourceTree = "<group>"; };
+		06B9DF7B2C57B790009B3DAD /* bookoftheday.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookoftheday.json; sourceTree = "<group>"; };
+		06B9DF7C2C57B790009B3DAD /* clock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = clock.json; sourceTree = "<group>"; };
+		06B9DF7D2C57B790009B3DAD /* congrats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = congrats.json; sourceTree = "<group>"; };
+		06B9DF7E2C57B790009B3DAD /* correct.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = correct.json; sourceTree = "<group>"; };
+		06B9DF7F2C57B790009B3DAD /* coupon_like.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coupon_like.json; sourceTree = "<group>"; };
+		06B9DF802C57B790009B3DAD /* coupon_not.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coupon_not.json; sourceTree = "<group>"; };
+		06B9DF812C57B790009B3DAD /* creadited.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = creadited.json; sourceTree = "<group>"; };
+		06B9DF822C57B790009B3DAD /* dashboard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dashboard.json; sourceTree = "<group>"; };
+		06B9DF832C57B790009B3DAD /* done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = done.json; sourceTree = "<group>"; };
+		06B9DF842C57B790009B3DAD /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		06B9DF852C57B790009B3DAD /* first_new.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = first_new.json; sourceTree = "<group>"; };
+		06B9DF862C57B790009B3DAD /* flag.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = flag.mp4; sourceTree = "<group>"; };
+		06B9DF872C57B790009B3DAD /* fmgc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fmgc.json; sourceTree = "<group>"; };
+		06B9DF882C57B790009B3DAD /* fmge.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fmge.json; sourceTree = "<group>"; };
+		06B9DF892C57B790009B3DAD /* frontlogo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = frontlogo.gif; sourceTree = "<group>"; };
+		06B9DF8A2C57B790009B3DAD /* getstartedanime1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = getstartedanime1.json; sourceTree = "<group>"; };
+		06B9DF8B2C57B790009B3DAD /* gopro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gopro.json; sourceTree = "<group>"; };
+		06B9DF8C2C57B790009B3DAD /* guide.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = guide.json; sourceTree = "<group>"; };
+		06B9DF8D2C57B790009B3DAD /* happyrobot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = happyrobot.json; sourceTree = "<group>"; };
+		06B9DF8E2C57B790009B3DAD /* incorrec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = incorrec.json; sourceTree = "<group>"; };
+		06B9DF8F2C57B790009B3DAD /* ioio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ioio.json; sourceTree = "<group>"; };
+		06B9DF902C57B790009B3DAD /* like_coupon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = like_coupon.json; sourceTree = "<group>"; };
+		06B9DF912C57B790009B3DAD /* liveanime.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveanime.json; sourceTree = "<group>"; };
+		06B9DF922C57B790009B3DAD /* loader_new_first_time.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_new_first_time.json; sourceTree = "<group>"; };
+		06B9DF932C57B790009B3DAD /* loaderforlib.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loaderforlib.json; sourceTree = "<group>"; };
+		06B9DF942C57B790009B3DAD /* loaderforloading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loaderforloading.json; sourceTree = "<group>"; };
+		06B9DF952C57B790009B3DAD /* loaderheart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loaderheart.json; sourceTree = "<group>"; };
+		06B9DF962C57B790009B3DAD /* log1234.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = log1234.json; sourceTree = "<group>"; };
+		06B9DF972C57B790009B3DAD /* log12344.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = log12344.json; sourceTree = "<group>"; };
+		06B9DF982C57B790009B3DAD /* logoani.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = logoani.json; sourceTree = "<group>"; };
+		06B9DF992C57B790009B3DAD /* logoanilottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = logoanilottie.json; sourceTree = "<group>"; };
+		06B9DF9A2C57B790009B3DAD /* mbk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mbk.json; sourceTree = "<group>"; };
+		06B9DF9B2C57B790009B3DAD /* medrobot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medrobot.json; sourceTree = "<group>"; };
+		06B9DF9C2C57B790009B3DAD /* meetss.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = meetss.json; sourceTree = "<group>"; };
+		06B9DF9D2C57B790009B3DAD /* missed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = missed.json; sourceTree = "<group>"; };
+		06B9DF9E2C57B790009B3DAD /* modechange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = modechange.json; sourceTree = "<group>"; };
+		06B9DF9F2C57B790009B3DAD /* money.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = money.json; sourceTree = "<group>"; };
+		06B9DFA02C57B790009B3DAD /* moneynew.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moneynew.json; sourceTree = "<group>"; };
+		06B9DFA12C57B790009B3DAD /* neetpg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = neetpg.json; sourceTree = "<group>"; };
+		06B9DFA22C57B790009B3DAD /* neetss.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = neetss.json; sourceTree = "<group>"; };
+		06B9DFA32C57B790009B3DAD /* new_dc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = new_dc.json; sourceTree = "<group>"; };
+		06B9DFA42C57B790009B3DAD /* new_job.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = new_job.mp3; sourceTree = "<group>"; };
+		06B9DFA52C57B790009B3DAD /* nodata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nodata.json; sourceTree = "<group>"; };
+		06B9DFA62C57B790009B3DAD /* nointernet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nointernet.json; sourceTree = "<group>"; };
+		06B9DFA72C57B790009B3DAD /* notfound.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = notfound.json; sourceTree = "<group>"; };
+		06B9DFA82C57B790009B3DAD /* nouniversity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nouniversity.json; sourceTree = "<group>"; };
+		06B9DFA92C57B790009B3DAD /* ok.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ok.json; sourceTree = "<group>"; };
+		06B9DFAA2C57B790009B3DAD /* opop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = opop.json; sourceTree = "<group>"; };
+		06B9DFAB2C57B790009B3DAD /* pgpgp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pgpgp.json; sourceTree = "<group>"; };
+		06B9DFAC2C57B790009B3DAD /* questionnn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = questionnn.json; sourceTree = "<group>"; };
+		06B9DFAD2C57B790009B3DAD /* result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = result.json; sourceTree = "<group>"; };
+		06B9DFAE2C57B790009B3DAD /* scoreboard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scoreboard.json; sourceTree = "<group>"; };
+		06B9DFAF2C57B790009B3DAD /* scoreboardnew.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scoreboardnew.json; sourceTree = "<group>"; };
+		06B9DFB02C57B790009B3DAD /* shimmer_download.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shimmer_download.json; sourceTree = "<group>"; };
+		06B9DFB12C57B790009B3DAD /* shimmer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shimmer.json; sourceTree = "<group>"; };
+		06B9DFB22C57B790009B3DAD /* showcase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = showcase.json; sourceTree = "<group>"; };
+		06B9DFB32C57B790009B3DAD /* sky.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sky.json; sourceTree = "<group>"; };
+		06B9DFB42C57B790009B3DAD /* streak.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = streak.json; sourceTree = "<group>"; };
+		06B9DFB52C57B790009B3DAD /* suggest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = suggest.json; sourceTree = "<group>"; };
+		06B9DFB62C57B790009B3DAD /* suggestanime.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = suggestanime.json; sourceTree = "<group>"; };
+		06B9DFB72C57B790009B3DAD /* timer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timer.json; sourceTree = "<group>"; };
+		06B9DFB82C57B790009B3DAD /* topbk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = topbk.json; sourceTree = "<group>"; };
+		06B9DFB92C57B790009B3DAD /* uc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uc.json; sourceTree = "<group>"; };
+		06B9DFBA2C57B790009B3DAD /* underconstruction.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = underconstruction.mp4; sourceTree = "<group>"; };
+		06B9DFBB2C57B790009B3DAD /* universal_loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = universal_loader.json; sourceTree = "<group>"; };
+		06B9DFBC2C57B790009B3DAD /* upcoming.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = upcoming.json; sourceTree = "<group>"; };
+		06B9DFBD2C57B790009B3DAD /* updated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = updated.json; sourceTree = "<group>"; };
+		06B9DFBE2C57B790009B3DAD /* updating.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = updating.json; sourceTree = "<group>"; };
+		06B9DFBF2C57B790009B3DAD /* verifiedanime.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verifiedanime.json; sourceTree = "<group>"; };
+		06B9DFC02C57B790009B3DAD /* waterdrop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterdrop.mp3; sourceTree = "<group>"; };
+		06B9DFC12C57B790009B3DAD /* wrong.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wrong.json; sourceTree = "<group>"; };
+		06B9DFC22C57B790009B3DAD /* zx.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zx.json; sourceTree = "<group>"; };
+		06B9E0182C57C280009B3DAD /* CustomPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
+		06B9E01C2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpBottomSheetViewController.swift; sourceTree = "<group>"; };
+		06B9E01E2C580D1F009B3DAD /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		06B9E0282C58BC9B009B3DAD /* CountryCode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryCode.json; sourceTree = "<group>"; };
+		06DC83612C58EC9100822AD7 /* States.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = States.json; sourceTree = "<group>"; };
+		06DC83652C58F22700822AD7 /* StateBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBottomSheetViewController.swift; sourceTree = "<group>"; };
+		06DC83672C593B8700822AD7 /* Interest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Interest.json; sourceTree = "<group>"; };
+		06DC83692C59457300822AD7 /* Prefix.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Prefix.json; sourceTree = "<group>"; };
+		0F3C45553957496A551E85D2 /* Pods-mymedicos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos.debug.xcconfig"; path = "Target Support Files/Pods-mymedicos/Pods-mymedicos.debug.xcconfig"; sourceTree = "<group>"; };
+		1F5399C9466272D06DE28554 /* Pods-mymedicos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos.release.xcconfig"; path = "Target Support Files/Pods-mymedicos/Pods-mymedicos.release.xcconfig"; sourceTree = "<group>"; };
+		4F55B86FDE03E708D97F2F43 /* Pods_mymedicosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E22801B768200070F488C2 /* Pods-mymedicos-mymedicosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos-mymedicosUITests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B37F27599EB2B72C4A72F93 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos-mymedicosUITests.release.xcconfig"; path = "Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		971965A96C5A51FAAA39DBB3 /* Pods_mymedicos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F4C32DD8681A04AED0381DC /* Pods_mymedicos_mymedicosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicos_mymedicosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE7FE1572FD6570811A75CFE /* Pods-mymedicosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosTests.release.xcconfig"; path = "Target Support Files/Pods-mymedicosTests/Pods-mymedicosTests.release.xcconfig"; sourceTree = "<group>"; };
+		EB5BE003EA47649E9D9D7FAF /* Pods-mymedicosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosTests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicosTests/Pods-mymedicosTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +293,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FED3A4EB289D5CEE21E644B /* Pods_mymedicos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +301,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19DF0C5D4D06BFF5E09583FD /* Pods_mymedicosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +309,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28072C54E282FEB509C3BD82 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00034EFC2B6AB0207F7768FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				067AFFFE2C5775E200CB7D82 /* leveldb.framework */,
+				971965A96C5A51FAAA39DBB3 /* Pods_mymedicos.framework */,
+				9F4C32DD8681A04AED0381DC /* Pods_mymedicos_mymedicosUITests.framework */,
+				4F55B86FDE03E708D97F2F43 /* Pods_mymedicosTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		060442102C5D2B4800CDE979 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				060442112C5D2B7700CDE979 /* SideViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		0660E5EF2C56B861008125E9 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +342,8 @@
 				0660E6112C56B863008125E9 /* mymedicosTests */,
 				0660E61B2C56B863008125E9 /* mymedicosUITests */,
 				0660E5F92C56B861008125E9 /* Products */,
+				62F93FC4718656BCFED57D65 /* Pods */,
+				00034EFC2B6AB0207F7768FF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +360,23 @@
 		0660E5FA2C56B861008125E9 /* mymedicos */ = {
 			isa = PBXGroup;
 			children = (
+				06DC83692C59457300822AD7 /* Prefix.json */,
+				06DC83672C593B8700822AD7 /* Interest.json */,
+				06DC83612C58EC9100822AD7 /* States.json */,
+				06B9E0282C58BC9B009B3DAD /* CountryCode.json */,
+				06B9DFC32C57B790009B3DAD /* Animations */,
+				0674CC6E2C57691B008101C0 /* GoogleService-Info.plist */,
+				0674CC602C575370008101C0 /* AddOns */,
+				0660E6442C56C42A008125E9 /* Utils */,
+				0660E6432C56BDAF008125E9 /* Navigators */,
+				0660E6342C56BA8C008125E9 /* View */,
+				0660E62D2C56B959008125E9 /* Controller */,
 				0660E5FB2C56B861008125E9 /* AppDelegate.swift */,
 				0660E5FD2C56B861008125E9 /* SceneDelegate.swift */,
-				0660E5FF2C56B861008125E9 /* ViewController.swift */,
-				0660E6012C56B861008125E9 /* Main.storyboard */,
 				0660E6042C56B863008125E9 /* Assets.xcassets */,
 				0660E6062C56B863008125E9 /* LaunchScreen.storyboard */,
 				0660E6092C56B863008125E9 /* Info.plist */,
+				06B9E01E2C580D1F009B3DAD /* Main.storyboard */,
 			);
 			path = mymedicos;
 			sourceTree = "<group>";
@@ -127,6 +398,201 @@
 			path = mymedicosUITests;
 			sourceTree = "<group>";
 		};
+		0660E62D2C56B959008125E9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				060442102C5D2B4800CDE979 /* Profile */,
+				06B9DF672C57AF91009B3DAD /* Docs */,
+				0674CC632C5766E2008101C0 /* Login */,
+				0660E62E2C56B999008125E9 /* HomeViewController.swift */,
+				0660E6302C56B9B4008125E9 /* CommunityViewController.swift */,
+				0660E6322C56B9CF008125E9 /* SlideshareViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0660E6342C56BA8C008125E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0660E6372C56BB1C008125E9 /* Home */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0660E6372C56BB1C008125E9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0660E6352C56BAC0008125E9 /* HeroImageUIView.swift */,
+				0660E6382C56BB5F008125E9 /* DailyQuestionUIView.swift */,
+				0660E63A2C56BC5F008125E9 /* LiveExaminationsUIView.swift */,
+				0660E6402C56BD1B008125E9 /* PraticeQuestionsUIView.swift */,
+				0660E63E2C56BCC3008125E9 /* QuickLinkUIView.swift */,
+				0660E63C2C56BC8A008125E9 /* RecentUpdatesUIView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0660E6432C56BDAF008125E9 /* Navigators */ = {
+			isa = PBXGroup;
+			children = (
+				0660E62B2C56B94A008125E9 /* MainTabbarViewController.swift */,
+			);
+			path = Navigators;
+			sourceTree = "<group>";
+		};
+		0660E6442C56C42A008125E9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0660E6452C56C48E008125E9 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0674CC602C575370008101C0 /* AddOns */ = {
+			isa = PBXGroup;
+			children = (
+				0674CC612C5753CB008101C0 /* CustomUIColor.swift */,
+				06B9E0182C57C280009B3DAD /* CustomPresentationController.swift */,
+				06B9E01C2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift */,
+			);
+			path = AddOns;
+			sourceTree = "<group>";
+		};
+		0674CC632C5766E2008101C0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				06B9DF642C57AF31009B3DAD /* Bottomsheets */,
+				0674CC6A2C57674C008101C0 /* GetStartedViewController.swift */,
+				0674CC642C576729008101C0 /* LoginViewController.swift */,
+				0674CC662C576733008101C0 /* RegistrationViewController.swift */,
+				0674CC682C57673F008101C0 /* EnterOtpViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		06B9DF642C57AF31009B3DAD /* Bottomsheets */ = {
+			isa = PBXGroup;
+			children = (
+				06B9DF652C57AF4D009B3DAD /* BottomSheetViewController.swift */,
+				06DC83652C58F22700822AD7 /* StateBottomSheetViewController.swift */,
+				0604420E2C5CBF3A00CDE979 /* CountryPickerViewController.swift */,
+			);
+			path = Bottomsheets;
+			sourceTree = "<group>";
+		};
+		06B9DF672C57AF91009B3DAD /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				06B9DF682C57AFA5009B3DAD /* TermsandConditionsViewController.swift */,
+				06B9DF6A2C57AFB2009B3DAD /* PrivacyViewController.swift */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		06B9DFC32C57B790009B3DAD /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				06B9DF6F2C57B790009B3DAD /* anim.json */,
+				06B9DF702C57B790009B3DAD /* apppvideo.mp4 */,
+				06B9DF712C57B790009B3DAD /* appvideo.mp4 */,
+				06B9DF722C57B790009B3DAD /* arrowright.json */,
+				06B9DF732C57B790009B3DAD /* asorryforcredits.json */,
+				06B9DF742C57B790009B3DAD /* award.json */,
+				06B9DF752C57B790009B3DAD /* beepsound.mp3 */,
+				06B9DF762C57B790009B3DAD /* best.json */,
+				06B9DF772C57B790009B3DAD /* bestseller.json */,
+				06B9DF782C57B790009B3DAD /* bestsellernew.json */,
+				06B9DF792C57B790009B3DAD /* bkvideovideo.mp4 */,
+				06B9DF7A2C57B790009B3DAD /* bookk.json */,
+				06B9DF7B2C57B790009B3DAD /* bookoftheday.json */,
+				06B9DF7C2C57B790009B3DAD /* clock.json */,
+				06B9DF7D2C57B790009B3DAD /* congrats.json */,
+				06B9DF7E2C57B790009B3DAD /* correct.json */,
+				06B9DF7F2C57B790009B3DAD /* coupon_like.json */,
+				06B9DF802C57B790009B3DAD /* coupon_not.json */,
+				06B9DF812C57B790009B3DAD /* creadited.json */,
+				06B9DF822C57B790009B3DAD /* dashboard.json */,
+				06B9DF832C57B790009B3DAD /* done.json */,
+				06B9DF842C57B790009B3DAD /* empty.json */,
+				06B9DF852C57B790009B3DAD /* first_new.json */,
+				06B9DF862C57B790009B3DAD /* flag.mp4 */,
+				06B9DF872C57B790009B3DAD /* fmgc.json */,
+				06B9DF882C57B790009B3DAD /* fmge.json */,
+				06B9DF892C57B790009B3DAD /* frontlogo.gif */,
+				06B9DF8A2C57B790009B3DAD /* getstartedanime1.json */,
+				06B9DF8B2C57B790009B3DAD /* gopro.json */,
+				06B9DF8C2C57B790009B3DAD /* guide.json */,
+				06B9DF8D2C57B790009B3DAD /* happyrobot.json */,
+				06B9DF8E2C57B790009B3DAD /* incorrec.json */,
+				06B9DF8F2C57B790009B3DAD /* ioio.json */,
+				06B9DF902C57B790009B3DAD /* like_coupon.json */,
+				06B9DF912C57B790009B3DAD /* liveanime.json */,
+				06B9DF922C57B790009B3DAD /* loader_new_first_time.json */,
+				06B9DF932C57B790009B3DAD /* loaderforlib.json */,
+				06B9DF942C57B790009B3DAD /* loaderforloading.json */,
+				06B9DF952C57B790009B3DAD /* loaderheart.json */,
+				06B9DF962C57B790009B3DAD /* log1234.json */,
+				06B9DF972C57B790009B3DAD /* log12344.json */,
+				06B9DF982C57B790009B3DAD /* logoani.json */,
+				06B9DF992C57B790009B3DAD /* logoanilottie.json */,
+				06B9DF9A2C57B790009B3DAD /* mbk.json */,
+				06B9DF9B2C57B790009B3DAD /* medrobot.json */,
+				06B9DF9C2C57B790009B3DAD /* meetss.json */,
+				06B9DF9D2C57B790009B3DAD /* missed.json */,
+				06B9DF9E2C57B790009B3DAD /* modechange.json */,
+				06B9DF9F2C57B790009B3DAD /* money.json */,
+				06B9DFA02C57B790009B3DAD /* moneynew.json */,
+				06B9DFA12C57B790009B3DAD /* neetpg.json */,
+				06B9DFA22C57B790009B3DAD /* neetss.json */,
+				06B9DFA32C57B790009B3DAD /* new_dc.json */,
+				06B9DFA42C57B790009B3DAD /* new_job.mp3 */,
+				06B9DFA52C57B790009B3DAD /* nodata.json */,
+				06B9DFA62C57B790009B3DAD /* nointernet.json */,
+				06B9DFA72C57B790009B3DAD /* notfound.json */,
+				06B9DFA82C57B790009B3DAD /* nouniversity.json */,
+				06B9DFA92C57B790009B3DAD /* ok.json */,
+				06B9DFAA2C57B790009B3DAD /* opop.json */,
+				06B9DFAB2C57B790009B3DAD /* pgpgp.json */,
+				06B9DFAC2C57B790009B3DAD /* questionnn.json */,
+				06B9DFAD2C57B790009B3DAD /* result.json */,
+				06B9DFAE2C57B790009B3DAD /* scoreboard.json */,
+				06B9DFAF2C57B790009B3DAD /* scoreboardnew.json */,
+				06B9DFB02C57B790009B3DAD /* shimmer_download.json */,
+				06B9DFB12C57B790009B3DAD /* shimmer.json */,
+				06B9DFB22C57B790009B3DAD /* showcase.json */,
+				06B9DFB32C57B790009B3DAD /* sky.json */,
+				06B9DFB42C57B790009B3DAD /* streak.json */,
+				06B9DFB52C57B790009B3DAD /* suggest.json */,
+				06B9DFB62C57B790009B3DAD /* suggestanime.json */,
+				06B9DFB72C57B790009B3DAD /* timer.json */,
+				06B9DFB82C57B790009B3DAD /* topbk.json */,
+				06B9DFB92C57B790009B3DAD /* uc.json */,
+				06B9DFBA2C57B790009B3DAD /* underconstruction.mp4 */,
+				06B9DFBB2C57B790009B3DAD /* universal_loader.json */,
+				06B9DFBC2C57B790009B3DAD /* upcoming.json */,
+				06B9DFBD2C57B790009B3DAD /* updated.json */,
+				06B9DFBE2C57B790009B3DAD /* updating.json */,
+				06B9DFBF2C57B790009B3DAD /* verifiedanime.json */,
+				06B9DFC02C57B790009B3DAD /* waterdrop.mp3 */,
+				06B9DFC12C57B790009B3DAD /* wrong.json */,
+				06B9DFC22C57B790009B3DAD /* zx.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		62F93FC4718656BCFED57D65 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F3C45553957496A551E85D2 /* Pods-mymedicos.debug.xcconfig */,
+				1F5399C9466272D06DE28554 /* Pods-mymedicos.release.xcconfig */,
+				66E22801B768200070F488C2 /* Pods-mymedicos-mymedicosUITests.debug.xcconfig */,
+				8B37F27599EB2B72C4A72F93 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */,
+				EB5BE003EA47649E9D9D7FAF /* Pods-mymedicosTests.debug.xcconfig */,
+				BE7FE1572FD6570811A75CFE /* Pods-mymedicosTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +600,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0660E6222C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicos" */;
 			buildPhases = (
+				9A2ED998F6E6830949BAC297 /* [CP] Check Pods Manifest.lock */,
 				0660E5F42C56B861008125E9 /* Sources */,
 				0660E5F52C56B861008125E9 /* Frameworks */,
 				0660E5F62C56B861008125E9 /* Resources */,
+				F945958D3A87DC9795B559DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +619,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0660E6252C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicosTests" */;
 			buildPhases = (
+				B2AD1B2B2563EA7A0EDA9B9A /* [CP] Check Pods Manifest.lock */,
 				0660E60A2C56B863008125E9 /* Sources */,
 				0660E60B2C56B863008125E9 /* Frameworks */,
 				0660E60C2C56B863008125E9 /* Resources */,
@@ -169,9 +638,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0660E6282C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicosUITests" */;
 			buildPhases = (
+				39E1B884D19F77D40931A967 /* [CP] Check Pods Manifest.lock */,
 				0660E6142C56B863008125E9 /* Sources */,
 				0660E6152C56B863008125E9 /* Frameworks */,
 				0660E6162C56B863008125E9 /* Resources */,
+				0AE8E31E9BE8BABC69BD2492 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,6 +686,10 @@
 				Base,
 			);
 			mainGroup = 0660E5EF2C56B861008125E9;
+			packageReferences = (
+				0674CC702C576952008101C0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				06B9DF6C2C57B323009B3DAD /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
 			productRefGroup = 0660E5F92C56B861008125E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,9 +706,98 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06B9DFE62C57B790009B3DAD /* liveanime.json in Resources */,
+				06B9DFCE2C57B790009B3DAD /* bkvideovideo.mp4 in Resources */,
+				06B9E00F2C57B790009B3DAD /* underconstruction.mp4 in Resources */,
+				06B9E0292C58BC9B009B3DAD /* CountryCode.json in Resources */,
+				06B9DFFC2C57B790009B3DAD /* notfound.json in Resources */,
+				06B9DFEB2C57B790009B3DAD /* log1234.json in Resources */,
+				06B9DFDE2C57B790009B3DAD /* frontlogo.gif in Resources */,
+				06B9DFCC2C57B790009B3DAD /* bestseller.json in Resources */,
+				06B9DFED2C57B790009B3DAD /* logoani.json in Resources */,
+				06B9E0152C57B790009B3DAD /* waterdrop.mp3 in Resources */,
+				06B9E0012C57B790009B3DAD /* questionnn.json in Resources */,
+				06B9E00A2C57B790009B3DAD /* suggest.json in Resources */,
+				06B9DFFF2C57B790009B3DAD /* opop.json in Resources */,
 				0660E6052C56B863008125E9 /* Assets.xcassets in Resources */,
+				06B9DFC92C57B790009B3DAD /* award.json in Resources */,
+				06B9DFD42C57B790009B3DAD /* coupon_like.json in Resources */,
+				06B9DFF92C57B790009B3DAD /* new_job.mp3 in Resources */,
+				06B9DFF52C57B790009B3DAD /* moneynew.json in Resources */,
+				06B9DFEA2C57B790009B3DAD /* loaderheart.json in Resources */,
+				06B9DFEF2C57B790009B3DAD /* mbk.json in Resources */,
+				06B9DFD22C57B790009B3DAD /* congrats.json in Resources */,
+				06DC836A2C59457300822AD7 /* Prefix.json in Resources */,
+				06B9E0072C57B790009B3DAD /* showcase.json in Resources */,
+				06B9E0002C57B790009B3DAD /* pgpgp.json in Resources */,
+				06B9DFFA2C57B790009B3DAD /* nodata.json in Resources */,
+				06B9DFF32C57B790009B3DAD /* modechange.json in Resources */,
+				06B9DFD72C57B790009B3DAD /* dashboard.json in Resources */,
+				06B9DFDB2C57B790009B3DAD /* flag.mp4 in Resources */,
+				06B9DFD82C57B790009B3DAD /* done.json in Resources */,
+				06B9E01F2C580D1F009B3DAD /* Main.storyboard in Resources */,
+				06B9DFC52C57B790009B3DAD /* apppvideo.mp4 in Resources */,
+				06B9E0042C57B790009B3DAD /* scoreboardnew.json in Resources */,
+				06B9E00C2C57B790009B3DAD /* timer.json in Resources */,
+				06B9E0122C57B790009B3DAD /* updated.json in Resources */,
+				06B9DFCD2C57B790009B3DAD /* bestsellernew.json in Resources */,
+				06B9E0052C57B790009B3DAD /* shimmer_download.json in Resources */,
+				06B9DFC82C57B790009B3DAD /* asorryforcredits.json in Resources */,
+				06B9DFD92C57B790009B3DAD /* empty.json in Resources */,
+				06B9E0062C57B790009B3DAD /* shimmer.json in Resources */,
+				06DC83682C593B8700822AD7 /* Interest.json in Resources */,
+				06B9DFEC2C57B790009B3DAD /* log12344.json in Resources */,
+				06B9DFE92C57B790009B3DAD /* loaderforloading.json in Resources */,
+				06B9E0032C57B790009B3DAD /* scoreboard.json in Resources */,
+				06B9DFCA2C57B790009B3DAD /* beepsound.mp3 in Resources */,
+				06B9DFF22C57B790009B3DAD /* missed.json in Resources */,
+				06B9DFD02C57B790009B3DAD /* bookoftheday.json in Resources */,
+				06B9DFFE2C57B790009B3DAD /* ok.json in Resources */,
+				06B9DFE52C57B790009B3DAD /* like_coupon.json in Resources */,
+				06B9DFF72C57B790009B3DAD /* neetss.json in Resources */,
+				06B9DFCB2C57B790009B3DAD /* best.json in Resources */,
+				06B9E0102C57B790009B3DAD /* universal_loader.json in Resources */,
+				06B9DFE72C57B790009B3DAD /* loader_new_first_time.json in Resources */,
+				06B9E0112C57B790009B3DAD /* upcoming.json in Resources */,
+				06B9DFE42C57B790009B3DAD /* ioio.json in Resources */,
+				06B9DFE12C57B790009B3DAD /* guide.json in Resources */,
+				06B9DFE82C57B790009B3DAD /* loaderforlib.json in Resources */,
+				06B9DFFD2C57B790009B3DAD /* nouniversity.json in Resources */,
 				0660E6082C56B863008125E9 /* Base in Resources */,
-				0660E6032C56B861008125E9 /* Base in Resources */,
+				06B9E0082C57B790009B3DAD /* sky.json in Resources */,
+				06B9DFD12C57B790009B3DAD /* clock.json in Resources */,
+				06B9DFF12C57B790009B3DAD /* meetss.json in Resources */,
+				06B9E0172C57B790009B3DAD /* zx.json in Resources */,
+				06B9DFCF2C57B790009B3DAD /* bookk.json in Resources */,
+				06B9DFC42C57B790009B3DAD /* anim.json in Resources */,
+				06B9E0022C57B790009B3DAD /* result.json in Resources */,
+				06B9DFF02C57B790009B3DAD /* medrobot.json in Resources */,
+				06B9DFDA2C57B790009B3DAD /* first_new.json in Resources */,
+				06B9E00E2C57B790009B3DAD /* uc.json in Resources */,
+				06B9E0142C57B790009B3DAD /* verifiedanime.json in Resources */,
+				06B9DFE32C57B790009B3DAD /* incorrec.json in Resources */,
+				06B9DFD52C57B790009B3DAD /* coupon_not.json in Resources */,
+				06B9DFDC2C57B790009B3DAD /* fmgc.json in Resources */,
+				06B9E00B2C57B790009B3DAD /* suggestanime.json in Resources */,
+				06DC83622C58EC9100822AD7 /* States.json in Resources */,
+				06B9DFF82C57B790009B3DAD /* new_dc.json in Resources */,
+				06B9DFDD2C57B790009B3DAD /* fmge.json in Resources */,
+				06B9DFE02C57B790009B3DAD /* gopro.json in Resources */,
+				06B9E0132C57B790009B3DAD /* updating.json in Resources */,
+				06B9DFDF2C57B790009B3DAD /* getstartedanime1.json in Resources */,
+				06B9DFD62C57B790009B3DAD /* creadited.json in Resources */,
+				06B9DFF62C57B790009B3DAD /* neetpg.json in Resources */,
+				0674CC6F2C57691B008101C0 /* GoogleService-Info.plist in Resources */,
+				06B9DFF42C57B790009B3DAD /* money.json in Resources */,
+				06B9DFC62C57B790009B3DAD /* appvideo.mp4 in Resources */,
+				06B9E00D2C57B790009B3DAD /* topbk.json in Resources */,
+				06B9DFE22C57B790009B3DAD /* happyrobot.json in Resources */,
+				06B9DFC72C57B790009B3DAD /* arrowright.json in Resources */,
+				06B9E0092C57B790009B3DAD /* streak.json in Resources */,
+				06B9DFFB2C57B790009B3DAD /* nointernet.json in Resources */,
+				06B9DFEE2C57B790009B3DAD /* logoanilottie.json in Resources */,
+				06B9DFD32C57B790009B3DAD /* correct.json in Resources */,
+				06B9E0162C57B790009B3DAD /* wrong.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +817,140 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0AE8E31E9BE8BABC69BD2492 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39E1B884D19F77D40931A967 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mymedicos-mymedicosUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A2ED998F6E6830949BAC297 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mymedicos-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2AD1B2B2563EA7A0EDA9B9A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mymedicosTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F945958D3A87DC9795B559DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mymedicos/Pods-mymedicos-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mymedicos/Pods-mymedicos-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mymedicos/Pods-mymedicos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0660E5F42C56B861008125E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0660E6002C56B861008125E9 /* ViewController.swift in Sources */,
+				0660E62F2C56B999008125E9 /* HomeViewController.swift in Sources */,
+				0674CC622C5753CB008101C0 /* CustomUIColor.swift in Sources */,
+				06B9DF692C57AFA5009B3DAD /* TermsandConditionsViewController.swift in Sources */,
+				0660E6362C56BAC0008125E9 /* HeroImageUIView.swift in Sources */,
+				06B9DF662C57AF4D009B3DAD /* BottomSheetViewController.swift in Sources */,
+				0674CC652C576729008101C0 /* LoginViewController.swift in Sources */,
+				0660E63B2C56BC5F008125E9 /* LiveExaminationsUIView.swift in Sources */,
+				0604420F2C5CBF3A00CDE979 /* CountryPickerViewController.swift in Sources */,
+				06B9E01D2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift in Sources */,
+				060442122C5D2B7700CDE979 /* SideViewController.swift in Sources */,
+				0660E63F2C56BCC3008125E9 /* QuickLinkUIView.swift in Sources */,
+				0660E6312C56B9B4008125E9 /* CommunityViewController.swift in Sources */,
+				0660E62C2C56B94A008125E9 /* MainTabbarViewController.swift in Sources */,
+				06B9E0192C57C280009B3DAD /* CustomPresentationController.swift in Sources */,
+				06B9DF6B2C57AFB2009B3DAD /* PrivacyViewController.swift in Sources */,
+				0660E6332C56B9CF008125E9 /* SlideshareViewController.swift in Sources */,
+				0660E6462C56C48E008125E9 /* Constants.swift in Sources */,
+				0674CC692C57673F008101C0 /* EnterOtpViewController.swift in Sources */,
+				0674CC672C576733008101C0 /* RegistrationViewController.swift in Sources */,
+				0660E6392C56BB5F008125E9 /* DailyQuestionUIView.swift in Sources */,
 				0660E5FC2C56B861008125E9 /* AppDelegate.swift in Sources */,
+				0660E6412C56BD1B008125E9 /* PraticeQuestionsUIView.swift in Sources */,
+				0674CC6B2C57674C008101C0 /* GetStartedViewController.swift in Sources */,
+				06DC83662C58F22700822AD7 /* StateBottomSheetViewController.swift in Sources */,
 				0660E5FE2C56B861008125E9 /* SceneDelegate.swift in Sources */,
+				0660E63D2C56BC8A008125E9 /* RecentUpdatesUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +987,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0660E6012C56B861008125E9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0660E6022C56B861008125E9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0660E6062C56B863008125E9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -353,7 +1035,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -416,7 +1098,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -437,16 +1119,18 @@
 		};
 		0660E6232C56B863008125E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F3C45553957496A551E85D2 /* Pods-mymedicos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 33UW4S6M8D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mymedicos/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -464,16 +1148,18 @@
 		};
 		0660E6242C56B863008125E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F5399C9466272D06DE28554 /* Pods-mymedicos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 33UW4S6M8D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mymedicos/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -491,6 +1177,7 @@
 		};
 		0660E6262C56B863008125E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB5BE003EA47649E9D9D7FAF /* Pods-mymedicosTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,6 +1197,7 @@
 		};
 		0660E6272C56B863008125E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE7FE1572FD6570811A75CFE /* Pods-mymedicosTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -529,11 +1217,12 @@
 		};
 		0660E6292C56B863008125E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66E22801B768200070F488C2 /* Pods-mymedicos-mymedicosUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = medical.mymedicosUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -546,11 +1235,12 @@
 		};
 		0660E62A2C56B863008125E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B37F27599EB2B72C4A72F93 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = medical.mymedicosUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -601,6 +1291,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0674CC702C576952008101C0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.29.0;
+			};
+		};
+		06B9DF6C2C57B323009B3DAD /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 0660E5F02C56B861008125E9 /* Project object */;
 }

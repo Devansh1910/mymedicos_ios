@@ -1,18 +1,18 @@
 //
-//  ComunityViewController.swift
-//  mymedicos
+//  CommunityViewController.swift
+//  AnimeX
 //
-//  Created by Devansh Saxena on 28/07/24.
+//  Created by Devansh Saxena on 27/07/24.
 //
 
 import UIKit
 
-class ComunityViewController: UIViewController {
+class CommunityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
     }
     
 

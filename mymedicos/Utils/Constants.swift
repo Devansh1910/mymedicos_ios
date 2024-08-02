@@ -1,8 +1,39 @@
-//
-//  Constants.swift
-//  mymedicos
-//
-//  Created by Devansh Saxena on 28/07/24.
-//
-
-import Foundation
+class ConstantsDashboard {
+    static let API_BASE_URL = "https://admin.mymedicos.in"
+    static let GET_CME_SLIDER_URL = "\(API_BASE_URL)/api/sliders/cme"
+    static let GET_NEWS = "\(API_BASE_URL)/api/news"
+    static let GET_SLIDESHOW_HOME = "\(API_BASE_URL)/api/slideshow/home"
+    static let GET_SLIDESHOW = "\(API_BASE_URL)/api/slideshow/"
+    static let GET_SLIDESHOW_FEATURED = "\(API_BASE_URL)/api/slideshow/Sponsor"
+    static let GET_SLIDESHOW_URL = "\(API_BASE_URL)/api/slideshow/"
+    static let GET_SPECIALITY = "\(API_BASE_URL)/api/speciality"
+    static let GET_STATES = "\(API_BASE_URL)/api/updates"
+    static let GET_UNIVERSITIES = "\(API_BASE_URL)/api/updates/"
+    static let GET_SPECIALITY_ALL_PRODUCT = "\(API_BASE_URL)/api/publications/all"
+    static let GET_SPECIALITY_INSIDER = "\(API_BASE_URL)/api/publications"
+    static let GET_SPECIALITY_ALL_PRODUCT_HOME = "\(API_BASE_URL)/api/publications/home"
+    static let GET_SPECIALITY_ALL_PRODUCT_SPONSORED = "\(API_BASE_URL)/api/publications/Sponsor"
+    static let GET_SPECIALITY_PRODUCT = "\(API_BASE_URL)/api/publications/id/"
+    static let GET_CART = "\(API_BASE_URL)/api/ecom/cart"
+    static let GET_ORDER_ID = "\(API_BASE_URL)/api/ecom/checkout/generateOrder/"
+    static let GET_ORDER_ID_99_41 = "\(API_BASE_URL)/api/ecom/medcoins/generateOrder/"
+    static let GET_CHECKOUT_PAGE_URL = "\(API_BASE_URL)checkout/generateOrder/"
+    static let GET_PG_SLIDER_URL = "\(API_BASE_URL)/api/sliders/pg"
+    static let GET_FMGE_SLIDER_URL = "\(API_BASE_URL)/api/sliders/fmge"
+    static let GET_NEWS_SLIDER_URL = "\(API_BASE_URL)/api/sliders/news"
+    static let GET_SPONSORS_SLIDER_URL = "\(API_BASE_URL)/api/sliders/sponsor"
+    static let GET_PUBLICATION_SLIDER_URL = "\(API_BASE_URL)/api/sliders/library"
+    static let GET_SLIDESHOW_SLIDER_URL = "\(API_BASE_URL)/api/sliders/slideshow"
+    static let GET_PG_QUESTIONBANK_URL_HOME = "\(API_BASE_URL)/api/notes/home"
+    static let GET_FMGE_QUESTIONBANK_URL_HOME = "\(API_BASE_URL)/api/notes/home"
+    static let GET_PG_QUESTIONBANK_URL = "\(API_BASE_URL)/api/notes"
+    static let GET_PG_VIDEOS_URL_HOME = "\(API_BASE_URL)/api/videos/home"
+    static let GET_FMGE_VIDEOS_URL_HOME = "\(API_BASE_URL)/api/videos/home"
+    static let GET_PG_VIDEOS_URL = "\(API_BASE_URL)/api/videos/Anatomy"
+    static let GET_HOME_SLIDER_URL = "\(API_BASE_URL)/api/sliders/home"
+    static let GET_UPDATES_SLIDER_URL = "\(API_BASE_URL)/api/sliders/updates"
+    static let GET_DAILY_QUESTIONS_URL = "\(API_BASE_URL)/api/quiz/today?q=home"
+    static let GET_QUIZ_QUESTIONS_URL = "\(API_BASE_URL)/api/quiz/all"
+    static let GET_ALL_SLIDESHOW = "\(API_BASE_URL)/api/slideshow/all"
+    static let GET_DAILY_QUESTIONS_SUBMITTION = "\(API_BASE_URL)/api/quiz/submit/today/as"
+}

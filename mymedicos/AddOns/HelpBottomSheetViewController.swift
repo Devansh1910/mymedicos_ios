@@ -14,7 +14,7 @@ class HelpBottomSheetViewController: UIViewController {
     
     private func calculateContentHeight() -> CGFloat {
         // Calculate the total height of the content that needs to be displayed
-        return 300 // Example static height
+        return 100 // Example static height
     }
 
     private func setupSubviews() {

@@ -1,8 +1,8 @@
 //
 //  SlideshareViewController.swift
-//  mymedicos
+//  AnimeX
 //
-//  Created by Devansh Saxena on 28/07/24.
+//  Created by Devansh Saxena on 27/07/24.
 //
 
 import UIKit
@@ -11,8 +11,9 @@ class SlideshareViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .systemBackground
 
-        // Do any additional setup after loading the view.
     }
     
 
