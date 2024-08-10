@@ -5,8 +5,8 @@ target 'mymedicos' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
-  pod 'leveldb-library'.          # Internal
-  pod 'lottie-ios'                # Lottie Animations
+  pod 'leveldb-library'         # Internal
+  pod 'lottie-ios'         # Lottie Animations
 
   # Pods for mymedicos
 

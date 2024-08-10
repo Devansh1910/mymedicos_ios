@@ -1,17 +1,10 @@
 import UIKit
-
-// NSLayoutConstraint extension to set priority
-extension NSLayoutConstraint {
-    func withPriority(_ priority: Float) -> NSLayoutConstraint {
-        self.priority = UILayoutPriority(rawValue: priority)
-    
-        return self
-    }
-}
+import Firebase
+import FirebaseAuth
 
 class EnterOtpViewController: UIViewController, UITextFieldDelegate {
     
-    var phoneNumber = "+919838720784"  // Placeholder for dynamic phone number
+    var phoneNumber: String = ""  // This will be set dynamically from LoginViewController
     
     // UI components
     let titleLabel = UILabel()
@@ -26,6 +19,7 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = .white
         setupViews()
         setupConstraints()
+        setupVerifyButtonAction()
     }
     
     func setupViews() {
@@ -42,25 +36,23 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(instructionLabel)
         
         // Setup OTP text fields
-        // Setup OTP Text Fields
         for i in 0..<6 {
             let textField = UITextField()
-            textField.tag = 100 + i  // Ensure tags are set to distinguish text fields
+            textField.tag = 100 + i  // Set tags to distinguish text fields
             textField.textAlignment = .center
             textField.font = UIFont.systemFont(ofSize: 18)
-            textField.textColor = .black  // Ensure text color is black
+            textField.textColor = .black
             textField.layer.borderWidth = 1
             textField.layer.cornerRadius = 5
             textField.layer.borderColor = UIColor.gray.cgColor
             textField.keyboardType = .numberPad
             textField.textContentType = .oneTimeCode
-            textField.isSecureTextEntry = false  // Change to false to show numbers
+            textField.isSecureTextEntry = false
             textField.delegate = self
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             otpTextFields.append(textField)
             view.addSubview(textField)
         }
-
         
         // Setup trouble label
         troubleLabel.text = "Having trouble?"
@@ -102,32 +94,26 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
 
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         
-        // Check if we are adding a character
         if string.count > 0 {
             if updatedText.count > 1 {
-                // Prevent more than one character in a text field
                 return false
             } else {
-                // Set the text manually and move to next text field if there is one
                 textField.text = string
                 if let nextTextField = view.viewWithTag(textField.tag + 1) as? UITextField {
                     nextTextField.becomeFirstResponder()
                 }
                 return false
             }
-        } else if string.count == 0 && currentText.count > 0 { // Handling backspace
-            // Clear the text and move to previous text field if there is one
-            textField.text = ""  // Clear the current text field
+        } else if string.count == 0 && currentText.count > 0 {
+            textField.text = ""
             if let previousTextField = view.viewWithTag(textField.tag - 1) as? UITextField {
                 previousTextField.becomeFirstResponder()
             }
-            return false // Do not allow the system to handle backspace (to avoid duplicate handling)
+            return false
         }
         return true
     }
 
-
-    
     func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         instructionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -183,4 +169,33 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
             verifyButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
+    
+    func setupVerifyButtonAction() {
+        verifyButton.addTarget(self, action: #selector(verifyOTP), for: .touchUpInside)
+    }
+    
+    @objc func verifyOTP() {
+        guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else {
+            print("Verification ID not found")
+            return
+        }
+
+        let otp = otpTextFields.compactMap { $0.text }.joined()
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: otp)
+        
+        Auth.auth().signIn(with: credential) { [weak self] authResult, error in
+            if let error = error {
+                print("Error verifying OTP: \(error.localizedDescription)")
+                return
+            }
+            self?.navigateToMainTabBar()
+        }
+    }
+
+    private func navigateToMainTabBar() {
+        let mainTabBarController = MainTabBarViewController()
+        mainTabBarController.modalPresentationStyle = .fullScreen
+        present(mainTabBarController, animated: true, completion: nil)
+    }
+
 }

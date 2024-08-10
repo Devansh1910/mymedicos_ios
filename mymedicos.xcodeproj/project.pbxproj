@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		0604420F2C5CBF3A00CDE979 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0604420E2C5CBF3A00CDE979 /* CountryPickerViewController.swift */; };
 		060442122C5D2B7700CDE979 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060442112C5D2B7700CDE979 /* SideViewController.swift */; };
+		0611D19A2C5D6A36004430C2 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1992C5D6A36004430C2 /* NotificationViewController.swift */; };
+		0611D19D2C5E4154004430C2 /* AccountVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D19C2C5E4154004430C2 /* AccountVerificationViewController.swift */; };
+		0611D19F2C5E4161004430C2 /* CustomizeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D19E2C5E4161004430C2 /* CustomizeProfileViewController.swift */; };
+		0611D1A12C5E416E004430C2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1A02C5E416E004430C2 /* SettingsViewController.swift */; };
+		0611D1A72C5F5721004430C2 /* DailyQuestionDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1A62C5F5721004430C2 /* DailyQuestionDetailedViewController.swift */; };
+		0611D1A92C620FAF004430C2 /* LiveExaminationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1A82C620FAF004430C2 /* LiveExaminationViewController.swift */; };
+		0611D1AB2C638604004430C2 /* ShareUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1AA2C638604004430C2 /* ShareUIView.swift */; };
+		0611D1B12C63D856004430C2 /* ExamDetailsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1B02C63D856004430C2 /* ExamDetailsUIView.swift */; };
+		0611D1B32C63D86E004430C2 /* InstructionsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1B22C63D86E004430C2 /* InstructionsUIView.swift */; };
+		0611D1B72C64302A004430C2 /* TitleButtonsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1B62C643029004430C2 /* TitleButtonsUIView.swift */; };
+		0611D1B92C6486A5004430C2 /* ExamPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1B82C6486A4004430C2 /* ExamPortalViewController.swift */; };
+		0611D1C22C6556E9004430C2 /* QuestonsViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1C12C6556E9004430C2 /* QuestonsViewControllerViewController.swift */; };
+		0611D1C42C660C50004430C2 /* ResultGTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1C32C660C4F004430C2 /* ResultGTViewController.swift */; };
 		0660E5FC2C56B861008125E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E5FB2C56B861008125E9 /* AppDelegate.swift */; };
 		0660E5FE2C56B861008125E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E5FD2C56B861008125E9 /* SceneDelegate.swift */; };
 		0660E6052C56B863008125E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0660E6042C56B863008125E9 /* Assets.xcassets */; };
@@ -130,7 +143,7 @@
 		06DC836A2C59457300822AD7 /* Prefix.json in Resources */ = {isa = PBXBuildFile; fileRef = 06DC83692C59457300822AD7 /* Prefix.json */; };
 		0FED3A4EB289D5CEE21E644B /* Pods_mymedicos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971965A96C5A51FAAA39DBB3 /* Pods_mymedicos.framework */; };
 		19DF0C5D4D06BFF5E09583FD /* Pods_mymedicosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F55B86FDE03E708D97F2F43 /* Pods_mymedicosTests.framework */; };
-		28072C54E282FEB509C3BD82 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4C32DD8681A04AED0381DC /* Pods_mymedicos_mymedicosUITests.framework */; };
+		7A34A7950868F174960484E4 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CFA4E5C0EF95429C8D4A868 /* Pods_mymedicos_mymedicosUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +166,19 @@
 /* Begin PBXFileReference section */
 		0604420E2C5CBF3A00CDE979 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
 		060442112C5D2B7700CDE979 /* SideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
+		0611D1992C5D6A36004430C2 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		0611D19C2C5E4154004430C2 /* AccountVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationViewController.swift; sourceTree = "<group>"; };
+		0611D19E2C5E4161004430C2 /* CustomizeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeProfileViewController.swift; sourceTree = "<group>"; };
+		0611D1A02C5E416E004430C2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0611D1A62C5F5721004430C2 /* DailyQuestionDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyQuestionDetailedViewController.swift; sourceTree = "<group>"; };
+		0611D1A82C620FAF004430C2 /* LiveExaminationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveExaminationViewController.swift; sourceTree = "<group>"; };
+		0611D1AA2C638604004430C2 /* ShareUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUIView.swift; sourceTree = "<group>"; };
+		0611D1B02C63D856004430C2 /* ExamDetailsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamDetailsUIView.swift; sourceTree = "<group>"; };
+		0611D1B22C63D86E004430C2 /* InstructionsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsUIView.swift; sourceTree = "<group>"; };
+		0611D1B62C643029004430C2 /* TitleButtonsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleButtonsUIView.swift; sourceTree = "<group>"; };
+		0611D1B82C6486A4004430C2 /* ExamPortalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamPortalViewController.swift; sourceTree = "<group>"; };
+		0611D1C12C6556E9004430C2 /* QuestonsViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestonsViewControllerViewController.swift; sourceTree = "<group>"; };
+		0611D1C32C660C4F004430C2 /* ResultGTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultGTViewController.swift; sourceTree = "<group>"; };
 		0660E5F82C56B861008125E9 /* mymedicos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mymedicos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0660E5FB2C56B861008125E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0660E5FD2C56B861008125E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -279,11 +305,13 @@
 		06DC83692C59457300822AD7 /* Prefix.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Prefix.json; sourceTree = "<group>"; };
 		0F3C45553957496A551E85D2 /* Pods-mymedicos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos.debug.xcconfig"; path = "Target Support Files/Pods-mymedicos/Pods-mymedicos.debug.xcconfig"; sourceTree = "<group>"; };
 		1F5399C9466272D06DE28554 /* Pods-mymedicos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos.release.xcconfig"; path = "Target Support Files/Pods-mymedicos/Pods-mymedicos.release.xcconfig"; sourceTree = "<group>"; };
+		389D1D9D3AD5BE5654A25143 /* Pods-mymedicosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosUITests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicosUITests/Pods-mymedicosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4F55B86FDE03E708D97F2F43 /* Pods_mymedicosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CFA4E5C0EF95429C8D4A868 /* Pods_mymedicos_mymedicosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicos_mymedicosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E22801B768200070F488C2 /* Pods-mymedicos-mymedicosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos-mymedicosUITests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		73F3129DDE2BB1C2562232C8 /* Pods-mymedicosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosUITests.release.xcconfig"; path = "Target Support Files/Pods-mymedicosUITests/Pods-mymedicosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8B37F27599EB2B72C4A72F93 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos-mymedicosUITests.release.xcconfig"; path = "Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		971965A96C5A51FAAA39DBB3 /* Pods_mymedicos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F4C32DD8681A04AED0381DC /* Pods_mymedicos_mymedicosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicos_mymedicosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7FE1572FD6570811A75CFE /* Pods-mymedicosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosTests.release.xcconfig"; path = "Target Support Files/Pods-mymedicosTests/Pods-mymedicosTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB5BE003EA47649E9D9D7FAF /* Pods-mymedicosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosTests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicosTests/Pods-mymedicosTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,7 +337,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28072C54E282FEB509C3BD82 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */,
+				7A34A7950868F174960484E4 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,8 +349,8 @@
 			children = (
 				067AFFFE2C5775E200CB7D82 /* leveldb.framework */,
 				971965A96C5A51FAAA39DBB3 /* Pods_mymedicos.framework */,
-				9F4C32DD8681A04AED0381DC /* Pods_mymedicos_mymedicosUITests.framework */,
 				4F55B86FDE03E708D97F2F43 /* Pods_mymedicosTests.framework */,
+				5CFA4E5C0EF95429C8D4A868 /* Pods_mymedicos_mymedicosUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -330,9 +358,75 @@
 		060442102C5D2B4800CDE979 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				0611D19B2C5E4138004430C2 /* Components */,
 				060442112C5D2B7700CDE979 /* SideViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		0611D1972C5D69C5004430C2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0660E62E2C56B999008125E9 /* HomeViewController.swift */,
+				0660E6302C56B9B4008125E9 /* CommunityViewController.swift */,
+				0660E6322C56B9CF008125E9 /* SlideshareViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0611D1982C5D6A21004430C2 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				0611D1992C5D6A36004430C2 /* NotificationViewController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		0611D19B2C5E4138004430C2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0611D19C2C5E4154004430C2 /* AccountVerificationViewController.swift */,
+				0611D19E2C5E4161004430C2 /* CustomizeProfileViewController.swift */,
+				0611D1A02C5E416E004430C2 /* SettingsViewController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		0611D1A52C5F570D004430C2 /* Examination */ = {
+			isa = PBXGroup;
+			children = (
+				0611D1A62C5F5721004430C2 /* DailyQuestionDetailedViewController.swift */,
+				0611D1A82C620FAF004430C2 /* LiveExaminationViewController.swift */,
+				0611D1B82C6486A4004430C2 /* ExamPortalViewController.swift */,
+				0611D1C32C660C4F004430C2 /* ResultGTViewController.swift */,
+			);
+			path = Examination;
+			sourceTree = "<group>";
+		};
+		0611D1AC2C63D7F7004430C2 /* Exams */ = {
+			isa = PBXGroup;
+			children = (
+				0611D1BA2C648924004430C2 /* Internal */,
+				0611D1AD2C63D813004430C2 /* Info */,
+			);
+			path = Exams;
+			sourceTree = "<group>";
+		};
+		0611D1AD2C63D813004430C2 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				0611D1B02C63D856004430C2 /* ExamDetailsUIView.swift */,
+				0611D1B22C63D86E004430C2 /* InstructionsUIView.swift */,
+				0611D1B62C643029004430C2 /* TitleButtonsUIView.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		0611D1BA2C648924004430C2 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 		0660E5EF2C56B861008125E9 = {
@@ -401,12 +495,12 @@
 		0660E62D2C56B959008125E9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0611D1A52C5F570D004430C2 /* Examination */,
+				0611D1982C5D6A21004430C2 /* Notification */,
+				0611D1972C5D69C5004430C2 /* Home */,
 				060442102C5D2B4800CDE979 /* Profile */,
 				06B9DF672C57AF91009B3DAD /* Docs */,
 				0674CC632C5766E2008101C0 /* Login */,
-				0660E62E2C56B999008125E9 /* HomeViewController.swift */,
-				0660E6302C56B9B4008125E9 /* CommunityViewController.swift */,
-				0660E6322C56B9CF008125E9 /* SlideshareViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -414,6 +508,7 @@
 		0660E6342C56BA8C008125E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0611D1AC2C63D7F7004430C2 /* Exams */,
 				0660E6372C56BB1C008125E9 /* Home */,
 			);
 			path = View;
@@ -428,6 +523,7 @@
 				0660E6402C56BD1B008125E9 /* PraticeQuestionsUIView.swift */,
 				0660E63E2C56BCC3008125E9 /* QuickLinkUIView.swift */,
 				0660E63C2C56BC8A008125E9 /* RecentUpdatesUIView.swift */,
+				0611D1AA2C638604004430C2 /* ShareUIView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -448,12 +544,21 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		066A55412C670116005C0231 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				0674CC662C576733008101C0 /* RegistrationViewController.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		0674CC602C575370008101C0 /* AddOns */ = {
 			isa = PBXGroup;
 			children = (
 				0674CC612C5753CB008101C0 /* CustomUIColor.swift */,
 				06B9E0182C57C280009B3DAD /* CustomPresentationController.swift */,
 				06B9E01C2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift */,
+				0611D1C12C6556E9004430C2 /* QuestonsViewControllerViewController.swift */,
 			);
 			path = AddOns;
 			sourceTree = "<group>";
@@ -461,10 +566,10 @@
 		0674CC632C5766E2008101C0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				066A55412C670116005C0231 /* Registration */,
 				06B9DF642C57AF31009B3DAD /* Bottomsheets */,
 				0674CC6A2C57674C008101C0 /* GetStartedViewController.swift */,
 				0674CC642C576729008101C0 /* LoginViewController.swift */,
-				0674CC662C576733008101C0 /* RegistrationViewController.swift */,
 				0674CC682C57673F008101C0 /* EnterOtpViewController.swift */,
 			);
 			path = Login;
@@ -589,6 +694,8 @@
 				8B37F27599EB2B72C4A72F93 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */,
 				EB5BE003EA47649E9D9D7FAF /* Pods-mymedicosTests.debug.xcconfig */,
 				BE7FE1572FD6570811A75CFE /* Pods-mymedicosTests.release.xcconfig */,
+				389D1D9D3AD5BE5654A25143 /* Pods-mymedicosUITests.debug.xcconfig */,
+				73F3129DDE2BB1C2562232C8 /* Pods-mymedicosUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -642,7 +749,7 @@
 				0660E6142C56B863008125E9 /* Sources */,
 				0660E6152C56B863008125E9 /* Frameworks */,
 				0660E6162C56B863008125E9 /* Resources */,
-				0AE8E31E9BE8BABC69BD2492 /* [CP] Embed Pods Frameworks */,
+				5F8B8EBA5935491138682BD6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -818,23 +925,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0AE8E31E9BE8BABC69BD2492 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		39E1B884D19F77D40931A967 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -855,6 +945,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F8B8EBA5935491138682BD6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9A2ED998F6E6830949BAC297 /* [CP] Check Pods Manifest.lock */ = {
@@ -925,13 +1032,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0611D1B92C6486A5004430C2 /* ExamPortalViewController.swift in Sources */,
 				0660E62F2C56B999008125E9 /* HomeViewController.swift in Sources */,
+				0611D1B12C63D856004430C2 /* ExamDetailsUIView.swift in Sources */,
 				0674CC622C5753CB008101C0 /* CustomUIColor.swift in Sources */,
 				06B9DF692C57AFA5009B3DAD /* TermsandConditionsViewController.swift in Sources */,
 				0660E6362C56BAC0008125E9 /* HeroImageUIView.swift in Sources */,
 				06B9DF662C57AF4D009B3DAD /* BottomSheetViewController.swift in Sources */,
 				0674CC652C576729008101C0 /* LoginViewController.swift in Sources */,
 				0660E63B2C56BC5F008125E9 /* LiveExaminationsUIView.swift in Sources */,
+				0611D1B32C63D86E004430C2 /* InstructionsUIView.swift in Sources */,
 				0604420F2C5CBF3A00CDE979 /* CountryPickerViewController.swift in Sources */,
 				06B9E01D2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift in Sources */,
 				060442122C5D2B7700CDE979 /* SideViewController.swift in Sources */,
@@ -940,17 +1050,27 @@
 				0660E62C2C56B94A008125E9 /* MainTabbarViewController.swift in Sources */,
 				06B9E0192C57C280009B3DAD /* CustomPresentationController.swift in Sources */,
 				06B9DF6B2C57AFB2009B3DAD /* PrivacyViewController.swift in Sources */,
+				0611D1B72C64302A004430C2 /* TitleButtonsUIView.swift in Sources */,
 				0660E6332C56B9CF008125E9 /* SlideshareViewController.swift in Sources */,
 				0660E6462C56C48E008125E9 /* Constants.swift in Sources */,
+				0611D1C22C6556E9004430C2 /* QuestonsViewControllerViewController.swift in Sources */,
+				0611D19F2C5E4161004430C2 /* CustomizeProfileViewController.swift in Sources */,
+				0611D1A72C5F5721004430C2 /* DailyQuestionDetailedViewController.swift in Sources */,
+				0611D19D2C5E4154004430C2 /* AccountVerificationViewController.swift in Sources */,
 				0674CC692C57673F008101C0 /* EnterOtpViewController.swift in Sources */,
 				0674CC672C576733008101C0 /* RegistrationViewController.swift in Sources */,
 				0660E6392C56BB5F008125E9 /* DailyQuestionUIView.swift in Sources */,
+				0611D1AB2C638604004430C2 /* ShareUIView.swift in Sources */,
 				0660E5FC2C56B861008125E9 /* AppDelegate.swift in Sources */,
+				0611D1A12C5E416E004430C2 /* SettingsViewController.swift in Sources */,
 				0660E6412C56BD1B008125E9 /* PraticeQuestionsUIView.swift in Sources */,
+				0611D1A92C620FAF004430C2 /* LiveExaminationViewController.swift in Sources */,
 				0674CC6B2C57674C008101C0 /* GetStartedViewController.swift in Sources */,
+				0611D19A2C5D6A36004430C2 /* NotificationViewController.swift in Sources */,
 				06DC83662C58F22700822AD7 /* StateBottomSheetViewController.swift in Sources */,
 				0660E5FE2C56B861008125E9 /* SceneDelegate.swift in Sources */,
 				0660E63D2C56BC8A008125E9 /* RecentUpdatesUIView.swift in Sources */,
+				0611D1C42C660C50004430C2 /* ResultGTViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1123,16 +1243,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 33UW4S6M8D;
+				DEVELOPMENT_TEAM = 7W5TX4V26D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mymedicos/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = mymedicos;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1140,6 +1263,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = medical.mymedicos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1152,16 +1276,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 33UW4S6M8D;
+				DEVELOPMENT_TEAM = 7W5TX4V26D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mymedicos/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = mymedicos;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1169,6 +1296,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = medical.mymedicos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

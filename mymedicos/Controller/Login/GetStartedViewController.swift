@@ -14,7 +14,7 @@ class GetStartedViewController: UIViewController {
         setupUI()
         
         if isLoggedIn() {
-            let homeVC = MainTabBarViewController()
+            let homeVC = LoginViewController()
             navigationController?.pushViewController(homeVC, animated: true)
         } else {
             partToShow.isHidden = true
@@ -92,21 +92,16 @@ class GetStartedViewController: UIViewController {
     }
 
     @objc func startButtonTapped() {
-        let mainTabBarVC = MainTabBarViewController()
-        // Assuming you are within a navigation controller
-        UIApplication.shared.windows.first?.rootViewController = mainTabBarVC
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        let loginViewController = LoginViewController()
+        navigationController?.pushViewController(loginViewController, animated: true)
     }
 
-
     @objc func helpSupportTapped() {
-            let bottomSheetVC = BottomSheetViewController()
-            bottomSheetVC.modalPresentationStyle = .custom
-            bottomSheetVC.transitioningDelegate = self
-            present(bottomSheetVC, animated: true)
-        }
-
-
+        let bottomSheetVC = BottomSheetViewController()
+        bottomSheetVC.modalPresentationStyle = .custom
+        bottomSheetVC.transitioningDelegate = self
+        present(bottomSheetVC, animated: true)
+    }
 
     func fadeInAnimation(view: UIView) {
         UIView.animate(withDuration: 1.0) {

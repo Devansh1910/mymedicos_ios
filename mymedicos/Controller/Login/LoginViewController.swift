@@ -277,7 +277,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         checkIfUserExists(phoneNumber: fullPhoneNumber)
     }
 
-
     private func checkIfUserExists(phoneNumber: String) {
         firestore.collection("users").whereField("Phone Number", isEqualTo: phoneNumber).getDocuments { [weak self] snapshot, error in
             guard let self = self else { return }
@@ -304,8 +303,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(registrationViewController, animated: true)
     }
 
-
     private func sendOTP(to phoneNumber: String) {
+        print("sendOTP called with phoneNumber: \(phoneNumber)")
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] verificationID, error in
             guard let self = self else { return }
             if let error = error {
@@ -318,22 +317,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 return
             }
 
-            // Store the verification ID to use later
             UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
 
-            // Navigate to OTP entry screen
-            self.navigateToEnterOTP()
+            print("Navigating to EnterOtpViewController")
+            self.navigateToEnterOTP(phoneNumber: phoneNumber)
         }
     }
 
-    private func navigateToEnterOTP() {
-        let enterOTPViewController = EnterOtpViewController()
-        navigationController?.pushViewController(enterOTPViewController, animated: true)
-    }
 
-    private func navigateToRegistration() {
-        let registrationViewController = RegistrationViewController()
-        navigationController?.pushViewController(registrationViewController, animated: true)
+    private func navigateToEnterOTP(phoneNumber: String) {
+        let enterOTPViewController = EnterOtpViewController()
+        enterOTPViewController.phoneNumber = phoneNumber // Pass the phone number to the next view controller
+        self.navigationController?.pushViewController(enterOTPViewController, animated: true)
     }
 
     private func setupContinueButtonAction() {
@@ -347,4 +342,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         return updatedText.count <= phoneNumberLimit
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.navigationController == nil {
+            print("LoginViewController is not embedded in a UINavigationController.")
+        } else {
+            print("LoginViewController is embedded in a UINavigationController.")
+        }
+    }
+
+    
 }
