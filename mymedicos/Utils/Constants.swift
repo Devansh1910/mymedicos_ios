@@ -31,6 +31,7 @@ class ConstantsDashboard {
     static let GET_FMGE_VIDEOS_URL_HOME = "\(API_BASE_URL)/api/videos/home"
     static let GET_PG_VIDEOS_URL = "\(API_BASE_URL)/api/videos/Anatomy"
     static let GET_HOME_SLIDER_URL = "\(API_BASE_URL)/api/sliders/home"
+    static let GET_HOME_IOS_SLIDER_URL = "\(API_BASE_URL)/api/sliders/sponsor"
     static let GET_UPDATES_SLIDER_URL = "\(API_BASE_URL)/api/sliders/updates"
     static let GET_DAILY_QUESTIONS_URL = "\(API_BASE_URL)/api/quiz/today?q=home"
     static let GET_QUIZ_QUESTIONS_URL = "\(API_BASE_URL)/api/quiz/all"

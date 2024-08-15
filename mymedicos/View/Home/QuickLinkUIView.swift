@@ -1,81 +1,63 @@
 import UIKit
 
-class QuickLinkUIView: UIView {
+protocol QuickLinkUIViewDelegate: AnyObject {
+    func didTapPGNeetButton()
+}
 
-    // Initialize the quick link buttons
-    let pgNeetButton: UIButton = {
-        let color = UIColor(hexString: "#F8FAFC")
-        let textColor = UIColor(hexString: "#1D4ED8") // Custom text color for PG NEET
-        let iconColor = UIColor(hexString: "#1D4ED8") // Custom icon color for PG NEET
-        let button = createCustomButton(title: "PG NEET", backgroundColor: color, systemIconName: "book.fill", textColor: textColor, iconColor: iconColor)
-        addInnerShadow(to: button)
-        return button
-    }()
+class QuickLinkUIView: UIView {
     
-    let fmgeButton: UIButton = {
-        let color = UIColor(hexString: "#F8FAFC")
-        let textColor = UIColor(hexString: "#10B981") // Custom text color for FMGE
-        let iconColor = UIColor(hexString: "#10B981") // Custom icon color for FMGE
-        let button = createCustomButton(title: "FMGE", backgroundColor: color, systemIconName: "stethoscope", textColor: textColor, iconColor: iconColor)
-        addInnerShadow(to: button)
-        return button
-    }()
-    
-    let neetSsButton: UIButton = {
-        let color = UIColor(hexString: "#F8FAFC")
-        let textColor = UIColor(hexString: "#F59E0B") // Custom text color for NEET SS
-        let iconColor = UIColor(hexString: "#F59E0B") // Custom icon color for NEET SS
-        let button = createCustomButton(title: "NEET SS", backgroundColor: color, systemIconName: "graduationcap.fill", textColor: textColor, iconColor: iconColor)
-        addInnerShadow(to: button)
-        return button
-    }()
-    
-    let mbbsButton: UIButton = {
-        let color = UIColor(hexString: "#F8FAFC")
-        let textColor = UIColor(hexString: "#EF4444") // Custom text color for MBBS
-        let iconColor = UIColor(hexString: "#EF4444") // Custom icon color for MBBS
-        let button = createCustomButton(title: "MBBS", backgroundColor: color, systemIconName: "person.fill", textColor: textColor, iconColor: iconColor)
-        addInnerShadow(to: button)
-        return button
-    }()
+    weak var delegate: QuickLinkUIViewDelegate?
+
+    let pgNeetButton = UIButton(type: .system)
+    let fmgeButton = UIButton(type: .system)
+    let neetSsButton = UIButton(type: .system)
+    let mbbsButton = UIButton(type: .system)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configureButtons()
         setupView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        configureButtons()
         setupView()
     }
     
+    private func configureButtons() {
+        configureButton(button: pgNeetButton, title: "PG NEET", backgroundColor: UIColor(hexString: "#F8FAFC"), systemIconName: "book.fill", textColor: UIColor(hexString: "#1D4ED8"), iconColor: UIColor(hexString: "#1D4ED8"))
+        pgNeetButton.addTarget(self, action: #selector(pgNeetButtonTapped), for: .touchUpInside)
+        
+        configureButton(button: fmgeButton, title: "FMGE", backgroundColor: UIColor(hexString: "#F8FAFC"), systemIconName: "stethoscope", textColor: UIColor(hexString: "#10B981"), iconColor: UIColor(hexString: "#10B981"))
+        configureButton(button: neetSsButton, title: "NEET SS", backgroundColor: UIColor(hexString: "#F8FAFC"), systemIconName: "graduationcap.fill", textColor: UIColor(hexString: "#F59E0B"), iconColor: UIColor(hexString: "#F59E0B"))
+        configureButton(button: mbbsButton, title: "MBBS", backgroundColor: UIColor(hexString: "#F8FAFC"), systemIconName: "person.fill", textColor: UIColor(hexString: "#EF4444"), iconColor: UIColor(hexString: "#EF4444"))
+    }
+    
+    @objc private func pgNeetButtonTapped() {
+        delegate?.didTapPGNeetButton()
+    }
+    
     private func setupView() {
-        // Create a vertical stack view for the two rows
         let verticalStackView = UIStackView()
         verticalStackView.axis = .vertical
         verticalStackView.distribution = .fillEqually
         verticalStackView.spacing = 16
         
-        // Create a horizontal stack view for the first row
         let firstRowStackView = UIStackView(arrangedSubviews: [pgNeetButton, fmgeButton])
         firstRowStackView.axis = .horizontal
         firstRowStackView.distribution = .fillEqually
         firstRowStackView.spacing = 10
         
-        // Create a horizontal stack view for the second row
         let secondRowStackView = UIStackView(arrangedSubviews: [neetSsButton, mbbsButton])
         secondRowStackView.axis = .horizontal
         secondRowStackView.distribution = .fillEqually
         secondRowStackView.spacing = 10
         
-        // Add the two rows to the vertical stack view
         verticalStackView.addArrangedSubview(firstRowStackView)
         verticalStackView.addArrangedSubview(secondRowStackView)
         
-        // Add the stack view to the main view
         addSubview(verticalStackView)
-        
-        // Set stack view constraints
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             verticalStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
@@ -85,17 +67,13 @@ class QuickLinkUIView: UIView {
         ])
     }
     
-    private static func createCustomButton(title: String, backgroundColor: UIColor, systemIconName: String, textColor: UIColor, iconColor: UIColor) -> UIButton {
-        let button = UIButton(type: .system)
+    private func configureButton(button: UIButton, title: String, backgroundColor: UIColor, systemIconName: String, textColor: UIColor, iconColor: UIColor) {
         button.backgroundColor = backgroundColor
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
-        
-        // Add a black border
         button.layer.borderWidth = 0.8
         button.layer.borderColor = UIColor.darkGray.cgColor
         
-        // Create the icon and title label
         let iconImageView = UIImageView(image: UIImage(systemName: systemIconName))
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.tintColor = iconColor
@@ -106,13 +84,10 @@ class QuickLinkUIView: UIView {
         titleLabel.textColor = textColor
         titleLabel.textAlignment = .center
         
-        // Create stack view to hold the icon and label
         let stackView = UIStackView(arrangedSubviews: [iconImageView, titleLabel])
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 5
-        
-        // Add padding to the stack view
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
@@ -127,9 +102,9 @@ class QuickLinkUIView: UIView {
             stackView.bottomAnchor.constraint(lessThanOrEqualTo: button.bottomAnchor, constant: -16)
         ])
         
-        return button
+        QuickLinkUIView.addInnerShadow(to: button)
     }
-
+    
     private static func addInnerShadow(to button: UIButton) {
         let shadowLayer = CALayer()
         shadowLayer.frame = button.bounds

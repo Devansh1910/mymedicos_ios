@@ -29,30 +29,10 @@ class HeroImageUIView: UIView {
         imageView.clipsToBounds = true
         return imageView
     }()
-    
-    private func addGradient() {
-        let gradientLayer = CAGradientLayer()
-        
-        let colorTop: CGColor
-        let colorBottom: CGColor
-        
-        if traitCollection.userInterfaceStyle == .dark {
-            colorTop = UIColor.clear.cgColor
-            colorBottom = UIColor.black.cgColor
-        } else {
-            colorTop = UIColor.clear.cgColor
-            colorBottom = UIColor(hex: "F2F2F7")!.cgColor
-        }
-        
-        gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.frame = bounds
-        layer.addSublayer(gradientLayer)
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(heroImageView)
-        addGradient()
         addSubview(exploreButton)
         applyConstraint()
         fetchImageUrls()
@@ -77,12 +57,7 @@ class HeroImageUIView: UIView {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        
-        if previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle {
-            layer.sublayers?.first { $0 is CAGradientLayer }?.removeFromSuperlayer()
-            addGradient()
-            configureButtonColors()
-        }
+        configureButtonColors()
     }
     
     required init?(coder: NSCoder) {
@@ -95,7 +70,7 @@ class HeroImageUIView: UIView {
     }
     
     private func fetchImageUrls() {
-        guard let url = URL(string: ConstantsDashboard.GET_HOME_SLIDER_URL) else { return }
+        guard let url = URL(string: ConstantsDashboard.GET_HOME_IOS_SLIDER_URL) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self, let data = data, error == nil else { return }

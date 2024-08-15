@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0604420F2C5CBF3A00CDE979 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0604420E2C5CBF3A00CDE979 /* CountryPickerViewController.swift */; };
 		060442122C5D2B7700CDE979 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060442112C5D2B7700CDE979 /* SideViewController.swift */; };
+		060B1B5E2C67082D008F9D4B /* Registration2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B1B5D2C67082D008F9D4B /* Registration2ViewController.swift */; };
 		0611D19A2C5D6A36004430C2 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D1992C5D6A36004430C2 /* NotificationViewController.swift */; };
 		0611D19D2C5E4154004430C2 /* AccountVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D19C2C5E4154004430C2 /* AccountVerificationViewController.swift */; };
 		0611D19F2C5E4161004430C2 /* CustomizeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611D19E2C5E4161004430C2 /* CustomizeProfileViewController.swift */; };
@@ -40,9 +41,22 @@
 		0660E63F2C56BCC3008125E9 /* QuickLinkUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E63E2C56BCC3008125E9 /* QuickLinkUIView.swift */; };
 		0660E6412C56BD1B008125E9 /* PraticeQuestionsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E6402C56BD1B008125E9 /* PraticeQuestionsUIView.swift */; };
 		0660E6462C56C48E008125E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660E6452C56C48E008125E9 /* Constants.swift */; };
+		066D6A492C69AB10007510F0 /* CustomPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A482C69AB10007510F0 /* CustomPickerTableViewCell.swift */; };
+		066D6A582C69D8EF007510F0 /* HeroImageNeetpgUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A572C69D8EF007510F0 /* HeroImageNeetpgUIView.swift */; };
+		066D6A5A2C69F04E007510F0 /* CaraousleNeetPgUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A592C69F04E007510F0 /* CaraousleNeetPgUIView.swift */; };
+		066D6A5C2C69F600007510F0 /* ExaminationNeetPgUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A5B2C69F600007510F0 /* ExaminationNeetPgUIView.swift */; };
+		066D6A5E2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A5D2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift */; };
+		066D6A602C6BD0DC007510F0 /* NeetPgTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A5F2C6BD0DC007510F0 /* NeetPgTabbarViewController.swift */; };
+		066D6A622C6BD191007510F0 /* CWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A612C6BD191007510F0 /* CWTViewController.swift */; };
+		066D6A642C6BD199007510F0 /* SWGTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A632C6BD199007510F0 /* SWGTViewController.swift */; };
+		066D6A662C6BD1F9007510F0 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A652C6BD1F9007510F0 /* FeedViewController.swift */; };
+		066D6A6A2C6C58ED007510F0 /* PlansNeetPgUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A692C6C58ED007510F0 /* PlansNeetPgUIView.swift */; };
+		066D6A6D2C6CA968007510F0 /* OverlayPgNeetUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A6C2C6CA968007510F0 /* OverlayPgNeetUIView.swift */; };
+		066D6A6F2C6D1FB6007510F0 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A6E2C6D1FB5007510F0 /* PlanViewController.swift */; };
+		066D6A722C6D2018007510F0 /* PlanContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A712C6D2018007510F0 /* PlanContainerView.swift */; };
 		0674CC622C5753CB008101C0 /* CustomUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC612C5753CB008101C0 /* CustomUIColor.swift */; };
 		0674CC652C576729008101C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC642C576729008101C0 /* LoginViewController.swift */; };
-		0674CC672C576733008101C0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC662C576733008101C0 /* RegistrationViewController.swift */; };
+		0674CC672C576733008101C0 /* Registration1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC662C576733008101C0 /* Registration1ViewController.swift */; };
 		0674CC692C57673F008101C0 /* EnterOtpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC682C57673F008101C0 /* EnterOtpViewController.swift */; };
 		0674CC6B2C57674C008101C0 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC6A2C57674C008101C0 /* GetStartedViewController.swift */; };
 		0674CC6F2C57691B008101C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0674CC6E2C57691B008101C0 /* GoogleService-Info.plist */; };
@@ -166,6 +180,7 @@
 /* Begin PBXFileReference section */
 		0604420E2C5CBF3A00CDE979 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
 		060442112C5D2B7700CDE979 /* SideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
+		060B1B5D2C67082D008F9D4B /* Registration2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration2ViewController.swift; sourceTree = "<group>"; };
 		0611D1992C5D6A36004430C2 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		0611D19C2C5E4154004430C2 /* AccountVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationViewController.swift; sourceTree = "<group>"; };
 		0611D19E2C5E4161004430C2 /* CustomizeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeProfileViewController.swift; sourceTree = "<group>"; };
@@ -201,9 +216,22 @@
 		0660E63E2C56BCC3008125E9 /* QuickLinkUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLinkUIView.swift; sourceTree = "<group>"; };
 		0660E6402C56BD1B008125E9 /* PraticeQuestionsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraticeQuestionsUIView.swift; sourceTree = "<group>"; };
 		0660E6452C56C48E008125E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		066D6A482C69AB10007510F0 /* CustomPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerTableViewCell.swift; sourceTree = "<group>"; };
+		066D6A572C69D8EF007510F0 /* HeroImageNeetpgUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageNeetpgUIView.swift; sourceTree = "<group>"; };
+		066D6A592C69F04E007510F0 /* CaraousleNeetPgUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaraousleNeetPgUIView.swift; sourceTree = "<group>"; };
+		066D6A5B2C69F600007510F0 /* ExaminationNeetPgUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExaminationNeetPgUIView.swift; sourceTree = "<group>"; };
+		066D6A5D2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBankNeetPgUIView.swift; sourceTree = "<group>"; };
+		066D6A5F2C6BD0DC007510F0 /* NeetPgTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeetPgTabbarViewController.swift; sourceTree = "<group>"; };
+		066D6A612C6BD191007510F0 /* CWTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWTViewController.swift; sourceTree = "<group>"; };
+		066D6A632C6BD199007510F0 /* SWGTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWGTViewController.swift; sourceTree = "<group>"; };
+		066D6A652C6BD1F9007510F0 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		066D6A692C6C58ED007510F0 /* PlansNeetPgUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansNeetPgUIView.swift; sourceTree = "<group>"; };
+		066D6A6C2C6CA968007510F0 /* OverlayPgNeetUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPgNeetUIView.swift; sourceTree = "<group>"; };
+		066D6A6E2C6D1FB5007510F0 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
+		066D6A712C6D2018007510F0 /* PlanContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanContainerView.swift; sourceTree = "<group>"; };
 		0674CC612C5753CB008101C0 /* CustomUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColor.swift; sourceTree = "<group>"; };
 		0674CC642C576729008101C0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0674CC662C576733008101C0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		0674CC662C576733008101C0 /* Registration1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration1ViewController.swift; sourceTree = "<group>"; };
 		0674CC682C57673F008101C0 /* EnterOtpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterOtpViewController.swift; sourceTree = "<group>"; };
 		0674CC6A2C57674C008101C0 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		0674CC6E2C57691B008101C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -406,7 +434,7 @@
 		0611D1AC2C63D7F7004430C2 /* Exams */ = {
 			isa = PBXGroup;
 			children = (
-				0611D1BA2C648924004430C2 /* Internal */,
+				066D6A562C69D8AE007510F0 /* PG */,
 				0611D1AD2C63D813004430C2 /* Info */,
 			);
 			path = Exams;
@@ -420,13 +448,6 @@
 				0611D1B62C643029004430C2 /* TitleButtonsUIView.swift */,
 			);
 			path = Info;
-			sourceTree = "<group>";
-		};
-		0611D1BA2C648924004430C2 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Internal;
 			sourceTree = "<group>";
 		};
 		0660E5EF2C56B861008125E9 = {
@@ -495,6 +516,7 @@
 		0660E62D2C56B959008125E9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				066D6A4C2C69B910007510F0 /* Exams */,
 				0611D1A52C5F570D004430C2 /* Examination */,
 				0611D1982C5D6A21004430C2 /* Notification */,
 				0611D1972C5D69C5004430C2 /* Home */,
@@ -532,6 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				0660E62B2C56B94A008125E9 /* MainTabbarViewController.swift */,
+				066D6A5F2C6BD0DC007510F0 /* NeetPgTabbarViewController.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -547,9 +570,75 @@
 		066A55412C670116005C0231 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				0674CC662C576733008101C0 /* RegistrationViewController.swift */,
+				0674CC662C576733008101C0 /* Registration1ViewController.swift */,
+				060B1B5D2C67082D008F9D4B /* Registration2ViewController.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		066D6A4C2C69B910007510F0 /* Exams */ = {
+			isa = PBXGroup;
+			children = (
+				066D6A4F2C69B935007510F0 /* NEETSS */,
+				066D6A4E2C69B92E007510F0 /* FMGE */,
+				066D6A4D2C69B928007510F0 /* PG */,
+			);
+			path = Exams;
+			sourceTree = "<group>";
+		};
+		066D6A4D2C69B928007510F0 /* PG */ = {
+			isa = PBXGroup;
+			children = (
+				066D6A6B2C6CA946007510F0 /* Extras */,
+				066D6A612C6BD191007510F0 /* CWTViewController.swift */,
+				066D6A632C6BD199007510F0 /* SWGTViewController.swift */,
+				066D6A652C6BD1F9007510F0 /* FeedViewController.swift */,
+			);
+			path = PG;
+			sourceTree = "<group>";
+		};
+		066D6A4E2C69B92E007510F0 /* FMGE */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FMGE;
+			sourceTree = "<group>";
+		};
+		066D6A4F2C69B935007510F0 /* NEETSS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NEETSS;
+			sourceTree = "<group>";
+		};
+		066D6A562C69D8AE007510F0 /* PG */ = {
+			isa = PBXGroup;
+			children = (
+				066D6A572C69D8EF007510F0 /* HeroImageNeetpgUIView.swift */,
+				066D6A592C69F04E007510F0 /* CaraousleNeetPgUIView.swift */,
+				066D6A5B2C69F600007510F0 /* ExaminationNeetPgUIView.swift */,
+				066D6A5D2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift */,
+				066D6A702C6D1FE4007510F0 /* Plans */,
+			);
+			path = PG;
+			sourceTree = "<group>";
+		};
+		066D6A6B2C6CA946007510F0 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				066D6A6C2C6CA968007510F0 /* OverlayPgNeetUIView.swift */,
+			);
+			path = Extras;
+			sourceTree = "<group>";
+		};
+		066D6A702C6D1FE4007510F0 /* Plans */ = {
+			isa = PBXGroup;
+			children = (
+				066D6A692C6C58ED007510F0 /* PlansNeetPgUIView.swift */,
+				066D6A6E2C6D1FB5007510F0 /* PlanViewController.swift */,
+				066D6A712C6D2018007510F0 /* PlanContainerView.swift */,
+			);
+			path = Plans;
 			sourceTree = "<group>";
 		};
 		0674CC602C575370008101C0 /* AddOns */ = {
@@ -559,6 +648,7 @@
 				06B9E0182C57C280009B3DAD /* CustomPresentationController.swift */,
 				06B9E01C2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift */,
 				0611D1C12C6556E9004430C2 /* QuestonsViewControllerViewController.swift */,
+				066D6A482C69AB10007510F0 /* CustomPickerTableViewCell.swift */,
 			);
 			path = AddOns;
 			sourceTree = "<group>";
@@ -1036,37 +1126,51 @@
 				0660E62F2C56B999008125E9 /* HomeViewController.swift in Sources */,
 				0611D1B12C63D856004430C2 /* ExamDetailsUIView.swift in Sources */,
 				0674CC622C5753CB008101C0 /* CustomUIColor.swift in Sources */,
+				066D6A5E2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift in Sources */,
 				06B9DF692C57AFA5009B3DAD /* TermsandConditionsViewController.swift in Sources */,
 				0660E6362C56BAC0008125E9 /* HeroImageUIView.swift in Sources */,
 				06B9DF662C57AF4D009B3DAD /* BottomSheetViewController.swift in Sources */,
 				0674CC652C576729008101C0 /* LoginViewController.swift in Sources */,
+				066D6A6F2C6D1FB6007510F0 /* PlanViewController.swift in Sources */,
 				0660E63B2C56BC5F008125E9 /* LiveExaminationsUIView.swift in Sources */,
 				0611D1B32C63D86E004430C2 /* InstructionsUIView.swift in Sources */,
 				0604420F2C5CBF3A00CDE979 /* CountryPickerViewController.swift in Sources */,
 				06B9E01D2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift in Sources */,
+				066D6A662C6BD1F9007510F0 /* FeedViewController.swift in Sources */,
 				060442122C5D2B7700CDE979 /* SideViewController.swift in Sources */,
+				066D6A5C2C69F600007510F0 /* ExaminationNeetPgUIView.swift in Sources */,
 				0660E63F2C56BCC3008125E9 /* QuickLinkUIView.swift in Sources */,
 				0660E6312C56B9B4008125E9 /* CommunityViewController.swift in Sources */,
 				0660E62C2C56B94A008125E9 /* MainTabbarViewController.swift in Sources */,
 				06B9E0192C57C280009B3DAD /* CustomPresentationController.swift in Sources */,
 				06B9DF6B2C57AFB2009B3DAD /* PrivacyViewController.swift in Sources */,
 				0611D1B72C64302A004430C2 /* TitleButtonsUIView.swift in Sources */,
+				066D6A6A2C6C58ED007510F0 /* PlansNeetPgUIView.swift in Sources */,
+				066D6A492C69AB10007510F0 /* CustomPickerTableViewCell.swift in Sources */,
 				0660E6332C56B9CF008125E9 /* SlideshareViewController.swift in Sources */,
+				066D6A642C6BD199007510F0 /* SWGTViewController.swift in Sources */,
 				0660E6462C56C48E008125E9 /* Constants.swift in Sources */,
 				0611D1C22C6556E9004430C2 /* QuestonsViewControllerViewController.swift in Sources */,
 				0611D19F2C5E4161004430C2 /* CustomizeProfileViewController.swift in Sources */,
 				0611D1A72C5F5721004430C2 /* DailyQuestionDetailedViewController.swift in Sources */,
+				066D6A722C6D2018007510F0 /* PlanContainerView.swift in Sources */,
 				0611D19D2C5E4154004430C2 /* AccountVerificationViewController.swift in Sources */,
 				0674CC692C57673F008101C0 /* EnterOtpViewController.swift in Sources */,
-				0674CC672C576733008101C0 /* RegistrationViewController.swift in Sources */,
+				066D6A5A2C69F04E007510F0 /* CaraousleNeetPgUIView.swift in Sources */,
+				066D6A622C6BD191007510F0 /* CWTViewController.swift in Sources */,
+				0674CC672C576733008101C0 /* Registration1ViewController.swift in Sources */,
 				0660E6392C56BB5F008125E9 /* DailyQuestionUIView.swift in Sources */,
 				0611D1AB2C638604004430C2 /* ShareUIView.swift in Sources */,
 				0660E5FC2C56B861008125E9 /* AppDelegate.swift in Sources */,
 				0611D1A12C5E416E004430C2 /* SettingsViewController.swift in Sources */,
 				0660E6412C56BD1B008125E9 /* PraticeQuestionsUIView.swift in Sources */,
+				060B1B5E2C67082D008F9D4B /* Registration2ViewController.swift in Sources */,
 				0611D1A92C620FAF004430C2 /* LiveExaminationViewController.swift in Sources */,
+				066D6A582C69D8EF007510F0 /* HeroImageNeetpgUIView.swift in Sources */,
+				066D6A602C6BD0DC007510F0 /* NeetPgTabbarViewController.swift in Sources */,
 				0674CC6B2C57674C008101C0 /* GetStartedViewController.swift in Sources */,
 				0611D19A2C5D6A36004430C2 /* NotificationViewController.swift in Sources */,
+				066D6A6D2C6CA968007510F0 /* OverlayPgNeetUIView.swift in Sources */,
 				06DC83662C58F22700822AD7 /* StateBottomSheetViewController.swift in Sources */,
 				0660E5FE2C56B861008125E9 /* SceneDelegate.swift in Sources */,
 				0660E63D2C56BC8A008125E9 /* RecentUpdatesUIView.swift in Sources */,
@@ -1255,7 +1359,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1288,7 +1392,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

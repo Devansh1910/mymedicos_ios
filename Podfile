@@ -16,6 +16,8 @@ target 'mymedicos' do
   pod 'Firebase/Database'         # Firebase Realtime Database
   pod 'Firebase/Storage'          # Firebase Storage
   pod 'Firebase/DynamicLinks'     # Firebase Dynamic Links
+  pod 'Firebase/Messaging'        # Firebase Messaging
+  pod 'MarqueeLabel'              
 
   target 'mymedicosTests' do
     inherit! :search_paths

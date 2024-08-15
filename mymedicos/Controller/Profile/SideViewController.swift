@@ -1,7 +1,11 @@
 import UIKit
+import Firebase
+
 
 class SideViewController: UIViewController {
     
+    var phoneNumber: String?
+    var userData: [String: Any]?
     // UI Components
     
     let scrollView = UIScrollView()
@@ -32,7 +36,15 @@ class SideViewController: UIViewController {
         overrideUserInterfaceStyle = .light
         setupLayout()
         styleComponents()
+        fetchUserDetails()
+        
+        if let phone = phoneNumber {
+            print("Received phone number in SideViewController: \(phone)")
+            phoneLabel.text = phone // Update phone label with the received phone number
+        }
     }
+
+    
     
     // Setting up the layout Structuring
 
@@ -100,9 +112,10 @@ class SideViewController: UIViewController {
             phoneLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             specialityLabel.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 10),
+            specialityLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            specialityLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             specialityLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            specialityLabel.heightAnchor.constraint(equalToConstant: 30),
-            specialityLabel.widthAnchor.constraint(equalToConstant: 150),
+            specialityLabel.heightAnchor.constraint(equalToConstant: 30),            specialityLabel.widthAnchor.constraint(equalToConstant: 150),
 
             socialMediaStackView.topAnchor.constraint(equalTo: specialityLabel.bottomAnchor, constant: 20),
             socialMediaStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -116,25 +129,67 @@ class SideViewController: UIViewController {
         ])
     }
     
-    // Styling up the above fiedlds (name and other)
+    func fetchUserDetails() {
+        guard let phone = phoneNumber else {
+            print("No phone number provided")
+            return
+        }
+
+        let usersRef = Firestore.firestore().collection("users")
+        let query = usersRef.whereField("Phone Number", isEqualTo: phone)
+
+        query.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                return
+            }
+
+            guard let querySnapshot = querySnapshot, querySnapshot.documents.count > 0 else {
+                print("No documents found")
+                return
+            }
+
+            let document = querySnapshot.documents.first  // Assuming there's one document per phone number
+            if let data = document?.data() {
+                self.updateUserInterface(with: data)
+            }
+        }
+    }
+
+
+    func updateUserInterface(with userData: [String: Any]?) {
+        DispatchQueue.main.async {
+            self.nameLabel.text = userData?["Name"] as? String ?? "Name not available"
+            self.emailLabel.text = userData?["Email ID"] as? String ?? "Email not available"
+            self.phoneLabel.text = userData?["Phone Number"] as? String ?? "Phone not available"
+            self.specialityLabel.text = userData?["Interest"] as? String ?? "Speciality not available"
+            
+            // Assuming constraints have been updated as per earlier instructions
+            self.view.layoutIfNeeded() // Ensures that the layout is updated immediately
+        }
+    }
+
 
     func styleComponents() {
         profileImageView.layer.cornerRadius = 50
         profileImageView.clipsToBounds = true
         profileImageView.image = UIImage(named: "brain") // Add your image name
 
-        nameLabel.text = "Dr. Devansh Saxena"
+        nameLabel.text = "Loading.."
         nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
 
-        emailLabel.text = "test@gmail.com"
-        phoneLabel.text = "+919876543210"
+        emailLabel.text = "Loading.."
+        phoneLabel.text = "Loading.."
 
-        specialityLabel.text = "Neurologist"
+        specialityLabel.text = "Loading.."
+        specialityLabel.numberOfLines = 0
         specialityLabel.textAlignment = .center
         specialityLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         specialityLabel.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
         specialityLabel.layer.cornerRadius = 15
         specialityLabel.clipsToBounds = true
+        specialityLabel.adjustsFontSizeToFitWidth = true
+        specialityLabel.minimumScaleFactor = 0.5
 
         freeBadgeLabel.text = "Free"
         freeBadgeLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
@@ -384,11 +439,12 @@ extension SideViewController: UITableViewDataSource, UITableViewDelegate {
         
         self.present(activityViewController, animated: true, completion: nil)
     }
-    
+        
     // Logout functionality
-    
     func logout() {
-        let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to Logout as @Devansh?", preferredStyle: .alert)
+        let userName = userData?["Name"] as? String ?? "user"
+        let message = "Are you sure you want to logout as \(userName)?"
+        let alertController = UIAlertController(title: "Logout", message: message, preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .destructive) { [weak self] _ in
             self?.showLogoutProgress()
@@ -398,39 +454,67 @@ extension SideViewController: UITableViewDataSource, UITableViewDelegate {
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         
+        // Force the alert to use a light theme
+        if #available(iOS 13.0, *) {
+            alertController.overrideUserInterfaceStyle = .light
+        }
+        
         present(alertController, animated: true)
     }
-    
-    // Tries to showcase username while logging out.
 
-    
-    private func attributedUsername() -> NSAttributedString {
-        let username = "@Devansh"
-        let attributedString = NSMutableAttributedString(string: username)
-        attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange(location: 0, length: username.count))
-        return attributedString
-    }
-    
-    // Logging out Dialogue
-    
+
+    // Handles the actual logout process
     private func showLogoutProgress() {
-        let alert = UIAlertController(title: nil, message: "Logging out..", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "Logging out...", preferredStyle: .alert)
+        
+        // Force the alert to use a light theme
+        if #available(iOS 13.0, *) {
+            alert.overrideUserInterfaceStyle = .light
+        }
+        
         present(alert, animated: true, completion: {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Simulate logout process duration
+            do {
+                try Auth.auth().signOut()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Short delay to ensure user sees the logout process
+                    alert.dismiss(animated: true) { [weak self] in
+                        self?.clearUserData()
+                        self?.navigateToLoginViewController()
+                    }
+                }
+            } catch let signOutError as NSError {
+                print("Error signing out: %@", signOutError)
                 alert.dismiss(animated: true) { [weak self] in
-                    self?.navigateToLoginViewController()
+                    self?.presentErrorAlert(message: "Failed to log out: \(signOutError.localizedDescription)")
                 }
             }
         })
     }
-    
-    // After logout Success navigate to the LoginViewController
-    
+
+
+    // Display an error message if logout fails
+    private func presentErrorAlert(message: String) {
+        let alertController = UIAlertController(title: "Logout Error", message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(OKAction)
+        present(alertController, animated: true)
+    }
+
+    private func clearUserData() {
+        DispatchQueue.main.async { [weak self] in
+            self?.nameLabel.text = "Loading.."
+            self?.emailLabel.text = "Loading.."
+            self?.phoneLabel.text = "Loading.."
+            self?.specialityLabel.text = "Loading.."
+        }
+    }
+
+    // Navigate to the LoginViewController after logout
     private func navigateToLoginViewController() {
-        let loginViewController = LoginViewController() // Assume you have a LoginViewController
+        let getstartedViewController = GetStartedViewController() // Assume you have a LoginViewController
         if let window = UIApplication.shared.windows.first {
-            window.rootViewController = loginViewController
+            window.rootViewController = getstartedViewController
             window.makeKeyAndVisible()
         }
     }
+
 }

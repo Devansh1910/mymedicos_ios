@@ -5,12 +5,12 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>app-1-968103235749-ios-697c2fac70ca1eaeedbd4c</string>
 			</array>
-			<key>CFBundleURLName</key>
-			<string></string>
 		</dict>
 	</array>
 	<key>UIApplicationSceneManifest</key>

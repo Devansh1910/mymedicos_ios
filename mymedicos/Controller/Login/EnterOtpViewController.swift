@@ -20,6 +20,7 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
         setupViews()
         setupConstraints()
         setupVerifyButtonAction()
+        
     }
     
     func setupViews() {
@@ -91,7 +92,7 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
-
+        
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         
         if string.count > 0 {
@@ -113,7 +114,7 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-
+    
     func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         instructionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -188,14 +189,20 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
                 print("Error verifying OTP: \(error.localizedDescription)")
                 return
             }
-            self?.navigateToMainTabBar()
+            if let phoneNumber = self?.phoneNumber {
+                UserDefaults.standard.set(phoneNumber, forKey: "savedPhoneNumber")
+            }
+            DispatchQueue.main.async {
+                self?.navigateToMainTabBar()
+            }
         }
     }
-
+    
     private func navigateToMainTabBar() {
         let mainTabBarController = MainTabBarViewController()
         mainTabBarController.modalPresentationStyle = .fullScreen
+        mainTabBarController.phoneNumber = self.phoneNumber
+        mainTabBarController.setupTabBarControllers()  // Now call setup
         present(mainTabBarController, animated: true, completion: nil)
     }
-
 }

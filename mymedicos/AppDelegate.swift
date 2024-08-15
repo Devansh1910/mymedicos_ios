@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navigationController = UINavigationController(rootViewController: GetStartedViewController())
             window?.rootViewController = navigationController
             window?.makeKeyAndVisible()
+            
+            window?.overrideUserInterfaceStyle = .light
+
         }
         
         return true

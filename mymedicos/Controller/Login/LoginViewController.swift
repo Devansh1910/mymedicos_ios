@@ -298,7 +298,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func navigateToRegistration(with phoneNumber: String) {
-        let registrationViewController = RegistrationViewController()
+        let registrationViewController = Registration1ViewController()
         registrationViewController.phoneNumber = phoneNumber // Pass the phone number
         navigationController?.pushViewController(registrationViewController, animated: true)
     }

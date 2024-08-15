@@ -1,8 +1,24 @@
 import UIKit
-class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, LiveExaminationsUIViewDelegate {
+class HomeViewController: UIViewController, DailyQuestionUIViewDelegate,UITableViewDataSource, UITableViewDelegate, LiveExaminationsUIViewDelegate, QuickLinkUIViewDelegate {
     
-    // MARK: - LiveExaminationsUIViewDelegate
+    var documentId: String? {
+            didSet {
+                if let id = documentId {
+                    UserDefaults.standard.set(id, forKey: "Phone Number")
+                    print("Document ID saved: \(id)")
+                }
+            }
+        }
     
+    var phoneNumber: String? {
+        didSet {
+            if let number = phoneNumber {
+                UserDefaults.standard.set(number, forKey: "savedPhoneNumber")
+                print("Phone number saved: \(number)")
+            }
+        }
+    }
+
     func navigateToExamPortal(withTitle title: String, examID: String) {
         let liveExamVC = LiveExaminationViewController()
         liveExamVC.hidesBottomBarWhenPushed = true
@@ -21,6 +37,11 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UIPicke
     let options = ["Education", "Community"]
     let sectionTitle = ["Daily Questions"]
     
+    private var customPickerTableView: UITableView?
+    private var customPickerContainerView: UIView?
+    private var selectedOptionIndex = 0
+    private var blurEffectView: UIVisualEffectView?
+    
     private let dailyQuestionView = DailyQuestionUIView()
     private let liveQuestionView = LiveExaminationsUIView()
     private let practiceQuestionView = PraticeQuestionsUIView()
@@ -31,12 +52,37 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UIPicke
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let quickLinkView = QuickLinkUIView()
+        quickLinkView.delegate = self
+        
+        if let retrievedId = UserDefaults.standard.string(forKey: "Phone Number") {
+                    documentId = retrievedId
+                    print("Retrieved Document ID: \(retrievedId)")
+                }
+        
+        if let retrievedNumber = UserDefaults.standard.string(forKey: "savedPhoneNumber") {
+            phoneNumber = retrievedNumber
+            print("HomeViewController loaded with phoneNumber: \(retrievedNumber)")
+        } else {
+            print("No phone number was saved in UserDefaults")
+        }
+
         overrideUserInterfaceStyle = .light
         view.backgroundColor = .systemBackground
         view.addSubview(homeFeedTable)
         
+        
+        print("HomeViewController loaded with phoneNumber: \(phoneNumber ?? "No phone number")")
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.tintColor = .black
+        
+        if let number = phoneNumber {
+                    print("HomeVC received phone number: \(number)")
+                } else {
+                    print("No phone number was received in HomeVC")
+                }
 
         configureNavbar()
 
@@ -156,8 +202,8 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UIPicke
         containerView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0),
-            imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0),
+            imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5),
             imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8),
             imageView.widthAnchor.constraint(equalToConstant: 40),
@@ -165,50 +211,125 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UIPicke
         ])
         let logoItem = UIBarButtonItem(customView: containerView)
 
-        dropdownButton.setTitle("\(options[0]) ▼", for: .normal)
+        dropdownButton.setTitle("\(options[selectedOptionIndex]) ▼", for: .normal)
         dropdownButton.setTitleColor(.black, for: .normal)
         dropdownButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         dropdownButton.addTarget(self, action: #selector(didTapDropdown), for: .touchUpInside)
 
-        let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        let spacerItem = UIBarButtonItem(customView: spacerView)
-
         let dropdownItem = UIBarButtonItem(customView: dropdownButton)
 
-        navigationItem.leftBarButtonItems = [logoItem, spacerItem, dropdownItem]
+        navigationItem.leftBarButtonItems = [logoItem, dropdownItem]
 
         setupIcons()
     }
 
+
     @objc func didTapDropdown() {
-        let alertController = UIAlertController(title: "Shift to ?", message: nil, preferredStyle: .actionSheet)
-        let pickerView = UIPickerView()
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        
-        alertController.view.addSubview(pickerView)
-        pickerView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            pickerView.topAnchor.constraint(equalTo: alertController.view.topAnchor, constant: 20),
-            pickerView.leftAnchor.constraint(equalTo: alertController.view.leftAnchor),
-            pickerView.rightAnchor.constraint(equalTo: alertController.view.rightAnchor),
-            pickerView.bottomAnchor.constraint(equalTo: alertController.view.bottomAnchor, constant: -45)
-        ])
-        
-        let selectAction = UIAlertAction(title: "Select", style: .default) { [weak self] _ in
-            self?.updateDropdownSelection(with: pickerView.selectedRow(inComponent: 0))
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alertController.addAction(selectAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true)
+        showCustomPickerView()
     }
+
+    
+    private func showCustomPickerView() {
+        guard customPickerTableView == nil else {
+            return
+        }
+
+        let containerView = UIView(frame: CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 250))
+        containerView.backgroundColor = .white
+        view.addSubview(containerView)
+        
+        let blurEffect = UIBlurEffect(style: .light)
+         let blurEffectView = UIVisualEffectView(effect: blurEffect)
+         blurEffectView.frame = view.bounds
+         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         view.addSubview(blurEffectView)
+         self.blurEffectView = blurEffectView
+        
+        
+        let tableView = UITableView(frame: CGRect(x: 0, y: 50, width: view.bounds.width, height: 200), style: .plain)
+                tableView.dataSource = self
+                tableView.delegate = self
+                tableView.register(CustomPickerCell.self, forCellReuseIdentifier: "CustomPickerCell")
+                tableView.separatorStyle = .none
+                tableView.layer.cornerRadius = 10
+                tableView.layer.masksToBounds = true
+                containerView.addSubview(tableView)
+
+        let doneButton = UIButton(type: .system)
+                doneButton.setTitle("Done", for: .normal)
+                doneButton.addTarget(self, action: #selector(dismissCustomPickerView), for: .touchUpInside)
+                containerView.addSubview(doneButton)
+                doneButton.frame = CGRect(x: view.bounds.width - 70, y: 10, width: 60, height: 30)
+
+        self.customPickerContainerView = containerView
+        self.customPickerTableView = tableView
+        
+        view.bringSubviewToFront(containerView)
+
+        UIView.animate(withDuration: 0.3) {
+            containerView.frame.origin.y = self.view.bounds.height - 250
+        }
+    }
+
+
+    @objc private func dismissCustomPickerView() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.customPickerContainerView?.frame.origin.y = self.view.bounds.height
+            self.blurEffectView?.alpha = 0 // Fade out the blur effect
+        }, completion: { _ in
+            self.customPickerContainerView?.removeFromSuperview()
+            self.customPickerTableView?.removeFromSuperview()
+            self.blurEffectView?.removeFromSuperview()
+            self.customPickerContainerView = nil
+            self.customPickerTableView = nil
+            self.blurEffectView = nil
+        })
+    }
+
+
 
     private func updateDropdownSelection(with index: Int) {
         dropdownButton.setTitle("\(options[index]) ▼", for: .normal)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80 // Adjust the height as per your requirement
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return options.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomPickerCell", for: indexPath) as! CustomPickerCell
+        cell.titleLabel.text = options[indexPath.row]
+        cell.radioButton.isSelected = (indexPath.row == selectedOptionIndex)
+        return cell
+    }
+
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedOption = options[indexPath.row]
+        if selectedOption == "Community" {
+            // Show an alert that Community is under maintenance
+            let alert = UIAlertController(title: "Notice", message: "Community is under maintenance right now.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            // Force the alert to use a light theme
+            if #available(iOS 13.0, *) {
+                alert.overrideUserInterfaceStyle = .light
+            }
+            
+            present(alert, animated: true, completion: nil)
+        } else {
+            // Update selection for valid options
+            selectedOptionIndex = indexPath.row
+            tableView.reloadData()
+            updateDropdownSelection(with: selectedOptionIndex)
+        }
+    }
+
+
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -221,6 +342,7 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UIPicke
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return options[row]
     }
+
 
     private func setupIcons() {
         let notificationButton = UIButton(type: .custom)
@@ -251,9 +373,10 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UIPicke
     }
 
     @objc func didTapPerson() {
-        let profileVC = SideViewController()
-        profileVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(profileVC, animated: true)
+        let sideVC = SideViewController()
+        sideVC.hidesBottomBarWhenPushed = true
+        sideVC.phoneNumber = self.phoneNumber  // Pass the phone number here
+        navigationController?.pushViewController(sideVC, animated: true)
     }
     
     func didTapLearnMore() {
@@ -267,6 +390,12 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UIPicke
         if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle {
             updateIconColors()
         }
+    }
+    
+    func didTapPGNeetButton() {
+        let pgneetVC = NeetPgTabbarViewController()
+        pgneetVC.hidesBottomBarWhenPushed = true  // Hide the tab bar
+        navigationController?.pushViewController(pgneetVC, animated: true)
     }
 
     private func updateIconColors() {
