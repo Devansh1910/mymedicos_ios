@@ -52,6 +52,7 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate,UITableV
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         
         let quickLinkView = QuickLinkUIView()
         quickLinkView.delegate = self

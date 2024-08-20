@@ -17,16 +17,16 @@ class NeetPgTabbarViewController: UITabBarController {
         configureTabBarAppearance()
 
         let vc1 = UINavigationController(rootViewController: FeedViewController())
-        let vc2 = UINavigationController(rootViewController: CWTViewController())
-        let vc3 = UINavigationController(rootViewController: SWGTViewController())
+        let vc2 = UINavigationController(rootViewController: PreparationViewController())
+        let vc3 = UINavigationController(rootViewController: GrandTestViewController())
 
         vc1.tabBarItem.image = UIImage(systemName: "house")
         vc2.tabBarItem.image = UIImage(systemName: "list.bullet.indent")
         vc3.tabBarItem.image = UIImage(systemName: "book.pages")
 
         vc1.title = "Home"
-        vc2.title = "CWT"
-        vc3.title = "SWGT"
+        vc2.title = "Preparation"
+        vc3.title = "Grand Test"
 
         tabBar.tintColor = .label
 

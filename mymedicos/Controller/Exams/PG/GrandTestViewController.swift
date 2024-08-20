@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SWGTViewController: UIViewController {
+class GrandTestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

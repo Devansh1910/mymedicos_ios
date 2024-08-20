@@ -140,7 +140,25 @@ class PlansNeetPgUIView: UIView {
             label.numberOfLines = 0
             featureListView.addArrangedSubview(label)
         }
+
+        // Set border color based on the plan name
+        layer.borderColor = colorForPlan(planData.title).cgColor
+        layer.borderWidth = 1 // Adjust the border width to your preference
     }
+
+    private func colorForPlan(_ planName: String) -> UIColor {
+        switch planName {
+            case "ELITE Plan":
+                return UIColor.systemGray // Define a gold color
+            case "Foundation Plan":
+                return UIColor.systemGray
+            case "PRO Plan":
+                return UIColor.systemGray
+            default:
+                return UIColor.clear // No border for undefined plans
+        }
+    }
+
 
     private func formatPrice(_ price: String) -> String {
         let formatter = NumberFormatter()

@@ -1,10 +1,3 @@
-//
-//  HeroHeaderUIView.swift
-//  AnimeX
-//
-//  Created by Devansh Saxena on 27/07/24.
-//
-
 import UIKit
 
 class HeroImageUIView: UIView {

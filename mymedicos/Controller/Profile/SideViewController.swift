@@ -130,7 +130,8 @@ class SideViewController: UIViewController {
     }
     
     func fetchUserDetails() {
-        guard let phone = phoneNumber else {
+        guard let phone = phoneNumber 
+        else {
             print("No phone number provided")
             return
         }
@@ -149,7 +150,7 @@ class SideViewController: UIViewController {
                 return
             }
 
-            let document = querySnapshot.documents.first  // Assuming there's one document per phone number
+            let document = querySnapshot.documents.first
             if let data = document?.data() {
                 self.updateUserInterface(with: data)
             }
@@ -164,8 +165,7 @@ class SideViewController: UIViewController {
             self.phoneLabel.text = userData?["Phone Number"] as? String ?? "Phone not available"
             self.specialityLabel.text = userData?["Interest"] as? String ?? "Speciality not available"
             
-            // Assuming constraints have been updated as per earlier instructions
-            self.view.layoutIfNeeded() // Ensures that the layout is updated immediately
+            self.view.layoutIfNeeded()
         }
     }
 
@@ -173,7 +173,7 @@ class SideViewController: UIViewController {
     func styleComponents() {
         profileImageView.layer.cornerRadius = 50
         profileImageView.clipsToBounds = true
-        profileImageView.image = UIImage(named: "brain") // Add your image name
+        profileImageView.image = UIImage(named: "brain")
 
         nameLabel.text = "Loading.."
         nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -215,8 +215,6 @@ class SideViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
-    // Setting up the social media handles
-
     func createSocialMediaImageView(named: String) -> UIImageView {
         let imageView = UIImageView()
 
@@ -247,8 +245,6 @@ class SideViewController: UIViewController {
         return imageView
     }
     
-    // Opening Instagram on clicking on the icon
-
     @objc func openInstagram() {
         let urlString = "https://www.instagram.com/mymedicos_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
         if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {

@@ -47,13 +47,32 @@
 		066D6A5C2C69F600007510F0 /* ExaminationNeetPgUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A5B2C69F600007510F0 /* ExaminationNeetPgUIView.swift */; };
 		066D6A5E2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A5D2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift */; };
 		066D6A602C6BD0DC007510F0 /* NeetPgTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A5F2C6BD0DC007510F0 /* NeetPgTabbarViewController.swift */; };
-		066D6A622C6BD191007510F0 /* CWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A612C6BD191007510F0 /* CWTViewController.swift */; };
-		066D6A642C6BD199007510F0 /* SWGTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A632C6BD199007510F0 /* SWGTViewController.swift */; };
+		066D6A622C6BD191007510F0 /* PreparationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A612C6BD191007510F0 /* PreparationViewController.swift */; };
+		066D6A642C6BD199007510F0 /* GrandTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A632C6BD199007510F0 /* GrandTestViewController.swift */; };
 		066D6A662C6BD1F9007510F0 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A652C6BD1F9007510F0 /* FeedViewController.swift */; };
 		066D6A6A2C6C58ED007510F0 /* PlansNeetPgUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A692C6C58ED007510F0 /* PlansNeetPgUIView.swift */; };
 		066D6A6D2C6CA968007510F0 /* OverlayPgNeetUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A6C2C6CA968007510F0 /* OverlayPgNeetUIView.swift */; };
-		066D6A6F2C6D1FB6007510F0 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A6E2C6D1FB5007510F0 /* PlanViewController.swift */; };
-		066D6A722C6D2018007510F0 /* PlanContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A712C6D2018007510F0 /* PlanContainerView.swift */; };
+		066D6A7D2C6DEB3D007510F0 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A7C2C6DEB3D007510F0 /* CategoryView.swift */; };
+		066D6A802C6E4F60007510F0 /* NeetInsiderTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A7F2C6E4F60007510F0 /* NeetInsiderTabbarViewController.swift */; };
+		066D6A822C6E5395007510F0 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A812C6E5394007510F0 /* IndexViewController.swift */; };
+		066D6A842C6E539C007510F0 /* CWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A832C6E539C007510F0 /* CWTViewController.swift */; };
+		066D6A862C6E53A4007510F0 /* SWGTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A852C6E53A4007510F0 /* SWGTViewController.swift */; };
+		066D6A8A2C6F2681007510F0 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A892C6F2681007510F0 /* TopicCell.swift */; };
+		066D6A8D2C6F30E4007510F0 /* NotesNeetPgUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A8C2C6F30E4007510F0 /* NotesNeetPgUIView.swift */; };
+		066D6A8F2C6F3360007510F0 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A8E2C6F3360007510F0 /* NoteCell.swift */; };
+		066D6A912C6F4CDF007510F0 /* NotesDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A902C6F4CDF007510F0 /* NotesDetailedViewController.swift */; };
+		066D6A932C6F4EEE007510F0 /* CustomrPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A922C6F4EED007510F0 /* CustomrPresentationController.swift */; };
+		066D6A952C703044007510F0 /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A942C703044007510F0 /* DownloadButton.swift */; };
+		066D6A992C704D41007510F0 /* PGprepUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A982C704D41007510F0 /* PGprepUIView.swift */; };
+		066D6A9B2C7071AD007510F0 /* QuizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A9A2C7071AD007510F0 /* QuizTableViewCell.swift */; };
+		066D6A9E2C70A1A5007510F0 /* PrepInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6A9D2C70A1A5007510F0 /* PrepInfoViewController.swift */; };
+		066D6AA42C70ABD2007510F0 /* PrepInfoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6AA32C70ABD2007510F0 /* PrepInfoUIView.swift */; };
+		066D6AA62C70ADA5007510F0 /* PreparationPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6AA52C70ADA5007510F0 /* PreparationPortalViewController.swift */; };
+		066D6AA82C70B0FE007510F0 /* PreparationQuestionsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6AA72C70B0FE007510F0 /* PreparationQuestionsNavigationViewController.swift */; };
+		066D6AAC2C722588007510F0 /* FilterSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6AAB2C722588007510F0 /* FilterSheetViewController.swift */; };
+		066D6AAE2C744974007510F0 /* IndexTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6AAD2C744974007510F0 /* IndexTableViewCell.swift */; };
+		066D6AB02C74590C007510F0 /* BottomSheetForPaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6AAF2C74590C007510F0 /* BottomSheetForPaidViewController.swift */; };
+		066D6AB32C749BC3007510F0 /* PlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066D6AB22C749BC3007510F0 /* PlansViewController.swift */; };
 		0674CC622C5753CB008101C0 /* CustomUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC612C5753CB008101C0 /* CustomUIColor.swift */; };
 		0674CC652C576729008101C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC642C576729008101C0 /* LoginViewController.swift */; };
 		0674CC672C576733008101C0 /* Registration1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC662C576733008101C0 /* Registration1ViewController.swift */; };
@@ -222,13 +241,32 @@
 		066D6A5B2C69F600007510F0 /* ExaminationNeetPgUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExaminationNeetPgUIView.swift; sourceTree = "<group>"; };
 		066D6A5D2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBankNeetPgUIView.swift; sourceTree = "<group>"; };
 		066D6A5F2C6BD0DC007510F0 /* NeetPgTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeetPgTabbarViewController.swift; sourceTree = "<group>"; };
-		066D6A612C6BD191007510F0 /* CWTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWTViewController.swift; sourceTree = "<group>"; };
-		066D6A632C6BD199007510F0 /* SWGTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWGTViewController.swift; sourceTree = "<group>"; };
+		066D6A612C6BD191007510F0 /* PreparationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationViewController.swift; sourceTree = "<group>"; };
+		066D6A632C6BD199007510F0 /* GrandTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTestViewController.swift; sourceTree = "<group>"; };
 		066D6A652C6BD1F9007510F0 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		066D6A692C6C58ED007510F0 /* PlansNeetPgUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansNeetPgUIView.swift; sourceTree = "<group>"; };
 		066D6A6C2C6CA968007510F0 /* OverlayPgNeetUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPgNeetUIView.swift; sourceTree = "<group>"; };
-		066D6A6E2C6D1FB5007510F0 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
-		066D6A712C6D2018007510F0 /* PlanContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanContainerView.swift; sourceTree = "<group>"; };
+		066D6A7C2C6DEB3D007510F0 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		066D6A7F2C6E4F60007510F0 /* NeetInsiderTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeetInsiderTabbarViewController.swift; sourceTree = "<group>"; };
+		066D6A812C6E5394007510F0 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
+		066D6A832C6E539C007510F0 /* CWTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWTViewController.swift; sourceTree = "<group>"; };
+		066D6A852C6E53A4007510F0 /* SWGTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWGTViewController.swift; sourceTree = "<group>"; };
+		066D6A892C6F2681007510F0 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
+		066D6A8C2C6F30E4007510F0 /* NotesNeetPgUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesNeetPgUIView.swift; sourceTree = "<group>"; };
+		066D6A8E2C6F3360007510F0 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		066D6A902C6F4CDF007510F0 /* NotesDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailedViewController.swift; sourceTree = "<group>"; };
+		066D6A922C6F4EED007510F0 /* CustomrPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomrPresentationController.swift; sourceTree = "<group>"; };
+		066D6A942C703044007510F0 /* DownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButton.swift; sourceTree = "<group>"; };
+		066D6A982C704D41007510F0 /* PGprepUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGprepUIView.swift; sourceTree = "<group>"; };
+		066D6A9A2C7071AD007510F0 /* QuizTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTableViewCell.swift; sourceTree = "<group>"; };
+		066D6A9D2C70A1A5007510F0 /* PrepInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepInfoViewController.swift; sourceTree = "<group>"; };
+		066D6AA32C70ABD2007510F0 /* PrepInfoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepInfoUIView.swift; sourceTree = "<group>"; };
+		066D6AA52C70ADA5007510F0 /* PreparationPortalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationPortalViewController.swift; sourceTree = "<group>"; };
+		066D6AA72C70B0FE007510F0 /* PreparationQuestionsNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationQuestionsNavigationViewController.swift; sourceTree = "<group>"; };
+		066D6AAB2C722588007510F0 /* FilterSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetViewController.swift; sourceTree = "<group>"; };
+		066D6AAD2C744974007510F0 /* IndexTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexTableViewCell.swift; sourceTree = "<group>"; };
+		066D6AAF2C74590C007510F0 /* BottomSheetForPaidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetForPaidViewController.swift; sourceTree = "<group>"; };
+		066D6AB22C749BC3007510F0 /* PlansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansViewController.swift; sourceTree = "<group>"; };
 		0674CC612C5753CB008101C0 /* CustomUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColor.swift; sourceTree = "<group>"; };
 		0674CC642C576729008101C0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0674CC662C576733008101C0 /* Registration1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration1ViewController.swift; sourceTree = "<group>"; };
@@ -555,6 +593,7 @@
 			children = (
 				0660E62B2C56B94A008125E9 /* MainTabbarViewController.swift */,
 				066D6A5F2C6BD0DC007510F0 /* NeetPgTabbarViewController.swift */,
+				066D6A7F2C6E4F60007510F0 /* NeetInsiderTabbarViewController.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -589,9 +628,11 @@
 		066D6A4D2C69B928007510F0 /* PG */ = {
 			isa = PBXGroup;
 			children = (
-				066D6A6B2C6CA946007510F0 /* Extras */,
-				066D6A612C6BD191007510F0 /* CWTViewController.swift */,
-				066D6A632C6BD199007510F0 /* SWGTViewController.swift */,
+				066D6AB12C749BA3007510F0 /* Plans */,
+				066D6A7E2C6E4E81007510F0 /* Preparation */,
+				066D6A6B2C6CA946007510F0 /* Requirments */,
+				066D6A612C6BD191007510F0 /* PreparationViewController.swift */,
+				066D6A632C6BD199007510F0 /* GrandTestViewController.swift */,
 				066D6A652C6BD1F9007510F0 /* FeedViewController.swift */,
 			);
 			path = PG;
@@ -618,25 +659,64 @@
 				066D6A592C69F04E007510F0 /* CaraousleNeetPgUIView.swift */,
 				066D6A5B2C69F600007510F0 /* ExaminationNeetPgUIView.swift */,
 				066D6A5D2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift */,
-				066D6A702C6D1FE4007510F0 /* Plans */,
+				066D6A692C6C58ED007510F0 /* PlansNeetPgUIView.swift */,
 			);
 			path = PG;
 			sourceTree = "<group>";
 		};
-		066D6A6B2C6CA946007510F0 /* Extras */ = {
+		066D6A6B2C6CA946007510F0 /* Requirments */ = {
 			isa = PBXGroup;
 			children = (
 				066D6A6C2C6CA968007510F0 /* OverlayPgNeetUIView.swift */,
+				066D6A7C2C6DEB3D007510F0 /* CategoryView.swift */,
+				066D6A892C6F2681007510F0 /* TopicCell.swift */,
+				066D6A8E2C6F3360007510F0 /* NoteCell.swift */,
+				066D6A982C704D41007510F0 /* PGprepUIView.swift */,
+				066D6A9A2C7071AD007510F0 /* QuizTableViewCell.swift */,
+				066D6AAF2C74590C007510F0 /* BottomSheetForPaidViewController.swift */,
 			);
-			path = Extras;
+			path = Requirments;
 			sourceTree = "<group>";
 		};
-		066D6A702C6D1FE4007510F0 /* Plans */ = {
+		066D6A7E2C6E4E81007510F0 /* Preparation */ = {
 			isa = PBXGroup;
 			children = (
-				066D6A692C6C58ED007510F0 /* PlansNeetPgUIView.swift */,
-				066D6A6E2C6D1FB5007510F0 /* PlanViewController.swift */,
-				066D6A712C6D2018007510F0 /* PlanContainerView.swift */,
+				066D6A9C2C70A175007510F0 /* Preparation */,
+				066D6A8B2C6F30A4007510F0 /* AddOns */,
+				066D6A812C6E5394007510F0 /* IndexViewController.swift */,
+				066D6A832C6E539C007510F0 /* CWTViewController.swift */,
+				066D6A852C6E53A4007510F0 /* SWGTViewController.swift */,
+			);
+			path = Preparation;
+			sourceTree = "<group>";
+		};
+		066D6A8B2C6F30A4007510F0 /* AddOns */ = {
+			isa = PBXGroup;
+			children = (
+				066D6A8C2C6F30E4007510F0 /* NotesNeetPgUIView.swift */,
+				066D6A902C6F4CDF007510F0 /* NotesDetailedViewController.swift */,
+				066D6A942C703044007510F0 /* DownloadButton.swift */,
+				066D6AAB2C722588007510F0 /* FilterSheetViewController.swift */,
+				066D6AAD2C744974007510F0 /* IndexTableViewCell.swift */,
+			);
+			path = AddOns;
+			sourceTree = "<group>";
+		};
+		066D6A9C2C70A175007510F0 /* Preparation */ = {
+			isa = PBXGroup;
+			children = (
+				066D6A9D2C70A1A5007510F0 /* PrepInfoViewController.swift */,
+				066D6AA32C70ABD2007510F0 /* PrepInfoUIView.swift */,
+				066D6AA52C70ADA5007510F0 /* PreparationPortalViewController.swift */,
+				066D6AA72C70B0FE007510F0 /* PreparationQuestionsNavigationViewController.swift */,
+			);
+			path = Preparation;
+			sourceTree = "<group>";
+		};
+		066D6AB12C749BA3007510F0 /* Plans */ = {
+			isa = PBXGroup;
+			children = (
+				066D6AB22C749BC3007510F0 /* PlansViewController.swift */,
 			);
 			path = Plans;
 			sourceTree = "<group>";
@@ -649,6 +729,7 @@
 				06B9E01C2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift */,
 				0611D1C12C6556E9004430C2 /* QuestonsViewControllerViewController.swift */,
 				066D6A482C69AB10007510F0 /* CustomPickerTableViewCell.swift */,
+				066D6A922C6F4EED007510F0 /* CustomrPresentationController.swift */,
 			);
 			path = AddOns;
 			sourceTree = "<group>";
@@ -1125,17 +1206,23 @@
 				0611D1B92C6486A5004430C2 /* ExamPortalViewController.swift in Sources */,
 				0660E62F2C56B999008125E9 /* HomeViewController.swift in Sources */,
 				0611D1B12C63D856004430C2 /* ExamDetailsUIView.swift in Sources */,
+				066D6A8F2C6F3360007510F0 /* NoteCell.swift in Sources */,
 				0674CC622C5753CB008101C0 /* CustomUIColor.swift in Sources */,
+				066D6A842C6E539C007510F0 /* CWTViewController.swift in Sources */,
 				066D6A5E2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift in Sources */,
 				06B9DF692C57AFA5009B3DAD /* TermsandConditionsViewController.swift in Sources */,
+				066D6AAC2C722588007510F0 /* FilterSheetViewController.swift in Sources */,
 				0660E6362C56BAC0008125E9 /* HeroImageUIView.swift in Sources */,
 				06B9DF662C57AF4D009B3DAD /* BottomSheetViewController.swift in Sources */,
 				0674CC652C576729008101C0 /* LoginViewController.swift in Sources */,
-				066D6A6F2C6D1FB6007510F0 /* PlanViewController.swift in Sources */,
 				0660E63B2C56BC5F008125E9 /* LiveExaminationsUIView.swift in Sources */,
 				0611D1B32C63D86E004430C2 /* InstructionsUIView.swift in Sources */,
 				0604420F2C5CBF3A00CDE979 /* CountryPickerViewController.swift in Sources */,
+				066D6A8D2C6F30E4007510F0 /* NotesNeetPgUIView.swift in Sources */,
+				066D6AAE2C744974007510F0 /* IndexTableViewCell.swift in Sources */,
+				066D6AB32C749BC3007510F0 /* PlansViewController.swift in Sources */,
 				06B9E01D2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift in Sources */,
+				066D6A932C6F4EEE007510F0 /* CustomrPresentationController.swift in Sources */,
 				066D6A662C6BD1F9007510F0 /* FeedViewController.swift in Sources */,
 				060442122C5D2B7700CDE979 /* SideViewController.swift in Sources */,
 				066D6A5C2C69F600007510F0 /* ExaminationNeetPgUIView.swift in Sources */,
@@ -1144,35 +1231,48 @@
 				0660E62C2C56B94A008125E9 /* MainTabbarViewController.swift in Sources */,
 				06B9E0192C57C280009B3DAD /* CustomPresentationController.swift in Sources */,
 				06B9DF6B2C57AFB2009B3DAD /* PrivacyViewController.swift in Sources */,
+				066D6A7D2C6DEB3D007510F0 /* CategoryView.swift in Sources */,
 				0611D1B72C64302A004430C2 /* TitleButtonsUIView.swift in Sources */,
 				066D6A6A2C6C58ED007510F0 /* PlansNeetPgUIView.swift in Sources */,
+				066D6AA62C70ADA5007510F0 /* PreparationPortalViewController.swift in Sources */,
 				066D6A492C69AB10007510F0 /* CustomPickerTableViewCell.swift in Sources */,
 				0660E6332C56B9CF008125E9 /* SlideshareViewController.swift in Sources */,
-				066D6A642C6BD199007510F0 /* SWGTViewController.swift in Sources */,
+				066D6A9B2C7071AD007510F0 /* QuizTableViewCell.swift in Sources */,
+				066D6AA82C70B0FE007510F0 /* PreparationQuestionsNavigationViewController.swift in Sources */,
+				066D6A642C6BD199007510F0 /* GrandTestViewController.swift in Sources */,
 				0660E6462C56C48E008125E9 /* Constants.swift in Sources */,
 				0611D1C22C6556E9004430C2 /* QuestonsViewControllerViewController.swift in Sources */,
+				066D6A952C703044007510F0 /* DownloadButton.swift in Sources */,
 				0611D19F2C5E4161004430C2 /* CustomizeProfileViewController.swift in Sources */,
+				066D6A862C6E53A4007510F0 /* SWGTViewController.swift in Sources */,
 				0611D1A72C5F5721004430C2 /* DailyQuestionDetailedViewController.swift in Sources */,
-				066D6A722C6D2018007510F0 /* PlanContainerView.swift in Sources */,
 				0611D19D2C5E4154004430C2 /* AccountVerificationViewController.swift in Sources */,
 				0674CC692C57673F008101C0 /* EnterOtpViewController.swift in Sources */,
 				066D6A5A2C69F04E007510F0 /* CaraousleNeetPgUIView.swift in Sources */,
-				066D6A622C6BD191007510F0 /* CWTViewController.swift in Sources */,
+				066D6A992C704D41007510F0 /* PGprepUIView.swift in Sources */,
+				066D6A622C6BD191007510F0 /* PreparationViewController.swift in Sources */,
 				0674CC672C576733008101C0 /* Registration1ViewController.swift in Sources */,
+				066D6A802C6E4F60007510F0 /* NeetInsiderTabbarViewController.swift in Sources */,
 				0660E6392C56BB5F008125E9 /* DailyQuestionUIView.swift in Sources */,
 				0611D1AB2C638604004430C2 /* ShareUIView.swift in Sources */,
 				0660E5FC2C56B861008125E9 /* AppDelegate.swift in Sources */,
+				066D6AB02C74590C007510F0 /* BottomSheetForPaidViewController.swift in Sources */,
+				066D6A912C6F4CDF007510F0 /* NotesDetailedViewController.swift in Sources */,
 				0611D1A12C5E416E004430C2 /* SettingsViewController.swift in Sources */,
 				0660E6412C56BD1B008125E9 /* PraticeQuestionsUIView.swift in Sources */,
 				060B1B5E2C67082D008F9D4B /* Registration2ViewController.swift in Sources */,
 				0611D1A92C620FAF004430C2 /* LiveExaminationViewController.swift in Sources */,
 				066D6A582C69D8EF007510F0 /* HeroImageNeetpgUIView.swift in Sources */,
 				066D6A602C6BD0DC007510F0 /* NeetPgTabbarViewController.swift in Sources */,
+				066D6A9E2C70A1A5007510F0 /* PrepInfoViewController.swift in Sources */,
 				0674CC6B2C57674C008101C0 /* GetStartedViewController.swift in Sources */,
+				066D6A8A2C6F2681007510F0 /* TopicCell.swift in Sources */,
+				066D6A822C6E5395007510F0 /* IndexViewController.swift in Sources */,
 				0611D19A2C5D6A36004430C2 /* NotificationViewController.swift in Sources */,
 				066D6A6D2C6CA968007510F0 /* OverlayPgNeetUIView.swift in Sources */,
 				06DC83662C58F22700822AD7 /* StateBottomSheetViewController.swift in Sources */,
 				0660E5FE2C56B861008125E9 /* SceneDelegate.swift in Sources */,
+				066D6AA42C70ABD2007510F0 /* PrepInfoUIView.swift in Sources */,
 				0660E63D2C56BC8A008125E9 /* RecentUpdatesUIView.swift in Sources */,
 				0611D1C42C660C50004430C2 /* ResultGTViewController.swift in Sources */,
 			);

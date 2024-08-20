@@ -11,23 +11,43 @@ class OverlayPgNeetUIView: UIView {
     private var questionBankTitleLabel: UILabel!
     private var questionBankView: QuestionBankNeetPgUIView!
     private var plansTitleLabel: UILabel!
-    private var scrollView: UIScrollView!  // ScrollView to hold multiple plans
+    private var scrollView: UIScrollView!
+    private var updatesTitleLabel: UILabel!
+    private var updatesView : RecentUpdatesUIView!
+
 
     private var db: Firestore!
+    
+    private func addTopBorder() {
+        let border = UIView()
+        border.backgroundColor = UIColor(hex: "2CBFAF")
+        self.addSubview(border)
+        
+        border.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            border.topAnchor.constraint(equalTo: self.topAnchor),
+            border.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            border.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            border.heightAnchor.constraint(equalToConstant: 2)
+        ])
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        db = Firestore.firestore()  // Initialize Firestore
+        db = Firestore.firestore()
         setupSubViewsInContentView(contentView: self)
         fetchPlansAndLayout()
+        addTopBorder()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        db = Firestore.firestore()  // Initialize Firestore
+        db = Firestore.firestore()
         setupSubViewsInContentView(contentView: self)
         fetchPlansAndLayout()
+        addTopBorder()
     }
+
     
     private func setupSubViewsInContentView(contentView: UIView) {
         setupDragHandle(contentView: contentView)
@@ -38,6 +58,8 @@ class OverlayPgNeetUIView: UIView {
         setupQuestionBankView(contentView: contentView)
         setupPlansTitleLabel(contentView: contentView)
         setupScrollView(contentView: contentView)
+        setupUpdatesTitleLabel(contentView: contentView)
+        setupUpdatesView(contentView: contentView)
         
         if let lastView = contentView.subviews.last {
             lastView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
@@ -52,7 +74,7 @@ class OverlayPgNeetUIView: UIView {
         
         dragHandle.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            dragHandle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            dragHandle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             dragHandle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             dragHandle.widthAnchor.constraint(equalToConstant: 40),
             dragHandle.heightAnchor.constraint(equalToConstant: 5)
@@ -74,7 +96,7 @@ class OverlayPgNeetUIView: UIView {
 
     private func setupExaminationTitleLabel(contentView: UIView) {
         examinationTitleLabel = UILabel()
-        examinationTitleLabel.text = "Suggested Live Examination"
+        examinationTitleLabel.text = "Live Examination"
         examinationTitleLabel.textAlignment = .left
         examinationTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         contentView.addSubview(examinationTitleLabel)
@@ -156,7 +178,7 @@ class OverlayPgNeetUIView: UIView {
             scrollView.topAnchor.constraint(equalTo: plansTitleLabel.bottomAnchor, constant: 10),
             scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            scrollView.heightAnchor.constraint(equalToConstant: 600)  // Adjust height as needed
+            scrollView.heightAnchor.constraint(equalToConstant: 500)  // Adjust height as needed
         ])
         
         fetchPlansAndLayout()
@@ -199,4 +221,33 @@ class OverlayPgNeetUIView: UIView {
                 self?.scrollView.frame.size.height = tallestHeight  // Set the height of the scrollView to the height of the tallest view
             }
         }
+    
+    private func setupUpdatesTitleLabel(contentView: UIView) {
+        updatesTitleLabel = UILabel()
+        updatesTitleLabel.text = "Recent Updates"
+        updatesTitleLabel.textAlignment = .left
+        updatesTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        contentView.addSubview(updatesTitleLabel)
+
+        updatesTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            updatesTitleLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 10),
+            updatesTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            updatesTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            updatesTitleLabel.heightAnchor.constraint(equalToConstant: 20)
+        ])
     }
+    
+    private func setupUpdatesView(contentView: UIView) {
+        updatesView = RecentUpdatesUIView(frame: CGRect.zero)
+        contentView.addSubview(updatesView)
+        
+        updatesView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            updatesView.topAnchor.constraint(equalTo: updatesTitleLabel.bottomAnchor, constant: 10),
+            updatesView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            updatesView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            updatesView.heightAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+}
