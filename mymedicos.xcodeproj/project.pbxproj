@@ -79,6 +79,7 @@
 		0674CC692C57673F008101C0 /* EnterOtpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC682C57673F008101C0 /* EnterOtpViewController.swift */; };
 		0674CC6B2C57674C008101C0 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0674CC6A2C57674C008101C0 /* GetStartedViewController.swift */; };
 		0674CC6F2C57691B008101C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0674CC6E2C57691B008101C0 /* GoogleService-Info.plist */; };
+		069F8F362C7AF50500E9565A /* RatingBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069F8F352C7AF50500E9565A /* RatingBottomSheetViewController.swift */; };
 		06B9DF662C57AF4D009B3DAD /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9DF652C57AF4D009B3DAD /* BottomSheetViewController.swift */; };
 		06B9DF692C57AFA5009B3DAD /* TermsandConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9DF682C57AFA5009B3DAD /* TermsandConditionsViewController.swift */; };
 		06B9DF6B2C57AFB2009B3DAD /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9DF6A2C57AFB2009B3DAD /* PrivacyViewController.swift */; };
@@ -174,6 +175,21 @@
 		06DC83662C58F22700822AD7 /* StateBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC83652C58F22700822AD7 /* StateBottomSheetViewController.swift */; };
 		06DC83682C593B8700822AD7 /* Interest.json in Resources */ = {isa = PBXBuildFile; fileRef = 06DC83672C593B8700822AD7 /* Interest.json */; };
 		06DC836A2C59457300822AD7 /* Prefix.json in Resources */ = {isa = PBXBuildFile; fileRef = 06DC83692C59457300822AD7 /* Prefix.json */; };
+		06E79E062C74F00600F4DC00 /* ImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E052C74F00600F4DC00 /* ImagePopupViewController.swift */; };
+		06E79E0C2C758CBE00F4DC00 /* DonutChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E0B2C758CBE00F4DC00 /* DonutChartView.swift */; };
+		06E79E0E2C76F5D300F4DC00 /* ExamQuizLiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E0D2C76F5D300F4DC00 /* ExamQuizLiveTableViewCell.swift */; };
+		06E79E102C7717F200F4DC00 /* ReminderBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E0F2C7717F200F4DC00 /* ReminderBottomSheetViewController.swift */; };
+		06E79E132C77229800F4DC00 /* ExamInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E122C77229800F4DC00 /* ExamInfoViewController.swift */; };
+		06E79E152C7722FF00F4DC00 /* ExamInfoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E142C7722FF00F4DC00 /* ExamInfoUIView.swift */; };
+		06E79E172C7772BE00F4DC00 /* SWGTUpcomingBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E162C7772BE00F4DC00 /* SWGTUpcomingBottomSheetViewController.swift */; };
+		06E79E192C777D0200F4DC00 /* calendaranimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 06E79E182C777D0200F4DC00 /* calendaranimation.json */; };
+		06E79E1B2C7866F700F4DC00 /* LiveQuizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E1A2C7866F700F4DC00 /* LiveQuizTableViewCell.swift */; };
+		06E79E1E2C788D9200F4DC00 /* GrandTestInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E1D2C788D9200F4DC00 /* GrandTestInfoViewController.swift */; };
+		06E79E202C788DA600F4DC00 /* GrandTestInfoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E1F2C788DA600F4DC00 /* GrandTestInfoUIView.swift */; };
+		06E79E222C789C2200F4DC00 /* GrandTestExamPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E212C789C2200F4DC00 /* GrandTestExamPortalViewController.swift */; };
+		06E79E242C78D59E00F4DC00 /* GrandTestNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E232C78D59E00F4DC00 /* GrandTestNavigationViewController.swift */; };
+		06E79E272C796B6500F4DC00 /* ResultGrandTestBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E262C796B6500F4DC00 /* ResultGrandTestBottomSheetViewController.swift */; };
+		06E79E292C796D9C00F4DC00 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E282C796D9C00F4DC00 /* PieChart.swift */; };
 		0FED3A4EB289D5CEE21E644B /* Pods_mymedicos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971965A96C5A51FAAA39DBB3 /* Pods_mymedicos.framework */; };
 		19DF0C5D4D06BFF5E09583FD /* Pods_mymedicosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F55B86FDE03E708D97F2F43 /* Pods_mymedicosTests.framework */; };
 		7A34A7950868F174960484E4 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CFA4E5C0EF95429C8D4A868 /* Pods_mymedicos_mymedicosUITests.framework */; };
@@ -274,6 +290,7 @@
 		0674CC6A2C57674C008101C0 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		0674CC6E2C57691B008101C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		067AFFFE2C5775E200CB7D82 /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		069F8F352C7AF50500E9565A /* RatingBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingBottomSheetViewController.swift; sourceTree = "<group>"; };
 		06B9DF652C57AF4D009B3DAD /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		06B9DF682C57AFA5009B3DAD /* TermsandConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsandConditionsViewController.swift; sourceTree = "<group>"; };
 		06B9DF6A2C57AFB2009B3DAD /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
@@ -369,6 +386,21 @@
 		06DC83652C58F22700822AD7 /* StateBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateBottomSheetViewController.swift; sourceTree = "<group>"; };
 		06DC83672C593B8700822AD7 /* Interest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Interest.json; sourceTree = "<group>"; };
 		06DC83692C59457300822AD7 /* Prefix.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Prefix.json; sourceTree = "<group>"; };
+		06E79E052C74F00600F4DC00 /* ImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupViewController.swift; sourceTree = "<group>"; };
+		06E79E0B2C758CBE00F4DC00 /* DonutChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChartView.swift; sourceTree = "<group>"; };
+		06E79E0D2C76F5D300F4DC00 /* ExamQuizLiveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamQuizLiveTableViewCell.swift; sourceTree = "<group>"; };
+		06E79E0F2C7717F200F4DC00 /* ReminderBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderBottomSheetViewController.swift; sourceTree = "<group>"; };
+		06E79E122C77229800F4DC00 /* ExamInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamInfoViewController.swift; sourceTree = "<group>"; };
+		06E79E142C7722FF00F4DC00 /* ExamInfoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamInfoUIView.swift; sourceTree = "<group>"; };
+		06E79E162C7772BE00F4DC00 /* SWGTUpcomingBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWGTUpcomingBottomSheetViewController.swift; sourceTree = "<group>"; };
+		06E79E182C777D0200F4DC00 /* calendaranimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = calendaranimation.json; sourceTree = "<group>"; };
+		06E79E1A2C7866F700F4DC00 /* LiveQuizTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveQuizTableViewCell.swift; sourceTree = "<group>"; };
+		06E79E1D2C788D9200F4DC00 /* GrandTestInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTestInfoViewController.swift; sourceTree = "<group>"; };
+		06E79E1F2C788DA600F4DC00 /* GrandTestInfoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTestInfoUIView.swift; sourceTree = "<group>"; };
+		06E79E212C789C2200F4DC00 /* GrandTestExamPortalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTestExamPortalViewController.swift; sourceTree = "<group>"; };
+		06E79E232C78D59E00F4DC00 /* GrandTestNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTestNavigationViewController.swift; sourceTree = "<group>"; };
+		06E79E262C796B6500F4DC00 /* ResultGrandTestBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultGrandTestBottomSheetViewController.swift; sourceTree = "<group>"; };
+		06E79E282C796D9C00F4DC00 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		0F3C45553957496A551E85D2 /* Pods-mymedicos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos.debug.xcconfig"; path = "Target Support Files/Pods-mymedicos/Pods-mymedicos.debug.xcconfig"; sourceTree = "<group>"; };
 		1F5399C9466272D06DE28554 /* Pods-mymedicos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos.release.xcconfig"; path = "Target Support Files/Pods-mymedicos/Pods-mymedicos.release.xcconfig"; sourceTree = "<group>"; };
 		389D1D9D3AD5BE5654A25143 /* Pods-mymedicosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosUITests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicosUITests/Pods-mymedicosUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -555,7 +587,6 @@
 			isa = PBXGroup;
 			children = (
 				066D6A4C2C69B910007510F0 /* Exams */,
-				0611D1A52C5F570D004430C2 /* Examination */,
 				0611D1982C5D6A21004430C2 /* Notification */,
 				0611D1972C5D69C5004430C2 /* Home */,
 				060442102C5D2B4800CDE979 /* Profile */,
@@ -568,7 +599,6 @@
 		0660E6342C56BA8C008125E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0611D1AC2C63D7F7004430C2 /* Exams */,
 				0660E6372C56BB1C008125E9 /* Home */,
 			);
 			path = View;
@@ -592,8 +622,6 @@
 			isa = PBXGroup;
 			children = (
 				0660E62B2C56B94A008125E9 /* MainTabbarViewController.swift */,
-				066D6A5F2C6BD0DC007510F0 /* NeetPgTabbarViewController.swift */,
-				066D6A7F2C6E4F60007510F0 /* NeetInsiderTabbarViewController.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -618,38 +646,10 @@
 		066D6A4C2C69B910007510F0 /* Exams */ = {
 			isa = PBXGroup;
 			children = (
-				066D6A4F2C69B935007510F0 /* NEETSS */,
-				066D6A4E2C69B92E007510F0 /* FMGE */,
-				066D6A4D2C69B928007510F0 /* PG */,
+				069F8F492C7CD10600E9565A /* PG */,
+				069F8F482C7CD0FC00E9565A /* FMGE */,
 			);
 			path = Exams;
-			sourceTree = "<group>";
-		};
-		066D6A4D2C69B928007510F0 /* PG */ = {
-			isa = PBXGroup;
-			children = (
-				066D6AB12C749BA3007510F0 /* Plans */,
-				066D6A7E2C6E4E81007510F0 /* Preparation */,
-				066D6A6B2C6CA946007510F0 /* Requirments */,
-				066D6A612C6BD191007510F0 /* PreparationViewController.swift */,
-				066D6A632C6BD199007510F0 /* GrandTestViewController.swift */,
-				066D6A652C6BD1F9007510F0 /* FeedViewController.swift */,
-			);
-			path = PG;
-			sourceTree = "<group>";
-		};
-		066D6A4E2C69B92E007510F0 /* FMGE */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FMGE;
-			sourceTree = "<group>";
-		};
-		066D6A4F2C69B935007510F0 /* NEETSS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NEETSS;
 			sourceTree = "<group>";
 		};
 		066D6A562C69D8AE007510F0 /* PG */ = {
@@ -674,6 +674,10 @@
 				066D6A982C704D41007510F0 /* PGprepUIView.swift */,
 				066D6A9A2C7071AD007510F0 /* QuizTableViewCell.swift */,
 				066D6AAF2C74590C007510F0 /* BottomSheetForPaidViewController.swift */,
+				06E79E0B2C758CBE00F4DC00 /* DonutChartView.swift */,
+				06E79E0D2C76F5D300F4DC00 /* ExamQuizLiveTableViewCell.swift */,
+				06E79E0F2C7717F200F4DC00 /* ReminderBottomSheetViewController.swift */,
+				06E79E1A2C7866F700F4DC00 /* LiveQuizTableViewCell.swift */,
 			);
 			path = Requirments;
 			sourceTree = "<group>";
@@ -681,6 +685,8 @@
 		066D6A7E2C6E4E81007510F0 /* Preparation */ = {
 			isa = PBXGroup;
 			children = (
+				06E79E1C2C788D7300F4DC00 /* Grand Exam */,
+				06E79E112C77225E00F4DC00 /* Exam */,
 				066D6A9C2C70A175007510F0 /* Preparation */,
 				066D6A8B2C6F30A4007510F0 /* AddOns */,
 				066D6A812C6E5394007510F0 /* IndexViewController.swift */,
@@ -698,6 +704,7 @@
 				066D6A942C703044007510F0 /* DownloadButton.swift */,
 				066D6AAB2C722588007510F0 /* FilterSheetViewController.swift */,
 				066D6AAD2C744974007510F0 /* IndexTableViewCell.swift */,
+				06E79E052C74F00600F4DC00 /* ImagePopupViewController.swift */,
 			);
 			path = AddOns;
 			sourceTree = "<group>";
@@ -727,9 +734,10 @@
 				0674CC612C5753CB008101C0 /* CustomUIColor.swift */,
 				06B9E0182C57C280009B3DAD /* CustomPresentationController.swift */,
 				06B9E01C2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift */,
-				0611D1C12C6556E9004430C2 /* QuestonsViewControllerViewController.swift */,
 				066D6A482C69AB10007510F0 /* CustomPickerTableViewCell.swift */,
 				066D6A922C6F4EED007510F0 /* CustomrPresentationController.swift */,
+				06E79E282C796D9C00F4DC00 /* PieChart.swift */,
+				069F8F352C7AF50500E9565A /* RatingBottomSheetViewController.swift */,
 			);
 			path = AddOns;
 			sourceTree = "<group>";
@@ -744,6 +752,33 @@
 				0674CC682C57673F008101C0 /* EnterOtpViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		069F8F482C7CD0FC00E9565A /* FMGE */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FMGE;
+			sourceTree = "<group>";
+		};
+		069F8F492C7CD10600E9565A /* PG */ = {
+			isa = PBXGroup;
+			children = (
+				066D6A6B2C6CA946007510F0 /* Requirments */,
+				066D6AB12C749BA3007510F0 /* Plans */,
+				0611D1C12C6556E9004430C2 /* QuestonsViewControllerViewController.swift */,
+				06E79E162C7772BE00F4DC00 /* SWGTUpcomingBottomSheetViewController.swift */,
+				06E79E232C78D59E00F4DC00 /* GrandTestNavigationViewController.swift */,
+				06E79E252C78F1E900F4DC00 /* Navigations */,
+				0611D1AC2C63D7F7004430C2 /* Exams */,
+				0611D1A52C5F570D004430C2 /* Examination */,
+				066D6A7E2C6E4E81007510F0 /* Preparation */,
+				066D6A612C6BD191007510F0 /* PreparationViewController.swift */,
+				066D6A632C6BD199007510F0 /* GrandTestViewController.swift */,
+				066D6A652C6BD1F9007510F0 /* FeedViewController.swift */,
+				06E79E262C796B6500F4DC00 /* ResultGrandTestBottomSheetViewController.swift */,
+			);
+			path = PG;
 			sourceTree = "<group>";
 		};
 		06B9DF642C57AF31009B3DAD /* Bottomsheets */ = {
@@ -768,6 +803,7 @@
 		06B9DFC32C57B790009B3DAD /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				06E79E182C777D0200F4DC00 /* calendaranimation.json */,
 				06B9DF6F2C57B790009B3DAD /* anim.json */,
 				06B9DF702C57B790009B3DAD /* apppvideo.mp4 */,
 				06B9DF712C57B790009B3DAD /* appvideo.mp4 */,
@@ -854,6 +890,34 @@
 				06B9DFC22C57B790009B3DAD /* zx.json */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		06E79E112C77225E00F4DC00 /* Exam */ = {
+			isa = PBXGroup;
+			children = (
+				06E79E122C77229800F4DC00 /* ExamInfoViewController.swift */,
+				06E79E142C7722FF00F4DC00 /* ExamInfoUIView.swift */,
+			);
+			path = Exam;
+			sourceTree = "<group>";
+		};
+		06E79E1C2C788D7300F4DC00 /* Grand Exam */ = {
+			isa = PBXGroup;
+			children = (
+				06E79E1D2C788D9200F4DC00 /* GrandTestInfoViewController.swift */,
+				06E79E1F2C788DA600F4DC00 /* GrandTestInfoUIView.swift */,
+				06E79E212C789C2200F4DC00 /* GrandTestExamPortalViewController.swift */,
+			);
+			path = "Grand Exam";
+			sourceTree = "<group>";
+		};
+		06E79E252C78F1E900F4DC00 /* Navigations */ = {
+			isa = PBXGroup;
+			children = (
+				066D6A5F2C6BD0DC007510F0 /* NeetPgTabbarViewController.swift */,
+				066D6A7F2C6E4F60007510F0 /* NeetInsiderTabbarViewController.swift */,
+			);
+			path = Navigations;
 			sourceTree = "<group>";
 		};
 		62F93FC4718656BCFED57D65 /* Pods */ = {
@@ -1061,6 +1125,7 @@
 				06B9DFF82C57B790009B3DAD /* new_dc.json in Resources */,
 				06B9DFDD2C57B790009B3DAD /* fmge.json in Resources */,
 				06B9DFE02C57B790009B3DAD /* gopro.json in Resources */,
+				06E79E192C777D0200F4DC00 /* calendaranimation.json in Resources */,
 				06B9E0132C57B790009B3DAD /* updating.json in Resources */,
 				06B9DFDF2C57B790009B3DAD /* getstartedanime1.json in Resources */,
 				06B9DFD62C57B790009B3DAD /* creadited.json in Resources */,
@@ -1205,32 +1270,42 @@
 			files = (
 				0611D1B92C6486A5004430C2 /* ExamPortalViewController.swift in Sources */,
 				0660E62F2C56B999008125E9 /* HomeViewController.swift in Sources */,
+				06E79E1B2C7866F700F4DC00 /* LiveQuizTableViewCell.swift in Sources */,
 				0611D1B12C63D856004430C2 /* ExamDetailsUIView.swift in Sources */,
 				066D6A8F2C6F3360007510F0 /* NoteCell.swift in Sources */,
 				0674CC622C5753CB008101C0 /* CustomUIColor.swift in Sources */,
+				06E79E0E2C76F5D300F4DC00 /* ExamQuizLiveTableViewCell.swift in Sources */,
 				066D6A842C6E539C007510F0 /* CWTViewController.swift in Sources */,
+				06E79E1E2C788D9200F4DC00 /* GrandTestInfoViewController.swift in Sources */,
 				066D6A5E2C69FBB1007510F0 /* QuestionBankNeetPgUIView.swift in Sources */,
 				06B9DF692C57AFA5009B3DAD /* TermsandConditionsViewController.swift in Sources */,
 				066D6AAC2C722588007510F0 /* FilterSheetViewController.swift in Sources */,
 				0660E6362C56BAC0008125E9 /* HeroImageUIView.swift in Sources */,
+				06E79E202C788DA600F4DC00 /* GrandTestInfoUIView.swift in Sources */,
 				06B9DF662C57AF4D009B3DAD /* BottomSheetViewController.swift in Sources */,
 				0674CC652C576729008101C0 /* LoginViewController.swift in Sources */,
 				0660E63B2C56BC5F008125E9 /* LiveExaminationsUIView.swift in Sources */,
+				06E79E292C796D9C00F4DC00 /* PieChart.swift in Sources */,
 				0611D1B32C63D86E004430C2 /* InstructionsUIView.swift in Sources */,
+				06E79E172C7772BE00F4DC00 /* SWGTUpcomingBottomSheetViewController.swift in Sources */,
 				0604420F2C5CBF3A00CDE979 /* CountryPickerViewController.swift in Sources */,
 				066D6A8D2C6F30E4007510F0 /* NotesNeetPgUIView.swift in Sources */,
+				06E79E242C78D59E00F4DC00 /* GrandTestNavigationViewController.swift in Sources */,
 				066D6AAE2C744974007510F0 /* IndexTableViewCell.swift in Sources */,
+				06E79E062C74F00600F4DC00 /* ImagePopupViewController.swift in Sources */,
 				066D6AB32C749BC3007510F0 /* PlansViewController.swift in Sources */,
 				06B9E01D2C57C3E5009B3DAD /* HelpBottomSheetViewController.swift in Sources */,
 				066D6A932C6F4EEE007510F0 /* CustomrPresentationController.swift in Sources */,
 				066D6A662C6BD1F9007510F0 /* FeedViewController.swift in Sources */,
 				060442122C5D2B7700CDE979 /* SideViewController.swift in Sources */,
 				066D6A5C2C69F600007510F0 /* ExaminationNeetPgUIView.swift in Sources */,
+				06E79E102C7717F200F4DC00 /* ReminderBottomSheetViewController.swift in Sources */,
 				0660E63F2C56BCC3008125E9 /* QuickLinkUIView.swift in Sources */,
 				0660E6312C56B9B4008125E9 /* CommunityViewController.swift in Sources */,
 				0660E62C2C56B94A008125E9 /* MainTabbarViewController.swift in Sources */,
 				06B9E0192C57C280009B3DAD /* CustomPresentationController.swift in Sources */,
 				06B9DF6B2C57AFB2009B3DAD /* PrivacyViewController.swift in Sources */,
+				069F8F362C7AF50500E9565A /* RatingBottomSheetViewController.swift in Sources */,
 				066D6A7D2C6DEB3D007510F0 /* CategoryView.swift in Sources */,
 				0611D1B72C64302A004430C2 /* TitleButtonsUIView.swift in Sources */,
 				066D6A6A2C6C58ED007510F0 /* PlansNeetPgUIView.swift in Sources */,
@@ -1243,6 +1318,7 @@
 				0660E6462C56C48E008125E9 /* Constants.swift in Sources */,
 				0611D1C22C6556E9004430C2 /* QuestonsViewControllerViewController.swift in Sources */,
 				066D6A952C703044007510F0 /* DownloadButton.swift in Sources */,
+				06E79E272C796B6500F4DC00 /* ResultGrandTestBottomSheetViewController.swift in Sources */,
 				0611D19F2C5E4161004430C2 /* CustomizeProfileViewController.swift in Sources */,
 				066D6A862C6E53A4007510F0 /* SWGTViewController.swift in Sources */,
 				0611D1A72C5F5721004430C2 /* DailyQuestionDetailedViewController.swift in Sources */,
@@ -1254,8 +1330,10 @@
 				0674CC672C576733008101C0 /* Registration1ViewController.swift in Sources */,
 				066D6A802C6E4F60007510F0 /* NeetInsiderTabbarViewController.swift in Sources */,
 				0660E6392C56BB5F008125E9 /* DailyQuestionUIView.swift in Sources */,
+				06E79E0C2C758CBE00F4DC00 /* DonutChartView.swift in Sources */,
 				0611D1AB2C638604004430C2 /* ShareUIView.swift in Sources */,
 				0660E5FC2C56B861008125E9 /* AppDelegate.swift in Sources */,
+				06E79E132C77229800F4DC00 /* ExamInfoViewController.swift in Sources */,
 				066D6AB02C74590C007510F0 /* BottomSheetForPaidViewController.swift in Sources */,
 				066D6A912C6F4CDF007510F0 /* NotesDetailedViewController.swift in Sources */,
 				0611D1A12C5E416E004430C2 /* SettingsViewController.swift in Sources */,
@@ -1268,7 +1346,9 @@
 				0674CC6B2C57674C008101C0 /* GetStartedViewController.swift in Sources */,
 				066D6A8A2C6F2681007510F0 /* TopicCell.swift in Sources */,
 				066D6A822C6E5395007510F0 /* IndexViewController.swift in Sources */,
+				06E79E222C789C2200F4DC00 /* GrandTestExamPortalViewController.swift in Sources */,
 				0611D19A2C5D6A36004430C2 /* NotificationViewController.swift in Sources */,
+				06E79E152C7722FF00F4DC00 /* ExamInfoUIView.swift in Sources */,
 				066D6A6D2C6CA968007510F0 /* OverlayPgNeetUIView.swift in Sources */,
 				06DC83662C58F22700822AD7 /* StateBottomSheetViewController.swift in Sources */,
 				0660E5FE2C56B861008125E9 /* SceneDelegate.swift in Sources */,

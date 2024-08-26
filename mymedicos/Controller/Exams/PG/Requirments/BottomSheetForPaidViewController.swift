@@ -18,6 +18,7 @@ class BottomSheetForPaidSheetViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         setupViews()
     }
 

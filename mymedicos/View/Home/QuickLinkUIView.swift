@@ -2,6 +2,7 @@ import UIKit
 
 protocol QuickLinkUIViewDelegate: AnyObject {
     func didTapPGNeetButton()
+    func didTapFMGEButton()
 }
 
 class QuickLinkUIView: UIView {
@@ -30,12 +31,19 @@ class QuickLinkUIView: UIView {
         pgNeetButton.addTarget(self, action: #selector(pgNeetButtonTapped), for: .touchUpInside)
         
         configureButton(button: fmgeButton, title: "FMGE", backgroundColor: UIColor(hexString: "#F8FAFC"), systemIconName: "stethoscope", textColor: UIColor(hexString: "#10B981"), iconColor: UIColor(hexString: "#10B981"))
+        fmgeButton.addTarget(self, action: #selector(fmgeButtonTapped), for: .touchUpInside)
+        
         configureButton(button: neetSsButton, title: "NEET SS", backgroundColor: UIColor(hexString: "#F8FAFC"), systemIconName: "graduationcap.fill", textColor: UIColor(hexString: "#F59E0B"), iconColor: UIColor(hexString: "#F59E0B"))
+        
         configureButton(button: mbbsButton, title: "MBBS", backgroundColor: UIColor(hexString: "#F8FAFC"), systemIconName: "person.fill", textColor: UIColor(hexString: "#EF4444"), iconColor: UIColor(hexString: "#EF4444"))
     }
     
     @objc private func pgNeetButtonTapped() {
         delegate?.didTapPGNeetButton()
+    }
+    
+    @objc private func fmgeButtonTapped() {
+        delegate?.didTapFMGEButton()
     }
     
     private func setupView() {

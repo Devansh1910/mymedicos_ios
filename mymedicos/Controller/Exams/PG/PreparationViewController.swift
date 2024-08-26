@@ -11,7 +11,8 @@ class PreparationViewController: UIViewController, UISearchBarDelegate {
     var detailLabel = UILabel()
     var allCategories = [String]()
     var filteredCategories = [String]()
-    
+    var activityIndicator = UIActivityIndicatorView()  // Declare the activity indicator
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -21,6 +22,7 @@ class PreparationViewController: UIViewController, UISearchBarDelegate {
         setupSegmentedControl()
         setupScrollView()
         setupStackView()
+        setupActivityIndicator()  // Setup activity indicator
         fetchDataForSegment(index: segmentedControl.selectedSegmentIndex)
     }
     
@@ -66,7 +68,6 @@ class PreparationViewController: UIViewController, UISearchBarDelegate {
         view.addSubview(searchBar)
         searchBar.delegate = self
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        
         searchBar.placeholder = "Search Specialities"
         searchBar.searchTextField.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         searchBar.searchTextField.textColor = .gray
@@ -77,8 +78,6 @@ class PreparationViewController: UIViewController, UISearchBarDelegate {
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
     }
-
-
 
     func setupSegmentedControl() {
         view.addSubview(segmentedControl)
@@ -94,13 +93,12 @@ class PreparationViewController: UIViewController, UISearchBarDelegate {
         ])
     }
 
-    
     func setupScrollView() {
         view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20),  // Padding can be adjusted if needed
+            scrollView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -118,10 +116,21 @@ class PreparationViewController: UIViewController, UISearchBarDelegate {
             stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)  // Ensures the stackView is as wide as the scrollView
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
-    
+
+    func setupActivityIndicator() {
+        activityIndicator.style = .large
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+
     @objc func segmentChanged(_ sender: UISegmentedControl) {
         fetchDataForSegment(index: sender.selectedSegmentIndex)
     }
@@ -136,6 +145,7 @@ class PreparationViewController: UIViewController, UISearchBarDelegate {
     }
     
     func fetchDataForSegment(index: Int) {
+        activityIndicator.startAnimating() 
         let db = Firestore.firestore()
         let categoriesRef = db.collection("Categories").document("39liVyLEjII6dtzolxSZ")
         
@@ -160,6 +170,7 @@ class PreparationViewController: UIViewController, UISearchBarDelegate {
                 } else {
                     print("Document does not exist")
                 }
+                self.activityIndicator.stopAnimating()  // Stop and hide the activity indicator when data is loaded or fails to load
             }
         }
     }

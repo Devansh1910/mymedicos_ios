@@ -148,18 +148,16 @@ class PrepInfoViewController: UIViewController {
         startButton.setTitleColor(.white, for: .normal)
         startButton.layer.cornerRadius = 8
         startButton.translatesAutoresizingMaskIntoConstraints = false
-        startButton.isEnabled = false // Disable the button by default
+        startButton.isEnabled = false
         startButton.alpha = 0.5 // Make the button appear disabled
         startButton.addTarget(self, action: #selector(startTest), for: .touchUpInside) // Add target action for startButton
         bottomStackView.addArrangedSubview(startButton)
         
-        // Set button constraints for height
         NSLayoutConstraint.activate([
             startButton.widthAnchor.constraint(equalTo: bottomStackView.widthAnchor),
             startButton.heightAnchor.constraint(equalToConstant: 44)  // Adjust button height as needed
         ])
         
-        // Add action for bookmark button
         heroView.bookmarkButton.addTarget(self, action: #selector(toggleBookmark), for: .touchUpInside)
     }
     
@@ -190,24 +188,15 @@ class PrepInfoViewController: UIViewController {
         navigationController?.pushViewController(prepPortalVC, animated: false)
     }
 
-
-
     private func showAlert() {
         let alert = UIAlertController(title: nil, message: "Take the test on Laptop/Desktop for better examination experience", preferredStyle: .alert)
-        
-        // Override user interface style to light theme
         alert.overrideUserInterfaceStyle = .light
         
-        // Add the custom background color
-        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 120)) // Set frame to the default size of the alert
-        backgroundView.backgroundColor = UIColor(red: 0.9, green: 0.95, blue: 1.0, alpha: 1.0) // Light blue color
-        backgroundView.layer.cornerRadius = 13 // Match the alert's corner radius
+        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 120))
+        backgroundView.backgroundColor = UIColor(red: 0.9, green: 0.95, blue: 1.0, alpha: 1.0)
+        backgroundView.layer.cornerRadius = 13
         backgroundView.layer.masksToBounds = true
-        
-        // Add backgroundView to alert's view hierarchy
         alert.view.insertSubview(backgroundView, at: 0)
-        
-        // Constraints for backgroundView to match the alert view size
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             backgroundView.leadingAnchor.constraint(equalTo: alert.view.leadingAnchor),
@@ -216,7 +205,6 @@ class PrepInfoViewController: UIViewController {
             backgroundView.bottomAnchor.constraint(equalTo: alert.view.bottomAnchor)
         ])
         
-        // Adding the action button
         let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
         alert.addAction(gotItAction)
         

@@ -1,6 +1,7 @@
 import UIKit
 class HomeViewController: UIViewController, DailyQuestionUIViewDelegate,UITableViewDataSource, UITableViewDelegate, LiveExaminationsUIViewDelegate, QuickLinkUIViewDelegate {
     
+    
     var documentId: String? {
             didSet {
                 if let id = documentId {
@@ -121,10 +122,9 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate,UITableV
 
         liveQuestionView.translatesAutoresizingMaskIntoConstraints = false
         liveQuestionView.backgroundColor = .white
-        liveQuestionView.delegate = self // Set the delegate to handle navigation
+        liveQuestionView.delegate = self
         headerView.addSubview(liveQuestionView)
 
-        // Constraints for liveQuestionView
         NSLayoutConstraint.activate([
             liveQuestionView.topAnchor.constraint(equalTo: additionalTitleLabel.bottomAnchor, constant: 10),
             liveQuestionView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 5),
@@ -134,7 +134,6 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate,UITableV
         // Adjust currentHeight based on the liveQuestionView's content size
         currentHeight += liveQuestionView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height + 20
         
-        // Practice Examination will come here.
         let additionalTitleLabel2 = UILabel(frame: CGRect(x: 10, y: currentHeight + 10, width: view.bounds.width - 10, height: 40))
         additionalTitleLabel2.text = "Practice MCQ's"
         additionalTitleLabel2.textAlignment = .left
@@ -395,9 +394,19 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate,UITableV
     
     func didTapPGNeetButton() {
         let pgneetVC = NeetPgTabbarViewController()
-        pgneetVC.hidesBottomBarWhenPushed = true  // Hide the tab bar
+        pgneetVC.setupWith(title: "PGNEET")
+        pgneetVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(pgneetVC, animated: true)
     }
+
+    func didTapFMGEButton() {
+        let fmgeVC = NeetPgTabbarViewController()
+        fmgeVC.setupWith(title: "FMGE")
+        fmgeVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(fmgeVC, animated: true)
+    }
+
+
 
     private func updateIconColors() {
         let currentTheme = traitCollection.userInterfaceStyle

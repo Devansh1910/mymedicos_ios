@@ -9,6 +9,8 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     var contentView: UIView!
     var heroImageViewHeightConstraint: NSLayoutConstraint!
     
+    var examCategory: String = "Default Title" 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -49,7 +51,7 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func setupHeroImageView() {
-        heroImageView = HeroImageNeetpgUIView(frame: CGRect.zero)
+        heroImageView = HeroImageNeetpgUIView(frame: CGRect.zero, title: examCategory)
         contentView.addSubview(heroImageView)
         heroImageView.translatesAutoresizingMaskIntoConstraints = false
         heroImageViewHeightConstraint = heroImageView.heightAnchor.constraint(equalToConstant: 200)
@@ -83,10 +85,8 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
         } else {
             heroImageViewHeightConstraint.constant = max(0, 200 - scrollOffset)
         }
-        // Only trigger a layout update if needed, preventing excessive layout changes
         if view.needsUpdateConstraints() {
             view.layoutIfNeeded()
         }
     }
-
 }

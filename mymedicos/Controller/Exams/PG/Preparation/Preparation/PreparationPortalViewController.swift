@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 import FirebaseFirestore
 
 struct QuestionPrep {
@@ -10,15 +11,22 @@ struct QuestionPrep {
     var questionNumber: Int
     var selectedOption: Int?
     var isMarkedForReview: Bool = false
+    var hasBeenCorrectlyAnswered: Bool = false
     var isAnswered: Bool {
         return selectedOption != nil
     }
+
     
-    func isAnswerCorrect() -> Bool {
-        guard let selectedOption = selectedOption else { return false }
-        let selectedOptionLetter = ["A", "B", "C", "D"][selectedOption]
-        return selectedOptionLetter == correctAnswer
-    }
+    mutating func isAnswerCorrect() -> Bool {
+            guard let selectedOption = selectedOption else {
+                print("No option selected")
+                return false
+            }
+            let selectedOptionLetter = ["A", "B", "C", "D"][selectedOption]
+            print("Selected Option: \(selectedOptionLetter), Correct Answer: \(correctAnswer)")
+            return selectedOptionLetter == correctAnswer
+        }
+
 }
 
 class PreparationPortalViewController: UIViewController, QuestionNavigatorDelegate {
@@ -37,6 +45,10 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
     private var contentView: UIView!
     private var currentQuestionLabel: UILabel!
     private var questionLabel: UILabel!
+    
+    private var questionImageView: UIImageView!
+    private var questionImageViewHeightConstraint: NSLayoutConstraint!
+
     private var instructionLabel: UILabel!
     private var optionsStackView: UIStackView!
     private var descriptionLabel: UILabel!
@@ -54,12 +66,18 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
     var examTitle: String?
     var examID: String?
     
+    private var correctAnswersCount: Int = 0
+    private var wrongAnswersCount: Int = 0
+    
+    private var quizStartTime: Date?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         self.title = examTitle ?? "Exam Question"
         setupMenuButton()
         fetchQuestions()
+        quizStartTime = Date()  // Record the start time
     }
     
     private func setupUI() {
@@ -67,10 +85,48 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         setupScrollView()
         setupCurrentQuestionLabel()
         setupQuestionLabel()
-        setupInstructionLabel()
-        setupOptionsStackView()
+        setupInstructionLabel()  // Initialize instruction label and checkbox first
+        setupQuestionImageView()  // Then setup the image view
+        setupOptionsStackView()  // Finally setup the options stack view
         setupDescriptionLabel()
         setupNavigationButtons()
+    }
+
+
+    private func setupInstructionLabel() {
+        instructionLabel = UILabel()
+        instructionLabel.translatesAutoresizingMaskIntoConstraints = false
+        instructionLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        instructionLabel.textColor = .gray
+        instructionLabel.text = "Select an option"
+        instructionLabel.textAlignment = .left
+        contentView.addSubview(instructionLabel)
+        
+        markForReviewCheckbox = UIButton(type: .system)
+        markForReviewCheckbox.setTitle(" Mark for review", for: .normal)
+        markForReviewCheckbox.setImage(UIImage(systemName: "square"), for: .normal)
+        markForReviewCheckbox.tintColor = .gray
+        markForReviewCheckbox.addTarget(self, action: #selector(markForReviewTapped), for: .touchUpInside)
+        markForReviewCheckbox.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(markForReviewCheckbox)
+        
+        NSLayoutConstraint.activate([
+            instructionLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 20),
+            instructionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            
+            markForReviewCheckbox.centerYAnchor.constraint(equalTo: instructionLabel.centerYAnchor),
+            markForReviewCheckbox.leadingAnchor.constraint(equalTo: instructionLabel.trailingAnchor, constant: 10),
+            markForReviewCheckbox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+        ])
+    }
+
+    @objc private func imageTapped() {
+        guard let image = questionImageView.image else { return }
+        
+        let imagePopupVC = ImagePopupViewController()
+        imagePopupVC.modalPresentationStyle = .overFullScreen
+        imagePopupVC.image = image
+        present(imagePopupVC, animated: true, completion: nil)
     }
     
     private func setupMenuButton() {
@@ -110,15 +166,17 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         let documentRef = db.collection("PGupload").document("Weekley").collection("Quiz").document(examID)
         
         documentRef.getDocument { [weak self] document, error in
-            guard let self = self else { return }
             if let error = error {
                 print("Error fetching questions: \(error.localizedDescription)")
                 return
             }
             
-            guard let document = document, document.exists, let dataArray = document.data()?["Data"] as? [[String: Any]] else { return }
+            guard let document = document, document.exists, let dataArray = document.data()?["Data"] as? [[String: Any]] else {
+                print("Document does not exist or data format is incorrect")
+                return
+            }
             
-            self.questions = dataArray.compactMap { data in
+            self?.questions = dataArray.compactMap { data in
                 guard let questionText = data["Question"] as? String,
                       let optionA = data["A"] as? String,
                       let optionB = data["B"] as? String,
@@ -128,6 +186,7 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
                       let description = data["Description"] as? String,
                       let imageUrl = data["Image"] as? String,
                       let questionNumber = data["number"] as? Int else {
+                    print("Error in data fields")
                     return nil
                 }
                 
@@ -143,9 +202,11 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
                 )
             }
             
-            self.updateUIForCurrentQuestion()
+            print("Loaded questions successfully. Total questions: \(self?.questions.count ?? 0)")
+            self?.updateUIForCurrentQuestion()
         }
     }
+
 
     private func setupScrollView() {
         scrollView = UIScrollView()
@@ -199,37 +260,27 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
             questionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
         ])
     }
-
-    private func setupInstructionLabel() {
-        instructionLabel = UILabel()
-        instructionLabel.translatesAutoresizingMaskIntoConstraints = false
-        instructionLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        instructionLabel.textColor = .gray
-        instructionLabel.text = "Select an option"
-        instructionLabel.textAlignment = .left
-        contentView.addSubview(instructionLabel)
+    
+    
+    private func setupQuestionImageView() {
+        questionImageView = UIImageView()
+        questionImageView.translatesAutoresizingMaskIntoConstraints = false
+        questionImageView.contentMode = .scaleAspectFit
+        questionImageView.isUserInteractionEnabled = true  // Enable interaction
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        questionImageView.addGestureRecognizer(tapGesture)
+        
+        contentView.addSubview(questionImageView)
+        
+        questionImageViewHeightConstraint = questionImageView.heightAnchor.constraint(equalToConstant: 200)
+        
+        NSLayoutConstraint.deactivate(questionImageView.constraints)
         NSLayoutConstraint.activate([
-            instructionLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 20),
-            instructionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20)
-        ])
-        
-        var config = UIButton.Configuration.plain()
-        config.title = " Mark for review"
-        config.image = UIImage(systemName: "square")
-        config.imagePadding = 5
-        config.baseForegroundColor = .gray
-        config.background.backgroundColor = .clear
-        
-        markForReviewCheckbox = UIButton(configuration: config, primaryAction: nil)
-        markForReviewCheckbox.addTarget(self, action: #selector(markForReviewTapped), for: .touchUpInside)
-        markForReviewCheckbox.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(markForReviewCheckbox)
-        
-        NSLayoutConstraint.activate([
-            markForReviewCheckbox.centerYAnchor.constraint(equalTo: instructionLabel.centerYAnchor),
-            markForReviewCheckbox.leadingAnchor.constraint(equalTo: instructionLabel.trailingAnchor, constant: 10),
-            markForReviewCheckbox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+            questionImageView.topAnchor.constraint(equalTo: markForReviewCheckbox.bottomAnchor, constant: 20),
+            questionImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            questionImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            questionImageViewHeightConstraint
         ])
     }
 
@@ -241,12 +292,14 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         optionsStackView.spacing = 20
         contentView.addSubview(optionsStackView)
         
+        NSLayoutConstraint.deactivate(optionsStackView.constraints)
         NSLayoutConstraint.activate([
-            optionsStackView.topAnchor.constraint(equalTo: instructionLabel.bottomAnchor, constant: 20),
+            optionsStackView.topAnchor.constraint(equalTo: questionImageView.bottomAnchor, constant: 20),
             optionsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             optionsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
         ])
     }
+
 
     private func setupDescriptionLabel() {
         descriptionLabel = UILabel()
@@ -269,9 +322,12 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
     }
 
     private func updateMarkForReviewCheckboxAppearance() {
-        let imageName = questions[currentQuestionIndex].isMarkedForReview ? "checkmark.square.fill" : "square"
+        let isMarked = questions[currentQuestionIndex].isMarkedForReview
+        let imageName = isMarked ? "checkmark.square.fill" : "square"
         markForReviewCheckbox.setImage(UIImage(systemName: imageName), for: .normal)
+        markForReviewCheckbox.tintColor = isMarked ? .systemBlue : .gray
     }
+
     
     private func displayDescription(for question: QuestionPrep) {
         if let selectedOptionIndex = question.selectedOption {
@@ -286,10 +342,35 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
 
     private func updateUIForCurrentQuestion() {
         guard !questions.isEmpty else { return }
-        let question = questions[currentQuestionIndex]
+        var question = questions[currentQuestionIndex]
 
         questionLabel.text = question.questionText
         currentQuestionLabel.text = "\(currentQuestionIndex + 1)/\(questions.count)"
+        
+        questionImageView.image = nil
+        questionImageViewHeightConstraint.constant = 200
+        questionImageView.isHidden = false
+
+        // Check if the image URL indicates there is no image to display
+        let noImageURLs = ["https://res.cloudinary.com/dmzp6notl/image/upload/v1711436528/noimage_qtiaxj.jpg", "noimage"]
+        if noImageURLs.contains(question.imageUrl) {
+            questionImageView.isHidden = true
+            questionImageViewHeightConstraint.constant = 0
+        } else {
+            questionImageView.isHidden = false
+            questionImageViewHeightConstraint.constant = 200
+            if let url = URL(string: question.imageUrl) {
+                loadImage(from: url) { [weak self] image in
+                    if self?.questions[self?.currentQuestionIndex ?? 0].imageUrl == url.absoluteString {
+                        self?.questionImageView.image = image
+                    }
+                }
+            } else {
+                questionImageView.image = nil
+            }
+        }
+
+        updateMarkForReviewCheckboxAppearance()
 
         optionsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         descriptionLabel.isHidden = true
@@ -326,19 +407,50 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         previousButton.isHidden = currentQuestionIndex == 0
         nextButton.isHidden = currentQuestionIndex == questions.count - 1
         endQuizButton.isHidden = currentQuestionIndex != questions.count - 1
+
+        view.layoutIfNeeded()
     }
 
+    
+    private func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
     @objc private func optionTapped(_ sender: UITapGestureRecognizer) {
         guard let viewTapped = sender.view else { return }
         let index = viewTapped.tag
+        var currentQuestion = questions[currentQuestionIndex]
 
-        let currentQuestion = questions[currentQuestionIndex]
-
+        // Ensure that we only update the answer and counts if no option was previously selected
         if currentQuestion.selectedOption == nil {
-            questions[currentQuestionIndex].selectedOption = index
+            currentQuestion.selectedOption = index
+            questions[currentQuestionIndex] = currentQuestion  // Save the updated question back to the array
+            
+            if currentQuestion.isAnswerCorrect() {
+                correctAnswersCount += 1
+                print("Correct answer selected. Total correct: \(correctAnswersCount)")
+            } else {
+                wrongAnswersCount += 1
+                print("Wrong answer selected. Total wrong: \(wrongAnswersCount)")
+            }
+            
             updateUIForCurrentQuestion()
         }
     }
+
+
+
+
 
     private func convertHTMLToAttributedString(html: String) -> NSAttributedString? {
         let modifiedFont = """
@@ -499,43 +611,110 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
     }
     
     private func finishQuiz() {
+        let endTime = Date()
+        let timeTaken = endTime.timeIntervalSince(quizStartTime ?? endTime)
+        let averageTimePerQuestion = timeTaken / Double(questions.count)
+        let successRate = Double(correctAnswersCount) / Double(questions.count) * 100
+        // Determine comment based on time and accuracy
+        let timeThreshold = 60.0  // Example threshold in seconds
+        let highAccuracyThreshold = 80.0
+        let lowAccuracyThreshold = 50.0
+        var comment = "Well done!"
+
+        if timeTaken < timeThreshold && successRate >= highAccuracyThreshold {
+            comment = "Excellent speed and accuracy!"
+        } else if timeTaken > timeThreshold && successRate < lowAccuracyThreshold {
+            comment = "Needs improvement in both speed and accuracy."
+        } else if timeTaken < timeThreshold {
+            comment = "Great speed, but consider improving accuracy."
+        } else if successRate >= highAccuracyThreshold {
+            comment = "High accuracy, try to increase your speed next time."
+        } else {
+            comment = "Good effort, keep practicing!"
+        }
+
+        // Calculate the final scores based on answers
         let answeredCount = questions.filter { $0.isAnswered }.count
         let markedCount = questions.filter { $0.isMarkedForReview }.count
         let unansweredCount = questions.count - answeredCount
-        
-        var correctAnswers = 0
-        var wrongAnswers = 0
-        
-        for question in questions {
-            if question.isAnswered {
-                if question.isAnswerCorrect() {
-                    correctAnswers += 1
-                } else {
-                    wrongAnswers += 1
-                }
+
+        guard let user = Auth.auth().currentUser, let phoneNumber = user.phoneNumber else {
+            print("User is not logged in or phone number is unavailable")
+            return
+        }
+
+        let results: [String: Any] = [
+            "Total Questions": questions.count,
+            "Correct Answers": correctAnswersCount,
+            "Wrong Answers": wrongAnswersCount,
+            "Marked for Review": markedCount,
+            "Unanswered": unansweredCount,
+            "Quiz ID": examID ?? "Unknown ID",
+            "Time of Submission": FieldValue.serverTimestamp(),
+            "Total Marks Obtained": (correctAnswersCount * 4) - (wrongAnswersCount * 1),
+            "Time Taken (seconds)": timeTaken,
+            "Average Time Per Question (seconds)": averageTimePerQuestion,
+            "Success Rate (%)": successRate,
+            "Comment": comment  // Save the personalized comment
+        ]
+
+        let db = Firestore.firestore()
+        let resultsRef = db.collection("QuizResults").document(phoneNumber)
+                                .collection("Weekley").document(examID ?? "Unknown Exam")
+
+        resultsRef.setData(results) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
+                self.navigateToResultsScreen()
             }
         }
-        
-        let marksForCorrect = correctAnswers * 4
-        let marksDeductedForWrong = wrongAnswers * 1
-        let grandTotal = marksForCorrect - marksDeductedForWrong
-        let totalMarksYouCanGet = questions.count * 4
+    }
 
+    private func navigateToResultsScreen() {
         let resultVC = ResultGTViewController()
+        let endTime = Date()
+        let timeTaken = quizStartTime.map { endTime.timeIntervalSince($0) } ?? 0
         
-        resultVC.answeredCount = answeredCount
-        resultVC.markedCount = markedCount
-        resultVC.unansweredCount = unansweredCount
+        let averageTimePerQuestion = timeTaken / Double(questions.count)
+        let successRate = Double(correctAnswersCount) / Double(questions.count) * 100
+        let totalMarksObtained = (correctAnswersCount * 4) - (wrongAnswersCount * 1)
+        let comment = determineComment(timeTaken: timeTaken, successRate: successRate)
+        let formattedSubmissionDate = DateFormatter.localizedString(from: endTime, dateStyle: .medium, timeStyle: .short)
+        
         resultVC.examName = examTitle ?? "Unknown Exam"
         resultVC.totalQuestions = questions.count
-        resultVC.correctAnswers = correctAnswers
-        resultVC.wrongAnswers = wrongAnswers
-        resultVC.marksForCorrect = marksForCorrect
-        resultVC.marksDeductedForWrong = marksDeductedForWrong
-        resultVC.grandTotal = grandTotal
-        resultVC.totalMarksYouCanGet = totalMarksYouCanGet
+        resultVC.correctAnswers = correctAnswersCount
+        resultVC.wrongAnswers = wrongAnswersCount
+        resultVC.unansweredCount = questions.count - (correctAnswersCount + wrongAnswersCount)
+        resultVC.markedCount = questions.filter { $0.isMarkedForReview }.count
+        resultVC.averageTimePerQuestion = averageTimePerQuestion
+        resultVC.successRate = successRate
+        resultVC.totaltimetaken = timeTaken
+        resultVC.comment = comment
+        resultVC.submissionDate = formattedSubmissionDate
+        resultVC.examId = examID ?? "Unknown Exam Id"
         
-        self.navigationItem.backButtonTitle = ""
-        self.navigationController?.pushViewController(resultVC, animated: true)
+        navigationController?.pushViewController(resultVC, animated: true)
+    }
+
+    private func determineComment(timeTaken: Double, successRate: Double) -> String {
+        let timeThreshold = 60.0  // seconds
+        let highAccuracyThreshold = 80.0
+        let lowAccuracyThreshold = 50.0
+        
+        switch (timeTaken < timeThreshold, successRate) {
+        case (true, let rate) where rate >= highAccuracyThreshold:
+            return "Excellent speed and accuracy!"
+        case (false, let rate) where rate < lowAccuracyThreshold:
+            return "Needs improvement in both speed and accuracy."
+        case (true, _):
+            return "Great speed, but consider improving accuracy."
+        case (_, let rate) where rate >= highAccuracyThreshold:
+            return "High accuracy, try to increase your speed next time."
+        default:
+            return "Good effort, keep practicing!"
+        }
     }
 }

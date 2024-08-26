@@ -14,14 +14,15 @@ class IndexViewController: UIViewController, UITableViewDataSource, UITableViewD
     var specialtyTitle: String
     var segmentedControl: UISegmentedControl!
     var topicsTableView: UITableView!
-    var topics: [String] = [] // Array to hold index data
-    var notes: [Note] = [] // Array to hold notes data
+    var topics: [String] = []
+    var notes: [Note] = []
     
-    // Placeholder Views
+    var activityIndicator = UIActivityIndicatorView(style: .large)
+    
     private let noDataView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.isHidden = true // Initially hidden
+        view.isHidden = true
         return view
     }()
     
@@ -52,7 +53,17 @@ class IndexViewController: UIViewController, UITableViewDataSource, UITableViewD
         configureSegmentedControl()
         setupTopicsTableView()
         setupNoDataView()
-        fetchIndexData() // Initial fetch for the index
+        setupActivityIndicator()
+        fetchIndexData()
+    }
+    
+    private func setupActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
     private func configureNavigationBar() {
@@ -152,9 +163,11 @@ class IndexViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     private func fetchIndexData() {
+        activityIndicator.startAnimating()
         let db = Firestore.firestore()
         let documentPath = "PGupload/Indexs/Index/\(specialtyTitle)"
         db.document(documentPath).getDocument { (documentSnapshot, error) in
+            self.activityIndicator.stopAnimating()
             if let error = error {
                 print("Error fetching document: \(error.localizedDescription)")
                 return

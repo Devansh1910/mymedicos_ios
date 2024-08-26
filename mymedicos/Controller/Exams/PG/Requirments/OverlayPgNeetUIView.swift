@@ -8,19 +8,64 @@ class OverlayPgNeetUIView: UIView {
     private var carouselView: CarousleNeetPgUIView!
     private var examinationTitleLabel: UILabel!
     private var examinationView: ExaminationNeetPgUIView!
-    private var questionBankTitleLabel: UILabel!
-    private var questionBankView: QuestionBankNeetPgUIView!
     private var plansTitleLabel: UILabel!
     private var scrollView: UIScrollView!
     private var updatesTitleLabel: UILabel!
-    private var updatesView : RecentUpdatesUIView!
+    private var updatesView: RecentUpdatesUIView!
+    private var activityIndicator: UIActivityIndicatorView?
 
+    private var db: Firestore?
+    private let cache = NSCache<NSString, NSArray>()
+    var examCategory: String = "Default Title"
 
-    private var db: Firestore!
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
     
+    private func commonInit() {
+        db = Firestore.firestore()
+        setupSubViewsInContentView(contentView: self)
+        setupActivityIndicator()
+        fetchPlansAndLayout()
+        addTopBorder()
+    }
+
+    private func setupSubViewsInContentView(contentView: UIView) {
+        setupDragHandle(contentView: contentView)
+        setupCarouselView(contentView: contentView)
+        setupExaminationTitleLabel(contentView: contentView)
+        setupExaminationView(contentView: contentView)
+        setupPlansTitleLabel(contentView: contentView)
+        setupScrollView(contentView: contentView)
+        setupUpdatesTitleLabel(contentView: contentView)
+        setupUpdatesView(contentView: contentView)
+
+        if let lastView = contentView.subviews.last {
+            lastView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
+        }
+    }
+
+    private func setupActivityIndicator() {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.center = self.center
+        self.addSubview(indicator)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
+        self.activityIndicator = indicator
+    }
+
     private func addTopBorder() {
         let border = UIView()
-        border.backgroundColor = UIColor(hex: "2CBFAF")
+        border.backgroundColor = UIColor.systemGray6
         self.addSubview(border)
         
         border.translatesAutoresizingMaskIntoConstraints = false
@@ -31,40 +76,7 @@ class OverlayPgNeetUIView: UIView {
             border.heightAnchor.constraint(equalToConstant: 2)
         ])
     }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        db = Firestore.firestore()
-        setupSubViewsInContentView(contentView: self)
-        fetchPlansAndLayout()
-        addTopBorder()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        db = Firestore.firestore()
-        setupSubViewsInContentView(contentView: self)
-        fetchPlansAndLayout()
-        addTopBorder()
-    }
-
     
-    private func setupSubViewsInContentView(contentView: UIView) {
-        setupDragHandle(contentView: contentView)
-        setupCarouselView(contentView: contentView)
-        setupExaminationTitleLabel(contentView: contentView)
-        setupExaminationView(contentView: contentView)
-        setupQuestionBankTitleLabel(contentView: contentView)
-        setupQuestionBankView(contentView: contentView)
-        setupPlansTitleLabel(contentView: contentView)
-        setupScrollView(contentView: contentView)
-        setupUpdatesTitleLabel(contentView: contentView)
-        setupUpdatesView(contentView: contentView)
-        
-        if let lastView = contentView.subviews.last {
-            lastView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
-        }
-    }
 
     private func setupDragHandle(contentView: UIView) {
         dragHandle = UIView()
@@ -123,35 +135,6 @@ class OverlayPgNeetUIView: UIView {
         ])
     }
 
-    private func setupQuestionBankTitleLabel(contentView: UIView) {
-        questionBankTitleLabel = UILabel()
-        questionBankTitleLabel.text = "Suggested Question Banks"
-        questionBankTitleLabel.textAlignment = .left
-        questionBankTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        contentView.addSubview(questionBankTitleLabel)
-        
-        questionBankTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            questionBankTitleLabel.topAnchor.constraint(equalTo: examinationView.bottomAnchor, constant: 10),
-            questionBankTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            questionBankTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            questionBankTitleLabel.heightAnchor.constraint(equalToConstant: 20)
-        ])
-    }
-
-    private func setupQuestionBankView(contentView: UIView) {
-        questionBankView = QuestionBankNeetPgUIView(frame: CGRect.zero)
-        contentView.addSubview(questionBankView)
-        
-        questionBankView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            questionBankView.topAnchor.constraint(equalTo: questionBankTitleLabel.bottomAnchor, constant: 10),
-            questionBankView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            questionBankView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            questionBankView.heightAnchor.constraint(equalToConstant: 100)
-        ])
-    }
-
     private func setupPlansTitleLabel(contentView: UIView) {
         plansTitleLabel = UILabel()
         plansTitleLabel.text = "Explore Plans"
@@ -161,7 +144,7 @@ class OverlayPgNeetUIView: UIView {
 
         plansTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            plansTitleLabel.topAnchor.constraint(equalTo: questionBankView.bottomAnchor, constant: 10),
+            plansTitleLabel.topAnchor.constraint(equalTo: examinationView.bottomAnchor, constant: 10),
             plansTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             plansTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             plansTitleLabel.heightAnchor.constraint(equalToConstant: 20)
@@ -178,21 +161,24 @@ class OverlayPgNeetUIView: UIView {
             scrollView.topAnchor.constraint(equalTo: plansTitleLabel.bottomAnchor, constant: 10),
             scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            scrollView.heightAnchor.constraint(equalToConstant: 500)  // Adjust height as needed
+            scrollView.heightAnchor.constraint(equalToConstant: 500)
         ])
-        
-        fetchPlansAndLayout()
     }
-    
+
     private func fetchPlansAndLayout() {
-            db.collection("Plans").document("PG").collection("Subscriptions").getDocuments { [weak self] (querySnapshot, error) in
-                guard let documents = querySnapshot?.documents else {
+        let cacheKey = "plansCacheKey"
+        if let cachedPlans = cache.object(forKey: cacheKey as NSString) {
+            layoutPlansFromCache(cachedPlans)
+        } else {
+            activityIndicator?.startAnimating()
+            db?.collection("Plans").document("PG").collection("Subscriptions").getDocuments { [weak self] (querySnapshot, error) in
+                guard let self = self, let documents = querySnapshot?.documents else {
                     print("Error fetching documents: \(error?.localizedDescription ?? "unknown error")")
+                    self?.activityIndicator?.stopAnimating()
                     return
                 }
                 
-                var offsetX: CGFloat = 10
-                var tallestHeight: CGFloat = 0  // Track the tallest view
+                var plansArray = [PlanData]()
                 
                 for document in documents {
                     let data = document.data()
@@ -205,23 +191,36 @@ class OverlayPgNeetUIView: UIView {
                         features: (data["PlanFeatures"] as? [String]) ?? []
                     )
                     
-                    let planView = PlansNeetPgUIView(frame: CGRect(x: offsetX, y: 0, width: 280, height: 500))
-                    planView.configure(with: planData)
-                    self?.scrollView.addSubview(planView)
-                    offsetX += planView.frame.width + 10  // Add spacing between items
-                    
-                    // Update tallestHeight if this view is taller
-                    if planView.frame.height > tallestHeight {
-                        tallestHeight = planView.frame.height
-                    }
+                    plansArray.append(planData)
                 }
                 
-                // Update scrollView contentSize and height to match tallest plan view
-                self?.scrollView.contentSize = CGSize(width: offsetX, height: tallestHeight)
-                self?.scrollView.frame.size.height = tallestHeight  // Set the height of the scrollView to the height of the tallest view
+                let arrayToCache = NSArray(array: plansArray)
+                self.cache.setObject(arrayToCache, forKey: cacheKey as NSString)
+                self.layoutPlansFromCache(arrayToCache)
+                self.activityIndicator?.stopAnimating()
             }
         }
-    
+    }
+
+    private func layoutPlansFromCache(_ cachedPlans: NSArray) {
+        var offsetX: CGFloat = 10
+        var tallestHeight: CGFloat = 0
+        
+        for plan in cachedPlans as! [PlanData] {
+            let planView = PlansNeetPgUIView(frame: CGRect(x: offsetX, y: 0, width: 280, height: 500))
+            planView.configure(with: plan)
+            self.scrollView.addSubview(planView)
+            offsetX += planView.frame.width + 10
+            
+            if planView.frame.height > tallestHeight {
+                tallestHeight = planView.frame.height
+            }
+        }
+        
+        self.scrollView.contentSize = CGSize(width: offsetX, height: tallestHeight)
+        self.scrollView.frame.size.height = tallestHeight
+    }
+
     private func setupUpdatesTitleLabel(contentView: UIView) {
         updatesTitleLabel = UILabel()
         updatesTitleLabel.text = "Recent Updates"
@@ -237,7 +236,7 @@ class OverlayPgNeetUIView: UIView {
             updatesTitleLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
-    
+
     private func setupUpdatesView(contentView: UIView) {
         updatesView = RecentUpdatesUIView(frame: CGRect.zero)
         contentView.addSubview(updatesView)

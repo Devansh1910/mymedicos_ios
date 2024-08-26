@@ -6,8 +6,10 @@ class CWTViewController: UIViewController, UITableViewDataSource, QuizTableViewC
     var specialtyTitle: String
     var segmentedControl: UISegmentedControl!
     var tableView: UITableView!
-    var quizData: [(documentID: String, data: String, isBookmarked: Bool)] = []
-    var quizDataGrouped: [String: [(documentID: String, data: String, isBookmarked: Bool)]] = [:]
+    var quizData: [(documentID: String, data: String, isBookmarked: Bool, thumbnail: String, isAttempted: Bool)] = []
+    var quizDataGrouped: [String: [(documentID: String, data: String, isBookmarked: Bool, thumbnail: String, isAttempted: Bool)]] = [:]
+
+    var activityIndicator = UIActivityIndicatorView(style: .large)
 
     init(title: String) {
         self.specialtyTitle = title
@@ -25,7 +27,17 @@ class CWTViewController: UIViewController, UITableViewDataSource, QuizTableViewC
         configureNavigationBar()
         configureSegmentedControl()
         configureTableView()
+        setupActivityIndicator()
         fetchQuizData()
+    }
+    
+    private func setupActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
     private func configureNavigationBar() {
@@ -79,10 +91,11 @@ class CWTViewController: UIViewController, UITableViewDataSource, QuizTableViewC
         let indexKey = Array(quizDataGrouped.keys)[indexPath.section]
         if let quiz = quizDataGrouped[indexKey]?[indexPath.row] {
             cell.delegate = self
-            cell.configure(with: quiz.data, examID: quiz.documentID)
+            cell.configure(with: quiz.data, examID: quiz.documentID, thumbnailURL: quiz.thumbnail, isAttempted: quiz.isAttempted)
         }
         return cell
     }
+
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return quizDataGrouped.keys.count
@@ -162,41 +175,64 @@ class CWTViewController: UIViewController, UITableViewDataSource, QuizTableViewC
     }
 
     func fetchQuizData() {
+        guard let currentUser = Auth.auth().currentUser, let phoneNumber = currentUser.phoneNumber else {
+            print("User not logged in or phone number not available")
+            return
+        }
+        
+        activityIndicator.startAnimating()
         let db = Firestore.firestore()
         let quizCollection = db.collection("PGupload").document("Weekley").collection("Quiz")
+        self.quizDataGrouped = [:]
+
         var query: Query = quizCollection.whereField("speciality", isEqualTo: specialtyTitle)
-        if segmentedControl.selectedSegmentIndex == 1 {
-            query = query.whereField("hyOption", in: ["Premium", "Standard", "Pro"])
+        if segmentedControl.selectedSegmentIndex == 1 {  
+            
+            query = query.whereField("hyOption", in: ["Premium", "Pro", "Standard"])
         }
 
-        query.getDocuments { (querySnapshot, err) in
-            self.quizDataGrouped = [:] // Clear existing data
+        query.getDocuments { [weak self] (querySnapshot, err) in
+            guard let self = self else { return }
+            self.activityIndicator.stopAnimating()
             if let err = err {
                 print("Error getting documents: \(err)")
-            } else if let querySnapshot = querySnapshot, !querySnapshot.isEmpty {
+                return
+            }
+
+            if let querySnapshot = querySnapshot, !querySnapshot.isEmpty {
+                let group = DispatchGroup()
                 for document in querySnapshot.documents {
+                    group.enter()
                     let documentID = document.documentID
                     let title = document.data()["title"] as? String ?? "No Title"
                     let index = document.data()["index"] as? String ?? "No Index"
                     let type = document.data()["hyOption"] as? String ?? "Unknown Type"
+                    let thumbnail = document.data()["thumbnail"] as? String ?? "No thumbnail"
                     let questionsData = document.data()["Data"] as? [Any] ?? []
                     let numberOfQuestions = questionsData.count
-                    let isBookmarked = false  // Default to false; update in separate fetch if needed
                     let documentInfo = "\(title); \(numberOfQuestions) MCQ's; \(type)"
-                    
-                    if var sets = self.quizDataGrouped[index] {
-                        sets.append((documentID, documentInfo, isBookmarked))
-                        self.quizDataGrouped[index] = sets
-                    } else {
-                        self.quizDataGrouped[index] = [(documentID, documentInfo, isBookmarked)]
+
+                    // Check if user has already attempted this quiz
+                    db.collection("QuizResults").document(phoneNumber).collection("Weekley").document(documentID).getDocument { (resultSnapshot, error) in
+                        let isAttempted = resultSnapshot?.exists ?? false
+                        let quizData = (documentID: documentID, data: documentInfo, isBookmarked: false, thumbnail: thumbnail, isAttempted: isAttempted)
+                        
+                        if var sets = self.quizDataGrouped[index] {
+                            sets.append(quizData)
+                            self.quizDataGrouped[index] = sets
+                        } else {
+                            self.quizDataGrouped[index] = [quizData]
+                        }
+                        group.leave()
                     }
                 }
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+                group.notify(queue: .main) {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
+
 
     func fetchBookmarkedQuizzes() {
         guard let currentUser = Auth.auth().currentUser, let phoneNumber = currentUser.phoneNumber else {
@@ -236,10 +272,12 @@ class CWTViewController: UIViewController, UITableViewDataSource, QuizTableViewC
                     let title = document.data()?["title"] as? String ?? "No Title"
                     let index = document.data()?["index"] as? String ?? "No Index"
                     let type = document.data()?["hyOption"] as? String ?? "Unknown Type"
+                    let thumbnail = document.data()?["thumbnail"] as? String ?? "No thumbnail"  // Fetch thumbnail URL
                     let questionsData = document.data()?["Data"] as? [Any] ?? []
                     let numberOfQuestions = questionsData.count
                     let documentInfo = "\(title); \(index); \(numberOfQuestions) MCQ's; \(type)"
-                    let quizData = (documentID: document.documentID, data: documentInfo, isBookmarked: true)
+                    // Include isAttempted set to true for all bookmarked quizzes
+                    let quizData = (documentID: document.documentID, data: documentInfo, isBookmarked: true, thumbnail: thumbnail, isAttempted: true)
                     if var sets = self.quizDataGrouped[index] {
                         sets.append(quizData)
                         self.quizDataGrouped[index] = sets
@@ -253,7 +291,7 @@ class CWTViewController: UIViewController, UITableViewDataSource, QuizTableViewC
             }
         }
     }
-
+    
     func didTapSolveButton(examID: String, examTitle: String) {
         let prepInfoVC = PrepInfoViewController()
         prepInfoVC.examTitle = examTitle
@@ -262,14 +300,60 @@ class CWTViewController: UIViewController, UITableViewDataSource, QuizTableViewC
         navigationController?.pushViewController(prepInfoVC, animated: true)
     }
     
-    func didTapLockedQuiz(examID: String) {
-            let bottomSheetVC = BottomSheetForPaidSheetViewController()
-            bottomSheetVC.delegate = self
-            bottomSheetVC.examID = examID
-            bottomSheetVC.modalPresentationStyle = .overFullScreen
-            bottomSheetVC.modalTransitionStyle = .coverVertical
-            present(bottomSheetVC, animated: true)
+    func didTapResultButton(examID: String, examTitle: String) {
+        guard let currentUser = Auth.auth().currentUser, let phoneNumber = currentUser.phoneNumber else {
+            print("User not logged in or phone number not available")
+            return
         }
+
+        let db = Firestore.firestore()
+        let resultsRef = db.collection("QuizResults").document(phoneNumber).collection("Weekley").document(examID)
+
+        resultsRef.getDocument { [weak self] (document, error) in
+            if let error = error {
+                print("Error fetching results: \(error)")
+                return
+            }
+
+            guard let document = document, document.exists, let data = document.data() else {
+                print("No results available for this quiz.")
+                return
+            }
+
+            self?.navigateToResultVC(with: data, examTitle: examTitle)
+        }
+    }
+
+    private func navigateToResultVC(with data: [String: Any], examTitle: String) {
+        let resultVC = ResultGTViewController()
+
+        resultVC.examName = examTitle
+        resultVC.totalQuestions = data["Total Questions"] as? Int ?? 0
+        resultVC.correctAnswers = data["Correct Answers"] as? Int ?? 0
+        resultVC.wrongAnswers = data["Wrong Answers"] as? Int ?? 0
+        resultVC.averageTimePerQuestion = data["Average Time Per Question (seconds)"] as? Double ?? 0
+        resultVC.comment = data["Comment"] as! String
+        resultVC.successRate = data["Success Rate (%)"] as? Double ?? 0
+        resultVC.totaltimetaken = data["Time Taken (seconds)"] as? Double ?? 0
+        resultVC.unansweredCount = data["Unanswered"] as? Int ?? 0
+        resultVC.markedCount = data["Marked for Review"] as? Int ?? 0
+        resultVC.percentile = data["Success Rate (%)"] as? Double ?? 0.0
+        resultVC.submissionDate = (data["Time of Submission"] as? Timestamp)?.dateValue().formatted(date: .abbreviated, time: .shortened) ?? "Date not available"
+        resultVC.hidesBottomBarWhenPushed = true
+        
+        present(resultVC, animated: true, completion: nil)
+//        navigationController?.pushViewController(resultVC, animated: true)
+    }
+
+    
+    func didTapLockedQuiz(examID: String) {
+        let bottomSheetVC = BottomSheetForPaidSheetViewController()
+        bottomSheetVC.delegate = self
+        bottomSheetVC.examID = examID
+        bottomSheetVC.modalPresentationStyle = .overFullScreen
+        bottomSheetVC.modalTransitionStyle = .coverVertical
+        present(bottomSheetVC, animated: true)
+    }
 
     func didChooseViewPlans() {
         let plansVC = PlansViewController()
