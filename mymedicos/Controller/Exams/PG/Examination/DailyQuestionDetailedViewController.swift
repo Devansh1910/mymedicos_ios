@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 class DailyQuestionDetailedViewController: UIViewController {
     
@@ -10,7 +11,7 @@ class DailyQuestionDetailedViewController: UIViewController {
     private var optionsStackView: UIStackView!
     private var correctAnswer: String?
     private var currentDescription: String?
-    private var questionID: String?  // Variable to store question ID from API
+    private var questionID: String?
     private var options: [String] = []
     private var isAnswerSelected = false
     
@@ -20,7 +21,7 @@ class DailyQuestionDetailedViewController: UIViewController {
         addCustomBackButton()
         self.title = "Question of the Day"
         fetchData()
-        view.layoutIfNeeded() // Forces layout update after setup
+        view.layoutIfNeeded()
     }
     
     private func setupUI() {
@@ -60,8 +61,8 @@ class DailyQuestionDetailedViewController: UIViewController {
     private func setupSegmentedControl() {
         segmentedControl = UISegmentedControl(items: ["QUESTION ID", "Fetching ID..."])
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.selectedSegmentIndex = 0  // Set default selection to "QUESTION ID"
-        segmentedControl.isUserInteractionEnabled = false  // Disable interaction to prevent changing the selection
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.isUserInteractionEnabled = false
 
         contentView.addSubview(segmentedControl)
         
@@ -116,77 +117,50 @@ class DailyQuestionDetailedViewController: UIViewController {
             optionsStackView.topAnchor.constraint(equalTo: instructionLabel.bottomAnchor, constant: 20),
             optionsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             optionsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            optionsStackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20)  // Use 'lessThanOrEqualTo' for flexibility
+            optionsStackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20)
         ])
     }
     
     private func fetchData() {
-        guard let url = URL(string: ConstantsDashboard.GET_DAILY_QUESTIONS_URL) else { return }
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let data = data, error == nil else { return }
-            do {
-                let result = try JSONDecoder().decode(ApiResponse.self, from: data)
-                if let questionData = result.data.first {
-                    DispatchQueue.main.async {
-                        self?.updateUI(with: questionData)
-                        self?.questionID = questionData.id  // Store the fetched ID
-                        self?.updateSegmentedControl()  // Update the segmented control with the fetched ID
-                    }
+        let db = Firestore.firestore()
+        db.collection("PGupload").document("Daily").collection("Quiz")
+            .whereField("speciality", isEqualTo: "home")
+            .getDocuments { [weak self] (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                    return
                 }
-            } catch {
-                print(error)
+                guard let documents = querySnapshot?.documents, !documents.isEmpty else {
+                    print("No documents found")
+                    return
+                }
+                let randomDoc = documents.randomElement()!
+                let data = randomDoc.data()
+                DispatchQueue.main.async {
+                    self?.updateUI(with: data)
+                    self?.questionID = randomDoc.documentID
+                    self?.updateSegmentedControl()
+                }
             }
-        }
-        task.resume()
     }
     
-    private func updateSegmentedControl() {
-        if let id = questionID {
-            let shortID = "#DQ" + (id.suffix(4))  // Fetch the last four characters and prepend "PD"
-            segmentedControl.setTitle(shortID, forSegmentAt: 1)  // Update the ID in the segmented control
-        }
-    }
-    
-    // Going back dialogue popup
-    
-    private func addCustomBackButton() {
-        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonTapped))
-        self.navigationItem.leftBarButtonItem = backButton
-    }
-    
-    @objc private func backButtonTapped() {
-        if isAnswerSelected {
-            showConfirmationDialog()
-        } else {
-            // If no answer is selected, just pop the view controller directly
-            self.navigationController?.popViewController(animated: true)
-        }
-    }
-    
+    private func updateUI(with data: [String: Any]) {
+        let question = data["Question"] as? String ?? "No question available"
+        let a = data["A"] as? String ?? ""
+        let b = data["B"] as? String ?? ""
+        let c = data["C"] as? String ?? ""
+        let d = data["D"] as? String ?? ""
+        let correct = data["Correct"] as? String ?? ""
+        let description = data["Description"] as? String ?? ""
 
-    private func showConfirmationDialog() {
-        let alert = UIAlertController(title: "End this Daily?", message: "You'll not be able to see the description related to this once ended.", preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let endAction = UIAlertAction(title: "End", style: .destructive) { [weak self] _ in
-            // Perform any cleanup or final actions before popping the view controller
-            self?.navigationController?.popViewController(animated: true)
-        }
-        
-        alert.addAction(cancelAction)
-        alert.addAction(endAction)
-        present(alert, animated: true)
+        questionLabel.text = question
+        correctAnswer = correct
+        currentDescription = description
+        options = [a, b, c, d]
+        setupOptions()
     }
     
-    private func updateUI(with questionData: QuestionData) {
-        questionLabel.text = questionData.Question
-        correctAnswer = questionData.Correct
-        currentDescription = questionData.Description
-        options = [questionData.A, questionData.B, questionData.C, questionData.D]
-        setupOptions(questionData: questionData)
-    }
-    
-    private func setupOptions(questionData: QuestionData) {
+    private func setupOptions() {
         let labels = ["A", "B", "C", "D"]
         
         for view in optionsStackView.arrangedSubviews {
@@ -235,23 +209,17 @@ class DailyQuestionDetailedViewController: UIViewController {
     private func displayDescription() {
         guard let descriptionHTML = currentDescription else { return }
         
-        guard let correctIndex = correctAnswerIndex() else { return }
-        let correctOptionLabel = ["A", "B", "C", "D"][correctIndex]
-        let correctOptionText = options[correctIndex]
-        let solutionText = "Correct Option \(correctOptionLabel) - \(correctOptionText) <br><span style='font-size: 14px; color: white;'>SOLUTION</span><br>"
-        let fullText = "\(solutionText)\(descriptionHTML)"
-        
         let descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.attributedText = convertHTMLToAttributedString(html: fullText)
+        descriptionLabel.attributedText = convertHTMLToAttributedString(html: descriptionHTML)
         contentView.addSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: optionsStackView.bottomAnchor, constant: 20),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20) // Ensure the scroll works
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
 
@@ -334,14 +302,36 @@ class DailyQuestionDetailedViewController: UIViewController {
         }
     }
     
-    struct ApiResponse: Decodable {
-        let status: String
-        let data: [QuestionData]
+    private func updateSegmentedControl() {
+        if let id = questionID {
+            let shortID = "#DQ" + (id.suffix(4))  // Fetch the last four characters and prepend "PD"
+            segmentedControl.setTitle(shortID, forSegmentAt: 1)  // Update the ID in the segmented control
+        }
     }
     
-    struct QuestionData: Decodable {
-        let A, B, C, D, Correct, Description: String
-        let Question: String
-        let id: String  // Make sure to include this in your struct to correctly parse the ID
+    private func addCustomBackButton() {
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonTapped))
+        self.navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc private func backButtonTapped() {
+        if isAnswerSelected {
+            showConfirmationDialog()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func showConfirmationDialog() {
+        let alert = UIAlertController(title: "End this Daily?", message: "You'll not be able to see the description related to this once ended.", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let endAction = UIAlertAction(title: "End", style: .destructive) { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(endAction)
+        present(alert, animated: true)
     }
 }

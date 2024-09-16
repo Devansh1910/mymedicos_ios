@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
@@ -29,6 +30,8 @@ class Registration2ViewController: UIViewController, UIPickerViewDelegate, UIPic
     let interestPicker = UIPickerView()
     let interest2Picker = UIPickerView()
     let registerButton = UIButton()
+    let activityIndicator = UIActivityIndicatorView(style: .large)
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,16 @@ class Registration2ViewController: UIViewController, UIPickerViewDelegate, UIPic
         setupUI()
         loadState()
         loadInterests()
+        setupActivityIndicator()
+    }
+    
+    func setupActivityIndicator() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
     func setupUI() {
@@ -71,6 +84,8 @@ class Registration2ViewController: UIViewController, UIPickerViewDelegate, UIPic
 
         contentView.heightAnchor.constraint(equalToConstant: 600).isActive = true
     }
+    
+    
 
     func setupLabels() {
         stateLabel.text = "Current State*"
@@ -90,6 +105,7 @@ class Registration2ViewController: UIViewController, UIPickerViewDelegate, UIPic
         interest2Label.textColor = .gray
         interest2Label.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(interest2Label)
+        
     }
 
     func createTextField(placeholder: String, textField: UITextField) {
@@ -134,9 +150,9 @@ class Registration2ViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     func setupContinueButton() {
         let registerNowButton = UIButton(type: .system)
-        registerNowButton.backgroundColor = .white
+        registerNowButton.backgroundColor = .darkGray
         registerNowButton.setTitle("Register Now", for: .normal)
-        registerNowButton.setTitleColor(.gray, for: .normal)
+        registerNowButton.setTitleColor(.white, for: .normal)
         registerNowButton.layer.borderColor = UIColor.gray.cgColor
         registerNowButton.layer.borderWidth = 1
         registerNowButton.layer.cornerRadius = 8
@@ -144,26 +160,13 @@ class Registration2ViewController: UIViewController, UIPickerViewDelegate, UIPic
         registerNowButton.addTarget(self, action: #selector(registerNowTapped), for: .touchUpInside)
         view.addSubview(registerNowButton)
 
-        let completeRegisterButton = UIButton(type: .system)
-        completeRegisterButton.backgroundColor = .darkGray
-        completeRegisterButton.setTitle("Complete & Register", for: .normal)
-        completeRegisterButton.setTitleColor(.white, for: .normal)
-        completeRegisterButton.layer.cornerRadius = 8
-        completeRegisterButton.translatesAutoresizingMaskIntoConstraints = false
-        completeRegisterButton.addTarget(self, action: #selector(completeRegisterTapped), for: .touchUpInside)
-        view.addSubview(completeRegisterButton)
-
         NSLayoutConstraint.activate([
             registerNowButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            registerNowButton.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -1),
+            registerNowButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10), // Adjusted to anchor to the right edge
             registerNowButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             registerNowButton.heightAnchor.constraint(equalToConstant: 45),
-
-            completeRegisterButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 10),
-            completeRegisterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            completeRegisterButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            completeRegisterButton.heightAnchor.constraint(equalToConstant: 45)
         ])
+
     }
 
     
@@ -195,26 +198,32 @@ class Registration2ViewController: UIViewController, UIPickerViewDelegate, UIPic
             interest2TextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             interest2TextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             interest2TextField.heightAnchor.constraint(equalToConstant: 50),
+
         ])
     }
 
-    @objc func completeRegisterTapped() {
+
+    @objc func registerNowTapped() {
+        activityIndicator.startAnimating()
+        view.isUserInteractionEnabled = false  // Optionally disable user interaction
+
         registerUser { [weak self] uid in
-            let customizeProfileVC = CustomizeProfileViewController()
-            customizeProfileVC.userDocID = uid
-            customizeProfileVC.onProfileComplete = {
-                self?.updateProfileStatus(uid: uid, status: true)
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.view.isUserInteractionEnabled = true
+                self?.navigateToLoginViewController()  // Navigate after registration is complete
             }
-            self?.navigationController?.pushViewController(customizeProfileVC, animated: true)
         }
     }
 
-    @objc func registerNowTapped() {
-        registerUser { [weak self] uid in
-            self?.showAlert(message: "Registration successful!")
-            self?.navigationController?.popToRootViewController(animated: true) // Navigate to LoginVC
+    func navigateToLoginViewController() {
+        let loginViewController = LoginViewController()  // Make sure to instantiate the correct login view controller
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(loginViewController, animated: true)
         }
     }
+
+
 
     func updateProfileStatus(uid: String, status: Bool) {
         let userRef = Firestore.firestore().collection("users").document(uid)
@@ -231,61 +240,34 @@ class Registration2ViewController: UIViewController, UIPickerViewDelegate, UIPic
     func registerUser(completion: @escaping (String) -> Void) {
         guard let state = selectedState,
               let interest = selectedInterest,
-              let interest2 = selectedInterest2 else {
+              let interest2 = selectedInterest2,
+              let name = name, let email = email, let phoneNumber = phoneNumber, let prefix = prefix else {
             showAlert(message: "All fields are required.")
             return
         }
 
-        guard let name = name, let email = email, let phoneNumber = phoneNumber, let prefix = prefix else {
-            showAlert(message: "Incomplete registration information.")
-            return
-        }
-
-        // Create a new user with Firebase Authentication
-        Auth.auth().createUser(withEmail: email, password: "dummyPassword") { [weak self] result, error in
+        // Save the user's data in Firestore without authenticating them
+        let userRef = Firestore.firestore().collection("users").document()
+        userRef.setData([
+            "Name": name,
+            "Email ID": email,
+            "Location": state,
+            "Interest": interest,
+            "Interest2": interest2,
+            "Prefix": prefix,
+            "Phone Number": phoneNumber,
+            "DocID": userRef.documentID,  // Use Firestore generated ID
+            "MCNVerified": false,
+            "UpdatesProfile": false
+        ]) { [weak self] error in
             if let error = error {
                 self?.showAlert(message: error.localizedDescription)
-                return
-            }
-            
-            guard let uid = result?.user.uid else { return }
-            
-            // Retrieve the FCM token
-            Messaging.messaging().token { token, error in
-                if let error = error {
-                    print("Error fetching FCM token: \(error)")
-                    return
-                }
-                
-                guard let fcmToken = token else {
-                    print("FCM token is nil")
-                    return
-                }
-                
-                // Save the user's data in Firestore
-                let userRef = Firestore.firestore().collection("users").document(uid)
-                userRef.setData([
-                    "Name": name,
-                    "Email ID": email,
-                    "Location": state,
-                    "Interest": interest,
-                    "Interest2": interest2,
-                    "Prefix": prefix,
-                    "Phone Number": phoneNumber,
-                    "DocID": uid,  // Store the Document ID (UID) here
-                    "MCNVerified": false,  // Set MCNVerified to false by default
-                    "UpdatesProfile": false,  // Set UpdatesProfile to false by default
-                    "FCMToken": fcmToken  // Add FCM token to user document
-                ]) { [weak self] error in
-                    if let error = error {
-                        self?.showAlert(message: error.localizedDescription)
-                    } else {
-                        completion(uid)  // Pass the UID to the completion handler
-                    }
-                }
+            } else {
+                completion(userRef.documentID)  // Pass the Firestore Document ID to the completion handler
             }
         }
     }
+
 
 
     func showAlert(message: String) {

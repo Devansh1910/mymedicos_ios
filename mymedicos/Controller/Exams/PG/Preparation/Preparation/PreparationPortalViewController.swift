@@ -1,6 +1,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import SkeletonView
 
 struct QuestionPrep {
     var questionText: String
@@ -15,7 +16,6 @@ struct QuestionPrep {
     var isAnswered: Bool {
         return selectedOption != nil
     }
-
     
     mutating func isAnswerCorrect() -> Bool {
             guard let selectedOption = selectedOption else {
@@ -29,7 +29,7 @@ struct QuestionPrep {
 
 }
 
-class PreparationPortalViewController: UIViewController, QuestionNavigatorDelegate {
+class PreparationPortalViewController: UIViewController, QuestionNavigatorDelegate, UIViewControllerTransitioningDelegate {
     
     func didSelectQuestion(at index: Int) {
         currentQuestionIndex = index
@@ -58,7 +58,7 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
     private var markForReviewCheckbox: UIButton!
     
     private var questions: [QuestionPrep] = []
-    private var currentQuestionIndex: Int = 0
+    var currentQuestionIndex: Int = 0
     
     private var menuButton: UIBarButtonItem!
     private var isQuestionNavigatorVisible = false
@@ -76,6 +76,10 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         setupUI()
         self.title = examTitle ?? "Exam Question"
         setupMenuButton()
+        
+        startShimmeringEffect()
+        setupCustomNavigationBar()
+        
         fetchQuestions()
         quizStartTime = Date()  // Record the start time
     }
@@ -85,11 +89,32 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         setupScrollView()
         setupCurrentQuestionLabel()
         setupQuestionLabel()
-        setupInstructionLabel()  // Initialize instruction label and checkbox first
-        setupQuestionImageView()  // Then setup the image view
-        setupOptionsStackView()  // Finally setup the options stack view
+        setupInstructionLabel()
+        
+        setupQuestionImageView()
+        setupOptionsStackView()
         setupDescriptionLabel()
         setupNavigationButtons()
+    }
+    
+    private func startShimmeringEffect() {
+        questionLabel.showAnimatedSkeleton()
+        questionImageView.showAnimatedSkeleton()
+        optionsStackView.showAnimatedSkeleton()
+        descriptionLabel.showAnimatedSkeleton()
+        previousButton.showAnimatedSkeleton()
+        nextButton.showAnimatedSkeleton()
+        endQuizButton.showAnimatedSkeleton()
+    }
+
+    private func stopShimmeringEffect() {
+        questionLabel.hideSkeleton()
+        questionImageView.hideSkeleton()
+        optionsStackView.hideSkeleton()
+        descriptionLabel.hideSkeleton()
+        previousButton.hideSkeleton()
+        nextButton.hideSkeleton()
+        endQuizButton.hideSkeleton()
     }
 
 
@@ -119,6 +144,23 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
             markForReviewCheckbox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
         ])
     }
+    
+    private func setupCustomNavigationBar() {
+        let pauseButton = UIBarButtonItem(image: UIImage(systemName: "pause.circle"),
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(pauseButtonTapped))
+        
+        let menuButton = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"),
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(menuButtonTapped))
+        
+        self.navigationItem.rightBarButtonItem = menuButton
+        
+        self.navigationItem.leftBarButtonItem = pauseButton
+    }
+
 
     @objc private func imageTapped() {
         guard let image = questionImageView.image else { return }
@@ -137,6 +179,26 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         self.navigationItem.rightBarButtonItem = menuButton
     }
     
+    @objc private func pauseButtonTapped() {
+        let pauseVC = PauseBottomSheetViewController()
+        
+        // Set up the pause action callback
+        pauseVC.onPause = { [weak self] in
+            // Pop the current view controller to navigate back to the previous screen
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        pauseVC.modalPresentationStyle = .custom
+        pauseVC.transitioningDelegate = self  // Set the custom presentation delegate
+        
+        present(pauseVC, animated: true, completion: nil)
+    }
+
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return BottomSheetPresentationController(presentedViewController: presented, presenting: presenting)
+    }
+
+    
     @objc private func menuButtonTapped() {
         let prepquestionNavigatorVC = PreparationQuestionNavigatorViewController(questions: questions, delegate: self)
         prepquestionNavigatorVC.modalPresentationStyle = .overFullScreen
@@ -150,6 +212,7 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         menuButton.isEnabled = false
         menuButton.tintColor = .clear
     }
+    
 
     func closeQuestionNavigator() {
         menuButton.isEnabled = true
@@ -161,7 +224,8 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
     }
     
     private func fetchQuestions() {
-        guard let examID = examID else { return }
+        guard let examID = examID, let user = Auth.auth().currentUser else { return }
+        let phoneNumber = user.phoneNumber ?? ""
         let db = Firestore.firestore()
         let documentRef = db.collection("PGupload").document("Weekley").collection("Quiz").document(examID)
         
@@ -202,10 +266,66 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
                 )
             }
             
-            print("Loaded questions successfully. Total questions: \(self?.questions.count ?? 0)")
+            // Fetch the saved progress for this exam
+            self?.fetchSavedProgress(for: examID, phoneNumber: phoneNumber)
+            
+            // Stop the shimmer effect once data is loaded
+            self?.stopShimmeringEffect()
+        }
+    }
+
+
+    private func fetchSavedProgress(for examID: String, phoneNumber: String) {
+        let db = Firestore.firestore()
+        let documentRef = db.collection("QuizProgress").document(phoneNumber).collection("pgneet").document(examID)
+        
+        documentRef.getDocument { [weak self] document, error in
+            if let error = error {
+                print("Error fetching progress: \(error.localizedDescription)")
+                return
+            }
+            
+            // If the document doesn't exist or doesn't contain progress data
+            guard let document = document, document.exists, let progressMap = document.data()?["progress"] as? [String: String] else {
+                print("No progress found or data format is incorrect. Navigating to the 0th index.")
+                
+                // Navigate to the 0th index by default
+                self?.currentQuestionIndex = 0
+                self?.updateUIForCurrentQuestion()
+                return
+            }
+            
+            // Update questions with saved progress
+            for (indexString, selectedOptionLetter) in progressMap {
+                if let index = Int(indexString), index < self?.questions.count ?? 0 {
+                    let selectedOptionIndex = self?.letterToOptionIndex(selectedOptionLetter)
+                    self?.questions[index].selectedOption = selectedOptionIndex
+                }
+            }
+            
+            // Navigate to the last attempted question, or 0th index if no valid index is found
+            if let currentIndex = document.data()?["current"] as? Int, currentIndex < self?.questions.count ?? 0 {
+                self?.currentQuestionIndex = currentIndex
+            } else {
+                self?.currentQuestionIndex = 0
+            }
+            
+            // Update the UI for the current question
             self?.updateUIForCurrentQuestion()
         }
     }
+
+
+    private func letterToOptionIndex(_ letter: String) -> Int? {
+        switch letter {
+        case "A": return 0
+        case "B": return 1
+        case "C": return 2
+        case "D": return 3
+        default: return nil
+        }
+    }
+
 
 
     private func setupScrollView() {
@@ -359,14 +479,24 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         } else {
             questionImageView.isHidden = false
             questionImageViewHeightConstraint.constant = 200
+            
             if let url = URL(string: question.imageUrl) {
-                loadImage(from: url) { [weak self] image in
-                    if self?.questions[self?.currentQuestionIndex ?? 0].imageUrl == url.absoluteString {
-                        self?.questionImageView.image = image
+                // Load image using Kingfisher with a placeholder that uses SkeletonView shimmer
+                questionImageView.kf.setImage(
+                    with: url,
+                    placeholder: nil,
+                    options: nil,
+                    progressBlock: nil
+                ) { [weak self] result in
+                    switch result {
+                    case .success(_):
+                        // Stop shimmering for the image view once the image is successfully loaded
+                        self?.questionImageView.hideSkeleton()
+                    case .failure(let error):
+                        print("Error loading image: \(error.localizedDescription)")
+                        // Handle error, e.g., by showing a default image or error message
                     }
                 }
-            } else {
-                questionImageView.image = nil
             }
         }
 
@@ -411,6 +541,8 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         view.layoutIfNeeded()
     }
 
+
+
     
     private func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
         DispatchQueue.global().async {
@@ -431,11 +563,10 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         let index = viewTapped.tag
         var currentQuestion = questions[currentQuestionIndex]
 
-        // Ensure that we only update the answer and counts if no option was previously selected
         if currentQuestion.selectedOption == nil {
             currentQuestion.selectedOption = index
-            questions[currentQuestionIndex] = currentQuestion  // Save the updated question back to the array
-            
+            questions[currentQuestionIndex] = currentQuestion
+
             if currentQuestion.isAnswerCorrect() {
                 correctAnswersCount += 1
                 print("Correct answer selected. Total correct: \(correctAnswersCount)")
@@ -443,14 +574,61 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
                 wrongAnswersCount += 1
                 print("Wrong answer selected. Total wrong: \(wrongAnswersCount)")
             }
-            
+
+            // Save the selected option to Firestore
+            saveSelectedOptionToFirestore(questionIndex: currentQuestionIndex, selectedOption: index)
+
             updateUIForCurrentQuestion()
         }
     }
 
+    
+    private func saveSelectedOptionToFirestore(questionIndex: Int, selectedOption: Int) {
+        guard let user = Auth.auth().currentUser, let phoneNumber = user.phoneNumber, let examID = examID else {
+            print("User is not logged in or phone number/exam ID is unavailable")
+            return
+        }
 
+        let db = Firestore.firestore()
+        let documentRef = db.collection("QuizProgress").document(phoneNumber)
+                            .collection("pgneet").document(examID)
 
+        // Create a map for the progress
+        let selectedOptionLetter = ["A", "B", "C", "D"][selectedOption]
+        let progressUpdate = ["\(questionIndex)": selectedOptionLetter]
 
+        // Update the progress map within Firestore
+        documentRef.setData(["progress": progressUpdate], merge: true) { error in
+            if let error = error {
+                print("Error updating selected option in Firestore: \(error.localizedDescription)")
+            } else {
+                print("Selected option \(selectedOptionLetter) for question \(questionIndex) saved successfully.")
+            }
+        }
+
+        documentRef.setData(["current": questionIndex], merge: true)
+        let sectionName = "pgneet"
+        let correctCount = questions.map { var question = $0; return question.isAnswerCorrect() }.filter { $0 }.count
+        let wrongCount = questions.map { var question = $0; return question.isAnswered && !question.isAnswerCorrect() }.filter { $0 }.count
+        let totalScore = (correctCount * 4) - (wrongCount * 1)
+
+        let allQuestionsAnswered = questions.allSatisfy { $0.isAnswered }
+
+        let scoreData: [String: Any] = [
+            "docID" : examID,
+            "section": sectionName,
+            "score": totalScore,
+            "submitted": allQuestionsAnswered 
+        ]
+
+        documentRef.setData(scoreData, merge: true) { error in
+            if let error = error {
+                print("Error updating score and section in Firestore: \(error.localizedDescription)")
+            } else {
+                print("Score, section, and submission status updated successfully.")
+            }
+        }
+    }
 
     private func convertHTMLToAttributedString(html: String) -> NSAttributedString? {
         let modifiedFont = """
@@ -615,34 +793,34 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         let timeTaken = endTime.timeIntervalSince(quizStartTime ?? endTime)
         let averageTimePerQuestion = timeTaken / Double(questions.count)
         let successRate = Double(correctAnswersCount) / Double(questions.count) * 100
-        // Determine comment based on time and accuracy
-        let timeThreshold = 60.0  // Example threshold in seconds
-        let highAccuracyThreshold = 80.0
-        let lowAccuracyThreshold = 50.0
-        var comment = "Well done!"
+        
+        // Determine if the quiz is fully answered and calculate the final score
+        let answeredCount = questions.filter { $0.isAnswered }.count
+        let markedCount = questions.filter { $0.isMarkedForReview }.count
+        let unansweredCount = questions.count - answeredCount
+        let correctCount = questions.map { var question = $0; return question.isAnswerCorrect() }.filter { $0 }.count
+        let wrongCount = questions.map { var question = $0; return question.isAnswered && !question.isAnswerCorrect() }.filter { $0 }.count
+        let totalScore = (correctCount * 4) - (wrongCount * 1)
+        let isSubmitted = unansweredCount == 0
 
-        if timeTaken < timeThreshold && successRate >= highAccuracyThreshold {
+        var comment = "Well done!"
+        if timeTaken < 60 && successRate >= 80 {
             comment = "Excellent speed and accuracy!"
-        } else if timeTaken > timeThreshold && successRate < lowAccuracyThreshold {
+        } else if timeTaken > 60 && successRate < 50 {
             comment = "Needs improvement in both speed and accuracy."
-        } else if timeTaken < timeThreshold {
+        } else if timeTaken < 60 {
             comment = "Great speed, but consider improving accuracy."
-        } else if successRate >= highAccuracyThreshold {
+        } else if successRate >= 80 {
             comment = "High accuracy, try to increase your speed next time."
         } else {
             comment = "Good effort, keep practicing!"
         }
-
-        // Calculate the final scores based on answers
-        let answeredCount = questions.filter { $0.isAnswered }.count
-        let markedCount = questions.filter { $0.isMarkedForReview }.count
-        let unansweredCount = questions.count - answeredCount
-
+        
         guard let user = Auth.auth().currentUser, let phoneNumber = user.phoneNumber else {
             print("User is not logged in or phone number is unavailable")
             return
         }
-
+        
         let results: [String: Any] = [
             "Total Questions": questions.count,
             "Correct Answers": correctAnswersCount,
@@ -651,13 +829,16 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
             "Unanswered": unansweredCount,
             "Quiz ID": examID ?? "Unknown ID",
             "Time of Submission": FieldValue.serverTimestamp(),
-            "Total Marks Obtained": (correctAnswersCount * 4) - (wrongAnswersCount * 1),
+            "Total Marks Obtained": totalScore,
             "Time Taken (seconds)": timeTaken,
             "Average Time Per Question (seconds)": averageTimePerQuestion,
             "Success Rate (%)": successRate,
-            "Comment": comment  // Save the personalized comment
+            "Comment": comment,
+            "section": "pgneet",
+            "score": totalScore,
+            "submitted": isSubmitted
         ]
-
+        
         let db = Firestore.firestore()
         let resultsRef = db.collection("QuizResults").document(phoneNumber)
                                 .collection("Weekley").document(examID ?? "Unknown Exam")
@@ -718,3 +899,54 @@ class PreparationPortalViewController: UIViewController, QuestionNavigatorDelega
         }
     }
 }
+class BottomSheetPresentationController: UIPresentationController {
+    
+    private let dimmingView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+        view.alpha = 0.0
+        return view
+    }()
+    
+    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        dimmingView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    override var frameOfPresentedViewInContainerView: CGRect {
+        guard let containerView = containerView else { return .zero }
+        let height: CGFloat = 250
+        return CGRect(x: 0, y: containerView.bounds.height - height, width: containerView.bounds.width, height: height)
+    }
+    
+    override func presentationTransitionWillBegin() {
+        guard let containerView = containerView else { return }
+        
+        dimmingView.frame = containerView.bounds
+        containerView.addSubview(dimmingView)
+        
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
+            self.dimmingView.alpha = 1.0
+        }, completion: nil)
+    }
+    
+    override func dismissalTransitionWillBegin() {
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
+            self.dimmingView.alpha = 0.0
+        }, completion: { _ in
+            self.dimmingView.removeFromSuperview()
+        })
+    }
+    
+    override func containerViewWillLayoutSubviews() {
+        super.containerViewWillLayoutSubviews()
+        presentedView?.frame = frameOfPresentedViewInContainerView
+    }
+    
+    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+        presentedViewController.dismiss(animated: true, completion: nil)
+    }
+}
+

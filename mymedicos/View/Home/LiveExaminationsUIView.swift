@@ -8,6 +8,7 @@ protocol LiveExaminationsUIViewDelegate: AnyObject {
 class LiveExaminationsUIView: UIView {
     weak var delegate: LiveExaminationsUIViewDelegate?
     private var examID: String? // Store the examID
+    private var shimmerLayer: CAGradientLayer?
 
     // Red Circle View
     private let redCircleView: UIView = {
@@ -17,6 +18,42 @@ class LiveExaminationsUIView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupLayout()
+        styleStaticComponents()
+        fetchData()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupLayout()
+        styleStaticComponents()
+        fetchData()
+    }
+
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        shimmerLayer?.frame = self.bounds // Adjust if needed to cover specific areas
+    }
+
+    // During initialization or styling, set background colors to compatible ones
+    private func styleStaticComponents() {
+        liveLabel.backgroundColor = .clear
+        neetButton.backgroundColor = .clear
+        lockButton.backgroundColor = .clear
+        questionLabel.backgroundColor = .clear
+        infoStackView.arrangedSubviews.forEach { subview in
+            if let label = subview as? UILabel {
+                label.backgroundColor = .clear
+            } else if let imageView = subview as? UIImageView {
+                imageView.backgroundColor = .clear
+            }
+        }
+    }
+
     
     // LIVE Label
     private let liveLabel: UILabel = {
@@ -121,23 +158,38 @@ class LiveExaminationsUIView: UIView {
         return button
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupLayout()
-        fetchData()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupLayout()
-        fetchData()
-    }
-    
     @objc private func handleAttempt() {
         if let title = questionLabel.text, let examID = examID {
             delegate?.navigateToExamPortal(withTitle: title, examID: examID)
         }
     }
+    
+    private func addShimmerEffect() {
+        shimmerLayer?.removeFromSuperlayer()
+        shimmerLayer = CAGradientLayer()
+        let lightColor = UIColor.white.withAlphaComponent(0.1).cgColor
+        let darkColor = UIColor.black.withAlphaComponent(0.08).cgColor
+
+        shimmerLayer?.colors = [darkColor, lightColor, darkColor]
+        shimmerLayer?.startPoint = CGPoint(x: 0, y: 0.5)
+        shimmerLayer?.endPoint = CGPoint(x: 1, y: 0.5)
+        shimmerLayer?.locations = [0, 0.5, 1]
+        shimmerLayer?.frame = self.bounds
+        layer.insertSublayer(shimmerLayer!, at: 0) // Ensure it's below all other subviews
+
+        let animation = CABasicAnimation(keyPath: "locations")
+        animation.fromValue = [-1.0, -0.5, 0.0]
+        animation.toValue = [1.0, 1.5, 2.0]
+        animation.duration = 1.5
+        animation.repeatCount = Float.infinity
+        shimmerLayer?.add(animation, forKey: "shimmer")
+    }
+
+    private func removeShimmerEffect() {
+        shimmerLayer?.removeFromSuperlayer()
+    }
+
+    
     
     private func setupLayout() {
         // Add red circle and LIVE label to the stack view
@@ -198,6 +250,7 @@ class LiveExaminationsUIView: UIView {
     }
 
     private func fetchData() {
+        addShimmerEffect()
         let db = Firestore.firestore()
         let today = Date()
 
@@ -206,6 +259,7 @@ class LiveExaminationsUIView: UIView {
             .collection("Quiz")
             .whereField("to", isGreaterThanOrEqualTo: today)
             .getDocuments { [weak self] (querySnapshot, error) in
+                self?.removeShimmerEffect()
                 if let error = error {
                     print("Error fetching documents: \(error)")
                     return

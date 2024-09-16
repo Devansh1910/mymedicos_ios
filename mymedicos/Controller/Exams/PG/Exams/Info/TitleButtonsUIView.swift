@@ -31,8 +31,10 @@ class TitleButtonsUIView: UIView {
         // Create the title label
         titleLabel = UILabel()
         titleLabel.text = "Champions Exam NEET PG - 2"
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 0 // Allow multiple lines if needed
+        titleLabel.lineBreakMode = .byWordWrapping // Wrap text at word boundaries
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         // Create the ID label
@@ -75,9 +77,23 @@ class TitleButtonsUIView: UIView {
             mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
             shareFreeStackView.heightAnchor.constraint(equalToConstant: 50),
-            bookmarkButton.heightAnchor.constraint(equalToConstant: 50)
+            bookmarkButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            // Title label width to match the main stack view with margins of 10 points
+            titleLabel.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -10)
         ])
+        
+        // Optional: Check for character count and insert line break
+        if let text = titleLabel.text, text.count > 30 {
+            let index = text.index(text.startIndex, offsetBy: 30)
+            let firstPart = text[..<index]
+            let secondPart = text[index...]
+            titleLabel.text = "\(firstPart)\n\(secondPart)"
+        }
     }
+
+
     
     private func createButton(title: String, imageName: String, action: Selector? = nil) -> UIButton {
         let button = UIButton(type: .system)

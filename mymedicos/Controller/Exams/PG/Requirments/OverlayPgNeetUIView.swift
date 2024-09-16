@@ -172,9 +172,17 @@ class OverlayPgNeetUIView: UIView {
         } else {
             activityIndicator?.startAnimating()
             db?.collection("Plans").document("PG").collection("Subscriptions").getDocuments { [weak self] (querySnapshot, error) in
-                guard let self = self, let documents = querySnapshot?.documents else {
-                    print("Error fetching documents: \(error?.localizedDescription ?? "unknown error")")
-                    self?.activityIndicator?.stopAnimating()
+                guard let self = self else { return } // Ensure self is available
+                
+                if let error = error {
+                    print("Error fetching documents: \(error.localizedDescription)")
+                    self.activityIndicator?.stopAnimating()
+                    return
+                }
+                
+                guard let documents = querySnapshot?.documents else {
+                    self.activityIndicator?.stopAnimating()
+                    print("No documents found")
                     return
                 }
                 
@@ -183,12 +191,13 @@ class OverlayPgNeetUIView: UIView {
                 for document in documents {
                     let data = document.data()
                     let planData = PlanData(
+                        documentID: document.documentID, // Correct label: documentId
                         title: data["PlanName"] as? String ?? "N/A",
                         subtitle: data["PlanTagline"] as? String ?? "N/A",
                         startingPrice: "\(data["Discount_Price"] as? Int ?? 0)",
                         discountedPrice: "\(data["PlanPrice"] as? Int ?? 0)",
                         originalPrice: "\(data["PlanPrice"] as? Int ?? 0)",
-                        features: (data["PlanFeatures"] as? [String]) ?? []
+                        features: data["PlanFeatures"] as? [String] ?? []
                     )
                     
                     plansArray.append(planData)
@@ -201,6 +210,7 @@ class OverlayPgNeetUIView: UIView {
             }
         }
     }
+
 
     private func layoutPlansFromCache(_ cachedPlans: NSArray) {
         var offsetX: CGFloat = 10

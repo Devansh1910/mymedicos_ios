@@ -1,10 +1,16 @@
 import UIKit
 
+protocol PraticeQuestionsUIViewDelegate: AnyObject {
+    func didTapSolveNow()
+}
+
 class PraticeQuestionsUIView: UIView {
     
     // Initializing the subviews
     let mainButton = UIButton()
     let actionButton = UIButton()
+    
+    weak var delegate: PraticeQuestionsUIViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,6 +52,13 @@ class PraticeQuestionsUIView: UIView {
         addSubview(mainButton)
         mainButton.addSubview(actionButton)
         
+        // Adding target for actionButton
+        actionButton.addTarget(self, action: #selector(solveNowButtonTapped), for: .touchUpInside)
+        
+        // Adding buttons to the main view
+        addSubview(mainButton)
+        mainButton.addSubview(actionButton)
+        
         // Layout constraints
         mainButton.translatesAutoresizingMaskIntoConstraints = false
         actionButton.translatesAutoresizingMaskIntoConstraints = false
@@ -63,5 +76,9 @@ class PraticeQuestionsUIView: UIView {
             actionButton.widthAnchor.constraint(equalToConstant: 100),
             actionButton.heightAnchor.constraint(equalTo: mainButton.heightAnchor, multiplier: 0.6)
         ])
+    }
+    
+    @objc private func solveNowButtonTapped() {
+        delegate?.didTapSolveNow()
     }
 }

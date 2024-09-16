@@ -23,6 +23,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var phoneNumberLimit: Int = 10  // Default phone number limit
     var countryPickerAlertController: UIAlertController?
     
+    let activityIndicator = UIActivityIndicatorView(style: .large)
+    
     private let firestore = Firestore.firestore()
 
     override func viewDidLoad() {
@@ -38,6 +40,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         preloadCountryPicker()
         setupContinueButtonAction() // Set up continue button action
     }
+    
+    private func setupActivityIndicator() {
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        containerView.center = view.center
+        containerView.backgroundColor = .clear // Optional: set background color if needed
+        addShadow(to: containerView, color: .gray, opacity: 0.8, offset: CGSize(width: 0, height: 1), radius: 2)
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(activityIndicator)
+        view.addSubview(containerView)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            activityIndicator.widthAnchor.constraint(equalToConstant: 40),
+            activityIndicator.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+
+
+
 
     private func loadCountryCodes() {
         if let path = Bundle.main.path(forResource: "CountryCode", ofType: "json") {
@@ -254,7 +277,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @objc private func continueButtonTapped() {
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else {
-            // Handle empty phone number
+            showAlert(title: "Invalid Input", message: "Please enter a phone number.")
+            return
+        }
+
+        if phoneNumber.count < 10 || phoneNumber.count > 16 {
+            showAlert(title: "Invalid Number", message: "Please enter a valid phone number with 10 to 16 digits.")
             return
         }
 
@@ -263,18 +291,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             print("Country code not found")
             return
         }
-        
-        // The title format is "🇮🇳 +91", so split it to get the dial code
+
         let components = countryTitle.split(separator: " ")
         guard components.count > 1 else {
             print("Country code format is incorrect")
             return
         }
-        
+
         let dialCode = components[1] // "+91" in this example
         let fullPhoneNumber = "\(dialCode)\(phoneNumber)"
-        
+
+        activityIndicator.startAnimating()  // Start the loader
+        view.isUserInteractionEnabled = false  // Optionally disable interaction
+
         checkIfUserExists(phoneNumber: fullPhoneNumber)
+    }
+
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
 
     private func checkIfUserExists(phoneNumber: String) {
@@ -296,16 +333,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-
-    private func navigateToRegistration(with phoneNumber: String) {
-        let registrationViewController = Registration1ViewController()
-        registrationViewController.phoneNumber = phoneNumber // Pass the phone number
-        navigationController?.pushViewController(registrationViewController, animated: true)
+    
+    func addShadow(to view: UIView, color: UIColor = .black, opacity: Float = 0.5, offset: CGSize = CGSize(width: 0, height: 2), radius: CGFloat = 4) {
+        view.layer.shadowColor = color.cgColor
+        view.layer.shadowOpacity = opacity
+        view.layer.shadowOffset = offset
+        view.layer.shadowRadius = radius
+        view.layer.masksToBounds = false
     }
 
     private func sendOTP(to phoneNumber: String) {
-        print("sendOTP called with phoneNumber: \(phoneNumber)")
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] verificationID, error in
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.view.isUserInteractionEnabled = true
+            }
+
             guard let self = self else { return }
             if let error = error {
                 print("Error sending OTP: \(error)")
@@ -318,10 +361,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
 
             UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-
-            print("Navigating to EnterOtpViewController")
             self.navigateToEnterOTP(phoneNumber: phoneNumber)
         }
+    }
+
+    private func navigateToRegistration(with phoneNumber: String) {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+        }
+        let registrationViewController = Registration1ViewController()
+        registrationViewController.phoneNumber = phoneNumber
+        navigationController?.pushViewController(registrationViewController, animated: true)
     }
 
 
@@ -335,13 +386,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
     }
 
-    // UITextFieldDelegate methods
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
+
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        return updatedText.count <= phoneNumberLimit
+
+        // Allow up to 16 characters in the text field
+        return updatedText.count <= 16
     }
+
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

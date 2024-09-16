@@ -2,7 +2,6 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-// MainTabBarViewController
 class MainTabBarViewController: UITabBarController {
     
     var phoneNumber: String?
@@ -12,10 +11,8 @@ class MainTabBarViewController: UITabBarController {
         overrideUserInterfaceStyle = .light
         self.navigationItem.hidesBackButton = true
         
-        // Retrieve the phone number from UserDefaults
         let savedPhoneNumber = UserDefaults.standard.string(forKey: "savedPhoneNumber")
 
-        // Check if a number was retrieved and log it
         if let number = savedPhoneNumber {
             phoneNumber = number
             print("App launched. Retrieved saved phone number: \(number)")
@@ -29,28 +26,29 @@ class MainTabBarViewController: UITabBarController {
         
         let vc1 = UINavigationController(rootViewController: HomeViewController())
         let vc2 = UINavigationController(rootViewController: SlideshareViewController())
+        let vc3 = UINavigationController(rootViewController: ProfileViewController())
         
         vc1.tabBarItem.image = UIImage(systemName: "house")
         vc2.tabBarItem.image = UIImage(systemName: "slider.horizontal.below.rectangle")
+        vc3.tabBarItem.image = UIImage(systemName: "person.fill")
         
         vc1.title = "Home"
         vc2.title = "Slideshare"
+        vc3.title = "Profile"
         
         tabBar.tintColor = .label
         
-        setViewControllers([vc1, vc2], animated: true)
+        setViewControllers([vc1, vc2, vc3], animated: true)
     }
 
     private func addBlurBackground() {
-        let blurEffect = UIBlurEffect(style: .light) // You can change to .dark or .extraLight as needed
+        let blurEffect = UIBlurEffect(style: .light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         
-        // Setting the frame to cover the entire view
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        // Adding the blur effect view to the view hierarchy
-        view.insertSubview(blurEffectView, at: 0) // Insert at index 0 to place it behind all other subviews
+        view.insertSubview(blurEffectView, at: 0)
     }
     
     private func passPhoneNumberToHomeVC(phoneNumber: String) {

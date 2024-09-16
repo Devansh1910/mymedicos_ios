@@ -1,13 +1,28 @@
-//
-//  ShareUIView.swift
-//  mymedicos
-//
-//  Created by Devansh Saxena on 07/08/24.
-//
-
 import UIKit
 
+protocol ShareUIViewDelegate: AnyObject {
+    func didTapShareApp()
+}
+
 class ShareUIView: UIView {
+    
+    weak var delegate: ShareUIViewDelegate?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupView()
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+    }
+
+    @objc func handleTap() {
+        delegate?.didTapShareApp()
+    }
 
     private let iconView: UIImageView = {
         let imageView = UIImageView()
@@ -39,16 +54,6 @@ class ShareUIView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
-    }
 
     private func setupView() {
         backgroundColor = UIColor(red: 1.00, green: 0.98, blue: 0.94, alpha: 1.00) // Light beige background

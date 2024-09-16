@@ -71,7 +71,8 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
         
         // Setup verify button
         verifyButton.setTitle("Verify", for: .normal)
-        verifyButton.backgroundColor = .gray
+        verifyButton.backgroundColor = .darkGray
+        verifyButton.layer.cornerRadius = 5
         verifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         view.addSubview(verifyButton)
     }
@@ -167,7 +168,7 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
             verifyButton.topAnchor.constraint(equalTo: contactLabel.bottomAnchor, constant: 20),
             verifyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             verifyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            verifyButton.heightAnchor.constraint(equalToConstant: 40)
+            verifyButton.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
     
@@ -198,11 +199,17 @@ class EnterOtpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func navigateToMainTabBar() {
+    @objc func navigateToMainTabBar() {
         let mainTabBarController = MainTabBarViewController()
-        mainTabBarController.modalPresentationStyle = .fullScreen
         mainTabBarController.phoneNumber = self.phoneNumber
-        mainTabBarController.setupTabBarControllers()  // Now call setup
-        present(mainTabBarController, animated: true, completion: nil)
+
+        if let window = UIApplication.shared.windows.first {
+            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                window.rootViewController = mainTabBarController
+            }, completion: { completed in
+                window.makeKeyAndVisible()
+            })
+        }
     }
+
 }

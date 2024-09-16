@@ -6,7 +6,7 @@ class HeroImageNeetpgUIView: UIView {
     private var currentImageIndex = 0
     private var timer: Timer?
     
-    private let heroImageNeetpgView: UIImageView = {
+    private let heroImageFmgeView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -19,7 +19,7 @@ class HeroImageNeetpgUIView: UIView {
     init(frame: CGRect, title: String) {
         self.titleExaminationCategory = title
         super.init(frame: frame)
-        addSubview(heroImageNeetpgView)
+        addSubview(heroImageFmgeView)
         fetchImageUrls()
     }
     
@@ -29,7 +29,7 @@ class HeroImageNeetpgUIView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        heroImageNeetpgView.frame = bounds
+        heroImageFmgeView.frame = bounds
     }
     
     func updateTitle(_ title: String) {
@@ -42,17 +42,16 @@ class HeroImageNeetpgUIView: UIView {
     private func fetchImageUrls() {
         let urlString: String
         switch titleExaminationCategory {
-        case "FMGE":
-            urlString = ConstantsDashboard.GET_FMGE_SLIDER_URL
         case "PGNEET":
-            urlString = ConstantsDashboard.GET_PG_SLIDER_URL
+            urlString = ConstantsDashboard.GET_HOME_IOS_SLIDER_URL
+
         default:
             urlString = ConstantsDashboard.GET_HOME_IOS_SLIDER_URL
         }
 
         guard let url = URL(string: urlString) else { return }
         
-        timer?.invalidate() 
+        timer?.invalidate()
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self, let data = data, error == nil else { return }
             do {
@@ -76,7 +75,7 @@ class HeroImageNeetpgUIView: UIView {
     
     private func startImageRotation() {
         guard !imageUrls.isEmpty else { return }
-        heroImageNeetpgView.loadImage(from: imageUrls[currentImageIndex])
+        heroImageFmgeView.loadImage(from: imageUrls[currentImageIndex])
         timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(changeImage), userInfo: nil, repeats: true)
     }
     
@@ -84,8 +83,8 @@ class HeroImageNeetpgUIView: UIView {
         currentImageIndex = (currentImageIndex + 1) % imageUrls.count
         let nextImageUrl = imageUrls[currentImageIndex]
         
-        UIView.transition(with: heroImageNeetpgView, duration: 1.0, options: .transitionCrossDissolve, animations: {
-            self.heroImageNeetpgView.loadImage(from: nextImageUrl)
+        UIView.transition(with: heroImageFmgeView, duration: 1.0, options: .transitionCrossDissolve, animations: {
+            self.heroImageFmgeView.loadImage(from: nextImageUrl)
         }, completion: nil)
     }
 }

@@ -1,6 +1,13 @@
 import UIKit
 
+protocol RecentUpdatesDelegate: AnyObject {
+    func didTapRecentUpdates()
+}
+
+
 class RecentUpdatesUIView: UIView {
+    
+    weak var delegate: RecentUpdatesDelegate?
 
     private let iconView: UIImageView = {
         let imageView = UIImageView()
@@ -83,6 +90,14 @@ class RecentUpdatesUIView: UIView {
             arrowImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             arrowImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+        
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func handleTap() {
+        delegate?.didTapRecentUpdates()
     }
 
 }

@@ -19,6 +19,10 @@ target 'mymedicos' do
   pod 'Firebase/Messaging'        # Firebase Messaging
   pod 'MarqueeLabel'
   pod 'Kingfisher'
+  pod 'SkeletonView'
+  pod 'Firebase/Core'
+  
+  pod 'razorpay-pod','1.3.10'
 
   target 'mymedicosTests' do
     inherit! :search_paths

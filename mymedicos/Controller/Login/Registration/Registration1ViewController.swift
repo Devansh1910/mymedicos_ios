@@ -161,7 +161,7 @@ class Registration1ViewController: UIViewController, UIPickerViewDelegate, UIPic
             continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            continueButton.heightAnchor.constraint(equalToConstant: 40)
+            continueButton.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
 
@@ -205,13 +205,41 @@ class Registration1ViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
 
     @objc func continueButtonTapped() {
+        // Ensure all fields are filled
+        guard let prefix = selectedPrefix, !prefix.isEmpty,
+              let name = nameTextField.text, !name.isEmpty,
+              let email = emailTextField.text, !email.isEmpty else {
+            showAlert(message: "Please fill in all fields.")
+            return
+        }
+        
+        // Validate email format
+        if !isValidEmail(email) {
+            showAlert(message: "Please enter a valid email address.")
+            return
+        }
+
+        // If all checks pass, proceed to the next view controller
         let step2VC = Registration2ViewController()
         step2VC.phoneNumber = self.phoneNumber
-        step2VC.prefix = selectedPrefix // Use the abbreviation for registration
-        step2VC.name = nameTextField.text
-        step2VC.email = emailTextField.text
+        step2VC.prefix = prefix
+        step2VC.name = name
+        step2VC.email = email
         navigationController?.pushViewController(step2VC, animated: true)
     }
+
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailPattern)
+        return emailPredicate.evaluate(with: email)
+    }
+
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Validation Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+
 
     func setupKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

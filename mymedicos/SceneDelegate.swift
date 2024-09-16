@@ -7,21 +7,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
         window = UIWindow(windowScene: windowScene)
-
-        if Auth.auth().currentUser != nil {
-            // User is already logged in, instantiate the MainTabBarViewController
-            let mainTabBarController = MainTabBarViewController()
-            window?.rootViewController = mainTabBarController
-        } else {
-            // No user is logged in, start with GetStartedViewController inside a navigation controller
-            let navigationController = UINavigationController(rootViewController: GetStartedViewController())
-            window?.rootViewController = navigationController
+        
+        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+            if let user = user {
+                print("User is logged in with uid: \(user.uid)")
+                self?.window?.rootViewController = MainTabBarViewController()
+            } else {
+                print("No user is logged in.")
+                self?.window?.rootViewController = UINavigationController(rootViewController: GetStartedViewController())
+            }
+            self?.window?.makeKeyAndVisible()
         }
-
-        window?.makeKeyAndVisible()
     }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
