@@ -1,65 +1,79 @@
 import UIKit
-import FirebaseFirestore
 
-struct Slide {
-    var id: String
-    var fileURL: String
-    var images: [ImageCustom]
-    var title: String
-    var speciality: String
-    var type: String
+// Enum for organizing sections
+enum Sections: Int {
+    case trendingMovies = 0
+    case trendingTV = 1
+    case popular = 2
+    case upcoming = 3
+    case topRated = 4
 }
 
-struct ImageCustom {
-    var id: String
-    var url: String
-}
-
-
-class SlideshareViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class SlideshareViewController: UIViewController {
     
-    let searchBar = UISearchBar()
-    var selectedOptionIndex = 0
-    var categories = [String]()
-    var blurEffectView: UIVisualEffectView?
-    var collectionView: UICollectionView!
-    private var scrollView: UIScrollView!
+    private var headerView: HeroHeaderUIView?
+    private let sectionTitles = ["Trending Movies", "Trending TV", "Popular", "Upcoming Movies", "Top Rated"]
     
-    private var carouselView: CarouselSlideshareUIView!
-    private var categoryTitleLabel: UILabel!
-    
+    private let homeFeedTable: UITableView = {
+        let table = UITableView(frame: .zero, style: .grouped)
+        table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
+        table.backgroundColor = .white
+        return table
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        view.backgroundColor = .systemBackground
-        configureNavbar()
-        setupSearchBar()
-        setupCollectionView()
-        setupCarouselView()  // Setup carousel view
-        setupCategoryLabel()
-        setupScrollView()
-        fetchCategories()
+        configureUI()
     }
-
-    // MARK: - Navbar Setup
-    private func configureNavbar() {
-        let logo = UIImage(named: "logoImage")?.withRenderingMode(.alwaysOriginal)
-        let imageView = UIImageView(image: logo)
-        imageView.contentMode = .scaleAspectFit
+    
+    private func configureUI() {
+        view.backgroundColor = .white
+        view.overrideUserInterfaceStyle = .light
+        setupTableView()
+        configureNavigationBar()
+        configureHeaderView()
+    }
+    
+    private func setupTableView() {
+        view.addSubview(homeFeedTable)
+        homeFeedTable.delegate = self
+        homeFeedTable.dataSource = self
+        homeFeedTable.backgroundColor = .white
+    }
+    
+    private func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        configureNavigationItems()
+    }
+    
+    private func configureHeaderView() {
+        headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+        homeFeedTable.tableHeaderView = headerView
+    }
+    
+    private func configureNavigationItems() {
+        let logoImage = UIImage(named: "logoImage")?.withRenderingMode(.alwaysOriginal)
+        let logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFit
         let logoContainerView = UIView()
-        logoContainerView.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        logoContainerView.addSubview(logoImageView)
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: logoContainerView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: logoContainerView.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: logoContainerView.topAnchor, constant: 5),
-            imageView.bottomAnchor.constraint(equalTo: logoContainerView.bottomAnchor, constant: -8),
-            imageView.widthAnchor.constraint(equalToConstant: 40),
-            imageView.heightAnchor.constraint(equalToConstant: 40)
+            logoImageView.leadingAnchor.constraint(equalTo: logoContainerView.leadingAnchor),
+            logoImageView.trailingAnchor.constraint(equalTo: logoContainerView.trailingAnchor),
+            logoImageView.topAnchor.constraint(equalTo: logoContainerView.topAnchor, constant: 5),
+            logoImageView.bottomAnchor.constraint(equalTo: logoContainerView.bottomAnchor, constant: -8),
+            logoImageView.widthAnchor.constraint(equalToConstant: 40),
+            logoImageView.heightAnchor.constraint(equalToConstant: 40)
         ])
         let logoItem = UIBarButtonItem(customView: logoContainerView)
-
+        
         let titleLabel = UILabel()
         titleLabel.text = "Slideshare"
         titleLabel.font = UIFont.systemFont(ofSize: 16)
@@ -67,174 +81,147 @@ class SlideshareViewController: UIViewController, UICollectionViewDataSource, UI
         titleLabel.textAlignment = .center
         titleLabel.sizeToFit()
         let titleItem = UIBarButtonItem(customView: titleLabel)
-
+        
         navigationItem.leftBarButtonItems = [logoItem, titleItem]
         setupIcons()
     }
-
+    
     private func setupIcons() {
-        let notificationButton = UIButton(type: .custom)
-        if let notificationImage = UIImage(systemName: "bell")?.withTintColor(.black, renderingMode: .alwaysOriginal) {
-            notificationButton.setImage(notificationImage, for: .normal)
-        }
-        notificationButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        notificationButton.addTarget(self, action: #selector(didTapNotification), for: .touchUpInside)
+        let notificationButton = createBarButton(imageName: "bell", action: #selector(didTapNotification))
         let notificationItem = UIBarButtonItem(customView: notificationButton)
-        navigationItem.rightBarButtonItems = [notificationItem]
-    }
-
-    // MARK: - Search Bar Setup
-    private func setupSearchBar() {
-        searchBar.placeholder = "Search"
-        searchBar.delegate = self
-        searchBar.searchTextField.textColor = .gray
-        searchBar.searchTextField.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        searchBar.backgroundImage = UIImage()
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(searchBar)
-        NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
-            searchBar.heightAnchor.constraint(equalToConstant: 60)
-        ])
-    }
-
-    // MARK: - Collection View Setup
-    private func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 110, height: 40)
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: "CategoryCell")
-        collectionView.backgroundColor = .none
-        collectionView.showsHorizontalScrollIndicator = false
-        view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        // Call this in places where your data might change dynamically
-        collectionView.reloadData()
-        collectionView.collectionViewLayout.invalidateLayout()
-
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 0),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            collectionView.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
-    private func setupCarouselView() {
-        carouselView = CarouselSlideshareUIView()
-        view.addSubview(carouselView)
-        carouselView.isHidden = true // Initially hidden
-
-        NSLayoutConstraint.activate([
-            carouselView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
-            carouselView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            carouselView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            carouselView.heightAnchor.constraint(equalToConstant: 200)
-        ])
-    }
-    
-    private func setupCategoryLabel() {
-        categoryTitleLabel = UILabel()
-        categoryTitleLabel.text = "Physiology"
-        categoryTitleLabel.textAlignment = .left
-        categoryTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        view.addSubview(categoryTitleLabel)
-
-        categoryTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            categoryTitleLabel.topAnchor.constraint(equalTo: carouselView.bottomAnchor, constant: 10),
-            categoryTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            categoryTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            categoryTitleLabel.heightAnchor.constraint(equalToConstant: 20)
-        ])
-    }
-    
-    private func setupScrollView() {
-        scrollView = UIScrollView()
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(scrollView)
         
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: categoryTitleLabel.bottomAnchor, constant: 10),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.heightAnchor.constraint(equalToConstant: 500)
-        ])
-    }
-    
-    
-    // Collection Defining ...
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
-        let isActive = indexPath.row == selectedOptionIndex
-        cell.configure(with: categories[indexPath.item], isActive: isActive)
-        return cell
-    }
-
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedOptionIndex = indexPath.row
-        collectionView.reloadData()
-        print("Selected Category: \(categories[indexPath.item])")
-        carouselView.isHidden = !(categories[indexPath.item] == "Exclusive")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = categories[indexPath.item]
-        let cellWidth = text.size(withAttributes: [
-            .font: UIFont.systemFont(ofSize: 14, weight: .medium)
-        ]).width + 30
+        let downloadButton = createBarButton(imageName: "arrow.down.to.line", action: #selector(didTapDownload))
+        let downloadItem = UIBarButtonItem(customView: downloadButton)
         
-        return CGSize(width: max(110, cellWidth), height: 40)
+        navigationItem.rightBarButtonItems = [notificationItem, downloadItem]
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected row at index: \(indexPath.row)")
-        selectedOptionIndex = indexPath.row
-    }
-    
-    // Data Fetching ........
-    
-    private func fetchCategories() {
-        let db = Firestore.firestore()
-        db.collection("Categories").document("39liVyLEjII6dtzolxSZ").getDocument { (document, error) in
-            if let document = document, document.exists, let fetchedCategories = document.data()?["All"] as? [String] {
-                self.categories = ["Exclusive"] + fetchedCategories
-                self.selectedOptionIndex = 0
-                self.collectionView.reloadData()
-                self.carouselView.isHidden = !(self.categories[self.selectedOptionIndex] == "Exclusive")
-            } else {
-                print("Document does not exist")
-            }
+    private func createBarButton(imageName: String, action: Selector) -> UIButton {
+        let button = UIButton(type: .custom)
+        if let image = UIImage(systemName: imageName)?.withTintColor(.black, renderingMode: .alwaysOriginal) {
+            button.setImage(image, for: .normal)
         }
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
     }
     
-    // Navigation Setting....
-
+    @objc func didTapDownload() {
+        print("Download button tapped")
+    }
+    
     @objc func didTapNotification() {
         let notificationVC = NotificationViewController()
         notificationVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(notificationVC, animated: true)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        homeFeedTable.frame = view.bounds
+    }
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+extension SlideshareViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionTitles.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        fetchDataForCell(cell, atIndexPath: indexPath)
+        
+        return cell
+    }
+    
+    func fetchDataForCell(_ cell: CollectionViewTableViewCell, atIndexPath indexPath: IndexPath) {
+        switch indexPath.section {
+        case Sections.trendingMovies.rawValue:
+            APICaller.shared.getTrendingMovies { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case Sections.trendingTV.rawValue:
+            APICaller.shared.getTrendingTvs { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case Sections.popular.rawValue:
+            APICaller.shared.getPopular { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case Sections.upcoming.rawValue:
+            APICaller.shared.getUpcomingMovies { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case Sections.topRated.rawValue:
+            APICaller.shared.getTopRated { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        default:
+            break
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+        header.textLabel?.textColor = .black
+        header.textLabel?.text = header.textLabel?.text?.capitalizeFirstLetter()
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
+    }
+}
+
+// MARK: - CollectionViewTableViewCellDelegate
+extension SlideshareViewController: CollectionViewTableViewCellDelegate {
+    func collectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, viewModel: TitlePreviewViewModel) {
+        DispatchQueue.main.async { [weak self] in
+            let vc = TitlePreviewViewController()
+            vc.configure(with: viewModel)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

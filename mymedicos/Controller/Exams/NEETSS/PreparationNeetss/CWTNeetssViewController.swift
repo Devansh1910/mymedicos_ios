@@ -48,11 +48,13 @@ class CWTNeetssViewController: UIViewController, UITableViewDataSource, QuizTabl
         navigationItem.title = specialtyTitle
 
         let backArrowImage = UIImage(systemName: "chevron.left")
-        let backButton = UIBarButtonItem(image: backArrowImage, style: .plain, target: self, action: #selector(backButtonTapped))
         let filterImage = UIImage(systemName: "line.horizontal.3.decrease.circle")
         let filterButton = UIBarButtonItem(image: filterImage, style: .plain, target: self, action: #selector(filterButtonTapped))
-        navigationItem.leftBarButtonItem = backButton
         navigationItem.rightBarButtonItems = [filterButton]
+        
+        let backButton = UIBarButtonItem(image: backArrowImage, style: .plain, target: self, action: #selector(backButtonTapped))
+        navigationItem.leftBarButtonItem = backButton
+
     }
 
     private func configureSegmentedControl() {

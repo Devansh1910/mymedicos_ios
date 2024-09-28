@@ -9,42 +9,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
-            if let user = user {
-                print("User is logged in with uid: \(user.uid)")
-                self?.window?.rootViewController = MainTabBarViewController()
-            } else {
-                print("No user is logged in.")
-                self?.window?.rootViewController = UINavigationController(rootViewController: GetStartedViewController())
-            }
-            self?.window?.makeKeyAndVisible()
+        let splashScreenVC = SplashScreenViewController()
+        window?.rootViewController = splashScreenVC
+        window?.makeKeyAndVisible()
+
+        loadDataInBackground { [weak self] in
+            self?.checkAuthStatusAndNavigate(splashScreenVC)
         }
     }
 
-
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
+    private func loadDataInBackground(completion: @escaping () -> Void) {
+        DispatchQueue.global(qos: .background).async {
+            print("Loading data in the background...")
+            sleep(3) // Simulating network call delay
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
     }
 
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene information to restore the scene back to its current state in case it is terminated later.
+    private func checkAuthStatusAndNavigate(_ splashScreenVC: SplashScreenViewController) {
+        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+            if let user = user {
+                print("User is logged in with uid: \(user.uid)")
+                splashScreenVC.moveToMainAppScreen() // Navigate to main tab bar
+            } else {
+                print("No user is logged in.")
+                splashScreenVC.moveToMainAppScreen() // Navigate to login screen
+            }
+            self?.window?.makeKeyAndVisible()
+        }
     }
 }

@@ -2,7 +2,7 @@ import UIKit
 import SwiftUI
 import Lottie
 
-class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UITableViewDataSource, UITableViewDelegate, LiveExaminationsUIViewDelegate, QuickLinkUIViewDelegate, RecentUpdatesDelegate, ShareUIViewDelegate, UISearchBarDelegate, ContinueSolvingCardViewDelegate {
+class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UITableViewDataSource, UITableViewDelegate, LiveExaminationsUIViewDelegate, QuickLinkUIViewDelegate, RecentUpdatesDelegate, ShareUIViewDelegate, UISearchBarDelegate, ContinueSolvingCardViewDelegate, PraticeQuestionsUIViewDelegate {
     
     func navigateToExamPortal(withTitle title: String, examID: String) {
          let liveExamVC = LiveExaminationViewController()
@@ -11,6 +11,7 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UITable
          liveExamVC.examID = examID // Pass the examID to the next view controller
          navigationController?.pushViewController(liveExamVC, animated: true)
      }
+    
 
 
     // MARK: - Properties
@@ -65,7 +66,7 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UITable
         continueSolvingCard.delegate = self
         searchBar.delegate = self
         quickLinkView.delegate = self
-        
+        practiceQuestionView.delegate = self // Set the delegate        
         recentQuestionView.delegate = self
         shareApplicationwithOthers.delegate = self
         
@@ -441,6 +442,13 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UITable
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return options[row]
+    }
+    
+    func didTapSolveNow() {
+        let promoView = Promo()
+        let hostingController = UIHostingController(rootView: promoView)
+        hostingController.hidesBottomBarWhenPushed = true
+        present(hostingController, animated: true)
     }
     
     private func updateIconColors() {

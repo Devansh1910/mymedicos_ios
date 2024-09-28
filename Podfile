@@ -21,6 +21,7 @@ target 'mymedicos' do
   pod 'Kingfisher'
   pod 'SkeletonView'
   pod 'Firebase/Core'
+  pod 'SDWebImage'
   
   pod 'razorpay-pod','1.3.10'
 
