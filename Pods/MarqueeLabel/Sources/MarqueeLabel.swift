@@ -563,6 +563,8 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(MarqueeLabel.shutdownLabel), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
+    // Interface Builder features deprecated in visionOS
+    #if !os(visionOS)
     override open func awakeFromNib() {
         super.awakeFromNib()
         forwardPropertiesToSublabel()
@@ -573,6 +575,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         super.prepareForInterfaceBuilder()
         forwardPropertiesToSublabel()
     }
+    #endif
     
     private func forwardPropertiesToSublabel() {
         /*
@@ -1139,7 +1142,11 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
             // No mask exists, create new mask
             gradientMask = CAGradientLayer()
             gradientMask.shouldRasterize = true
+          #if os(visionOS)
+            gradientMask.rasterizationScale = UITraitCollection.current.displayScale
+          #else
             gradientMask.rasterizationScale = UIScreen.main.scale
+          #endif
             gradientMask.startPoint = CGPoint(x:0.0, y:0.5)
             gradientMask.endPoint = CGPoint(x:1.0, y:0.5)
         }
@@ -1529,18 +1536,6 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     //
     // MARK: - Modified UILabel Functions/Getters/Setters
     //
-    
-    #if os(iOS)
-    override open func forBaselineLayout() -> UIView {
-        // Use subLabel view for handling baseline layouts
-        return sublabel
-    }
-    
-    override open var forLastBaselineLayout: UIView {
-        // Use subLabel view for handling baseline layouts
-        return sublabel
-    }
-    #endif
 
     override open var text: String? {
         get {
@@ -1723,6 +1718,73 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     open override var isAccessibilityElement: Bool {
         didSet {
             sublabel.isAccessibilityElement = self.isAccessibilityElement
+        }
+    }
+    
+    open override var adjustsFontForContentSizeCategory: Bool {
+        get {
+            return sublabel.adjustsFontForContentSizeCategory
+        }
+        set {
+            if sublabel.adjustsFontForContentSizeCategory == newValue {
+                return
+            }
+            sublabel.adjustsFontForContentSizeCategory = newValue
+            super.adjustsFontForContentSizeCategory = newValue
+            
+            updateAndScroll()
+        }
+    }
+    
+    //
+    // MARK: - Version Specific Properties
+    //
+    #if os(iOS)
+    override open func forBaselineLayout() -> UIView {
+        // Use subLabel view for handling baseline layouts
+        return sublabel
+    }
+
+    override open var forLastBaselineLayout: UIView {
+        // Use subLabel view for handling baseline layouts
+        return sublabel
+    }
+    #endif
+    
+    @available(iOS 15.0, tvOS 15.0, *)
+    open override var minimumContentSizeCategory: UIContentSizeCategory? {
+        get {
+            return sublabel.minimumContentSizeCategory
+        }
+        set {
+            if sublabel.minimumContentSizeCategory == newValue {
+                return
+            }
+            sublabel.minimumContentSizeCategory = newValue
+            super.minimumContentSizeCategory = newValue
+            
+            updateAndScroll()
+        }
+    }
+    
+    @available(iOS 15.0, tvOS 15.0, *)
+    open override var appliedContentSizeCategoryLimitsDescription: String {
+        return sublabel.appliedContentSizeCategoryLimitsDescription
+    }
+    
+    @available(iOS 15.0, tvOS 15.0, *)
+    open override var maximumContentSizeCategory: UIContentSizeCategory? {
+        get {
+            return sublabel.maximumContentSizeCategory
+        }
+        set {
+            if sublabel.maximumContentSizeCategory == newValue {
+                return
+            }
+            sublabel.maximumContentSizeCategory = newValue
+            super.maximumContentSizeCategory = newValue
+            
+            updateAndScroll()
         }
     }
 

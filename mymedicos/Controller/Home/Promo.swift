@@ -115,7 +115,7 @@ struct LottieView: UIViewRepresentable {
     var name: String
     
     func makeUIView(context: Context) -> some UIView {
-        let view = AnimationView(name: name)
+        let view = LottieAnimationView(name: name)
         view.loopMode = .loop
         view.play()
         return view

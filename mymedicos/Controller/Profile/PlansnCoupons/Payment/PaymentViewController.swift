@@ -1,10 +1,13 @@
 import UIKit
 import Razorpay
+import FirebaseAuth
+import FirebaseFirestore
 
-class PaymentViewController: UIViewController, RazorpayPaymentCompletionProtocol {
+class PaymentViewController: UIViewController, RazorpayPaymentCompletionProtocolWithData {
 
     var selectedPlan: Plan!
     var razorpay: RazorpayCheckout!
+    var currentOrderId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +20,7 @@ class PaymentViewController: UIViewController, RazorpayPaymentCompletionProtocol
 
     @objc private func startPayment() {
         let amountInPaise = (Double(selectedPlan.price.replacingOccurrences(of: "₹", with: "")) ?? 0.0) * 100 // Convert rupees to paise
-        
+
         let options: [String: Any] = [
             "amount": String(format: "%.0f", amountInPaise), // Amount in paise, converted to string
             "currency": "INR",
@@ -34,15 +37,25 @@ class PaymentViewController: UIViewController, RazorpayPaymentCompletionProtocol
         ]
         razorpay.open(options)
     }
-
-    // RazorpayPaymentCompletionProtocol methods
-    func onPaymentSuccess(_ payment_id: String) {
+    
+    func onPaymentSuccess(_ payment_id: String, andData data: [AnyHashable: Any]?) {
+        let signature = data?["razorpay_signature"] as? String ?? "No Signature"
+        let orderId = currentOrderId ?? "No Order ID"
         print("Payment Success: \(payment_id)")
-        // Handle success - navigate to a success screen or show an alert
+        DispatchQueue.main.async {
+            let message = "Payment ID: \(payment_id)\nOrder ID: \(orderId)\nSignature: \(signature)"
+            let alert = UIAlertController(title: "Payment Success", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
-    func onPaymentError(_ code: Int32, description str: String) {
+    func onPaymentError(_ code: Int32, description str: String, andData data: [AnyHashable: Any]?) {
         print("Payment Failed: \(str)")
-        // Handle error - show an alert or message
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Payment Failed", message: str, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'  # Updated to iOS 10 for better compatibility
+platform :ios, '13.0'  # Updated to iOS 10 for better compatibility
 
 target 'mymedicos' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -39,11 +39,14 @@ target 'mymedicos' do
 end
 
 post_install do |installer|
-    installer.generated_projects.each do |project|
-        project.targets.each do |target|
-            target.build_configurations.each do |config|
-                config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
-            end
-        end
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+        # Remove the GCC_WARN_INHIBIT_ALL_WARNINGS flag if present
+        config.build_settings.delete('GCC_WARN_INHIBIT_ALL_WARNINGS')
+      end
     end
+  end
 end
+

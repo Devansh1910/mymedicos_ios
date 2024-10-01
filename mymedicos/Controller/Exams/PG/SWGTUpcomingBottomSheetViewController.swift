@@ -10,7 +10,7 @@ class SWGTUpcomingBottomSheetViewController: UIViewController {
     weak var delegate: SWGTUpcomingBottomSheetDelegate?
     let containerView = UIView()
     
-    let animationView = AnimationView()
+    let animationView = LottieAnimationView()
     let descriptionLabel = UILabel()
     let setReminderButton = UIButton(type: .system)
     let closeButton = UIButton(type: .system)  // Declare the close button
@@ -57,7 +57,7 @@ class SWGTUpcomingBottomSheetViewController: UIViewController {
     }
 
     private func setupAnimationView() {
-        let animation = Animation.named("calendaranimation")
+        let animation = LottieAnimation.named("calendaranimation")
         animationView.animation = animation
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop

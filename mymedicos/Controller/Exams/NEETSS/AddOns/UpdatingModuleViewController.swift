@@ -4,7 +4,7 @@ import Lottie
 class UpdatingModuleViewController: UIViewController {
     
     let backgroundImageView = UIImageView()
-    let animationView = AnimationView()
+    let animationView = LottieAnimationView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class UpdatingModuleViewController: UIViewController {
     }
     
     func setupLottieAnimation() {
-        let animation = Animation.named("newupdatedanimation")
+        let animation = LottieAnimation.named("newupdatedanimation")
         animationView.animation = animation
         animationView.contentMode = .scaleAspectFill
         animationView.loopMode = .loop

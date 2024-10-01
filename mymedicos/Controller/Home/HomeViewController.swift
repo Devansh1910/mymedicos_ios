@@ -264,7 +264,7 @@ class HomeViewController: UIViewController, DailyQuestionUIViewDelegate, UITable
         notificationButton.addTarget(self, action: #selector(didTapNotification), for: .touchUpInside)
         let notificationItem = UIBarButtonItem(customView: notificationButton)
 
-        let lottieAnimationView = AnimationView(name: "premiumlottie")
+        let lottieAnimationView = LottieAnimationView(name: "premiumlottie")
         lottieAnimationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         lottieAnimationView.contentMode = .scaleAspectFit
         lottieAnimationView.loopMode = .playOnce

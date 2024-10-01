@@ -70,23 +70,27 @@ NSString *_Nullable FIRHeaderValueFromHeartbeatsPayload(FIRHeartbeatsPayload *he
 }
 
 #ifndef FIREBASE_BUILD_CMAKE
+- (NSString *_Nullable)headerValue {
+  return FIRHeaderValueFromHeartbeatsPayload([self flushHeartbeatsIntoPayload]);
+}
+
 - (FIRHeartbeatsPayload *)flushHeartbeatsIntoPayload {
   FIRHeartbeatsPayload *payload = [_heartbeatController flush];
   return payload;
 }
 #endif  // FIREBASE_BUILD_CMAKE
 
-- (FIRHeartbeatInfoCode)heartbeatCodeForToday {
+- (FIRDailyHeartbeatCode)heartbeatCodeForToday {
 #ifndef FIREBASE_BUILD_CMAKE
   FIRHeartbeatsPayload *todaysHeartbeatPayload = [_heartbeatController flushHeartbeatFromToday];
 
   if ([todaysHeartbeatPayload isEmpty]) {
-    return FIRHeartbeatInfoCodeNone;
+    return FIRDailyHeartbeatCodeNone;
   } else {
-    return FIRHeartbeatInfoCodeGlobal;
+    return FIRDailyHeartbeatCodeSome;
   }
 #else
-  return FIRHeartbeatInfoCodeNone;
+  return FIRDailyHeartbeatCodeNone;
 #endif  // FIREBASE_BUILD_CMAKE
 }
 

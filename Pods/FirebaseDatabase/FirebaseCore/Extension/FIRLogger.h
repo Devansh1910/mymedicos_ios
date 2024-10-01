@@ -25,10 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 typedef NSString *const FIRLoggerService;
 
-extern FIRLoggerService kFIRLoggerAnalytics;
-extern FIRLoggerService kFIRLoggerCrash;
-extern FIRLoggerService kFIRLoggerCore;
-extern FIRLoggerService kFIRLoggerRemoteConfig;
+extern NSString *const kFIRLoggerAnalytics;
+extern NSString *const kFIRLoggerCrash;
+extern NSString *const kFIRLoggerCore;
+extern NSString *const kFIRLoggerRemoteConfig;
 
 /**
  * The key used to store the logger's error count.
@@ -51,6 +51,11 @@ extern "C" {
  * (required) analytics debug mode flag.
  */
 void FIRSetAnalyticsDebugMode(BOOL analyticsDebugMode);
+
+/**
+ * Gets the current FIRLoggerLevel.
+ */
+FIRLoggerLevel FIRGetLoggerLevel(void);
 
 /**
  * Changes the default logging level of FirebaseLoggerLevelNotice to a user-specified level.
@@ -80,7 +85,7 @@ BOOL FIRIsLoggableLevel(FIRLoggerLevel loggerLevel, BOOL analyticsComponent);
  *            string.
  */
 extern void FIRLogBasic(FIRLoggerLevel level,
-                        FIRLoggerService service,
+                        NSString *category,
                         NSString *messageCode,
                         NSString *message,
 // On 64-bit simulators, va_list is not a pointer, so cannot be marked nullable
@@ -105,41 +110,38 @@ extern void FIRLogBasic(FIRLoggerLevel level,
  * Example usage:
  * FirebaseLogError(kFirebaseLoggerCore, @"I-COR000001", @"Configuration of %@ failed.", app.name);
  */
-extern void FIRLogError(FIRLoggerService service, NSString *messageCode, NSString *message, ...)
+extern void FIRLogError(NSString *category, NSString *messageCode, NSString *message, ...)
     NS_FORMAT_FUNCTION(3, 4);
-extern void FIRLogWarning(FIRLoggerService service, NSString *messageCode, NSString *message, ...)
+extern void FIRLogWarning(NSString *category, NSString *messageCode, NSString *message, ...)
     NS_FORMAT_FUNCTION(3, 4);
-extern void FIRLogNotice(FIRLoggerService service, NSString *messageCode, NSString *message, ...)
+extern void FIRLogNotice(NSString *category, NSString *messageCode, NSString *message, ...)
     NS_FORMAT_FUNCTION(3, 4);
-extern void FIRLogInfo(FIRLoggerService service, NSString *messageCode, NSString *message, ...)
+extern void FIRLogInfo(NSString *category, NSString *messageCode, NSString *message, ...)
     NS_FORMAT_FUNCTION(3, 4);
-extern void FIRLogDebug(FIRLoggerService service, NSString *messageCode, NSString *message, ...)
+extern void FIRLogDebug(NSString *category, NSString *messageCode, NSString *message, ...)
     NS_FORMAT_FUNCTION(3, 4);
 
 #ifdef __cplusplus
 }  // extern "C"
 #endif  // __cplusplus
 
+NS_SWIFT_NAME(FirebaseLogger)
 @interface FIRLoggerWrapper : NSObject
 
-/**
- * Objective-C wrapper for FirebaseLogBasic to allow weak linking to FirebaseLogger
- * (required) log level (one of the FirebaseLoggerLevel enum values).
- * (required) service name of type FirebaseLoggerService.
- * (required) message code starting with "I-" which means iOS, followed by a capitalized
- *            three-character service identifier and a six digit integer message ID that is unique
- *            within the service.
- *            An example of the message code is @"I-COR000001".
- * (required) message string which can be a format string.
- * (optional) variable arguments list obtained from calling va_start, used when message is a format
- *            string.
- */
-
+/// Logs a given message at a given log level.
+///
+/// - Parameters:
+///   - level: The log level to use (defined by `FirebaseLoggerLevel` enum values).
+///   - service: The service name of type `FirebaseLoggerService`.
+///   - code: The message code. Starting with "I-" which means iOS, followed by a capitalized
+///   three-character service identifier and a six digit integer message ID that is unique within
+///   the service. An example of the message code is @"I-COR000001".
+///   - message: Formatted string to be used as the log's message.
 + (void)logWithLevel:(FIRLoggerLevel)level
-         withService:(FIRLoggerService)service
-            withCode:(NSString *)messageCode
-         withMessage:(NSString *)message
-            withArgs:(va_list)args;
+             service:(NSString *)category
+                code:(NSString *)code
+             message:(NSString *)message
+    __attribute__((__swift_name__("log(level:service:code:message:)")));
 
 @end
 

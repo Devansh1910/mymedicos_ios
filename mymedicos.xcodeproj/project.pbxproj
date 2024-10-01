@@ -284,9 +284,9 @@
 		06E79E242C78D59E00F4DC00 /* GrandTestNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E232C78D59E00F4DC00 /* GrandTestNavigationViewController.swift */; };
 		06E79E272C796B6500F4DC00 /* ResultGrandTestBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E262C796B6500F4DC00 /* ResultGrandTestBottomSheetViewController.swift */; };
 		06E79E292C796D9C00F4DC00 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E79E282C796D9C00F4DC00 /* PieChart.swift */; };
-		0FED3A4EB289D5CEE21E644B /* Pods_mymedicos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971965A96C5A51FAAA39DBB3 /* Pods_mymedicos.framework */; };
-		19DF0C5D4D06BFF5E09583FD /* Pods_mymedicosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F55B86FDE03E708D97F2F43 /* Pods_mymedicosTests.framework */; };
-		7A34A7950868F174960484E4 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CFA4E5C0EF95429C8D4A868 /* Pods_mymedicos_mymedicosUITests.framework */; };
+		2732DBA25A4F11953AAC1F35 /* Pods_mymedicosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E81E6B4A923BAB2478E3A89E /* Pods_mymedicosTests.framework */; };
+		388CDC80D70330E9A1583F15 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6549586BEF63360626DAB28 /* Pods_mymedicos_mymedicosUITests.framework */; };
+		60AAE53FB4CD4B3C9FCB2148 /* Pods_mymedicos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55CA8A121530C8934E30EF8 /* Pods_mymedicos.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -590,17 +590,15 @@
 		06E79E232C78D59E00F4DC00 /* GrandTestNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTestNavigationViewController.swift; sourceTree = "<group>"; };
 		06E79E262C796B6500F4DC00 /* ResultGrandTestBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultGrandTestBottomSheetViewController.swift; sourceTree = "<group>"; };
 		06E79E282C796D9C00F4DC00 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
-		0F3C45553957496A551E85D2 /* Pods-mymedicos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos.debug.xcconfig"; path = "Target Support Files/Pods-mymedicos/Pods-mymedicos.debug.xcconfig"; sourceTree = "<group>"; };
-		1F5399C9466272D06DE28554 /* Pods-mymedicos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos.release.xcconfig"; path = "Target Support Files/Pods-mymedicos/Pods-mymedicos.release.xcconfig"; sourceTree = "<group>"; };
-		389D1D9D3AD5BE5654A25143 /* Pods-mymedicosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosUITests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicosUITests/Pods-mymedicosUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		4F55B86FDE03E708D97F2F43 /* Pods_mymedicosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CFA4E5C0EF95429C8D4A868 /* Pods_mymedicos_mymedicosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicos_mymedicosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		66E22801B768200070F488C2 /* Pods-mymedicos-mymedicosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos-mymedicosUITests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		73F3129DDE2BB1C2562232C8 /* Pods-mymedicosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosUITests.release.xcconfig"; path = "Target Support Files/Pods-mymedicosUITests/Pods-mymedicosUITests.release.xcconfig"; sourceTree = "<group>"; };
-		8B37F27599EB2B72C4A72F93 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos-mymedicosUITests.release.xcconfig"; path = "Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests.release.xcconfig"; sourceTree = "<group>"; };
-		971965A96C5A51FAAA39DBB3 /* Pods_mymedicos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE7FE1572FD6570811A75CFE /* Pods-mymedicosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosTests.release.xcconfig"; path = "Target Support Files/Pods-mymedicosTests/Pods-mymedicosTests.release.xcconfig"; sourceTree = "<group>"; };
-		EB5BE003EA47649E9D9D7FAF /* Pods-mymedicosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosTests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicosTests/Pods-mymedicosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0FADE04E94B8E6B31ABA246B /* Pods-mymedicos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos.release.xcconfig"; path = "Target Support Files/Pods-mymedicos/Pods-mymedicos.release.xcconfig"; sourceTree = "<group>"; };
+		215A3C15BFC55B6F351E5651 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos-mymedicosUITests.release.xcconfig"; path = "Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		486344F0303124F038232B00 /* Pods-mymedicosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosTests.release.xcconfig"; path = "Target Support Files/Pods-mymedicosTests/Pods-mymedicosTests.release.xcconfig"; sourceTree = "<group>"; };
+		7926DF9BF91A29C6E8CFBA27 /* Pods-mymedicos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos.debug.xcconfig"; path = "Target Support Files/Pods-mymedicos/Pods-mymedicos.debug.xcconfig"; sourceTree = "<group>"; };
+		7F8F14B237386A0D0F40E8CE /* Pods-mymedicosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicosTests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicosTests/Pods-mymedicosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B52176A7A97D1402772371B3 /* Pods-mymedicos-mymedicosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymedicos-mymedicosUITests.debug.xcconfig"; path = "Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B6549586BEF63360626DAB28 /* Pods_mymedicos_mymedicosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicos_mymedicosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E55CA8A121530C8934E30EF8 /* Pods_mymedicos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E81E6B4A923BAB2478E3A89E /* Pods_mymedicosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymedicosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,7 +606,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FED3A4EB289D5CEE21E644B /* Pods_mymedicos.framework in Frameworks */,
+				60AAE53FB4CD4B3C9FCB2148 /* Pods_mymedicos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,7 +614,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19DF0C5D4D06BFF5E09583FD /* Pods_mymedicosTests.framework in Frameworks */,
+				2732DBA25A4F11953AAC1F35 /* Pods_mymedicosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,7 +622,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A34A7950868F174960484E4 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */,
+				388CDC80D70330E9A1583F15 /* Pods_mymedicos_mymedicosUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,9 +633,9 @@
 			isa = PBXGroup;
 			children = (
 				067AFFFE2C5775E200CB7D82 /* leveldb.framework */,
-				971965A96C5A51FAAA39DBB3 /* Pods_mymedicos.framework */,
-				4F55B86FDE03E708D97F2F43 /* Pods_mymedicosTests.framework */,
-				5CFA4E5C0EF95429C8D4A868 /* Pods_mymedicos_mymedicosUITests.framework */,
+				E55CA8A121530C8934E30EF8 /* Pods_mymedicos.framework */,
+				B6549586BEF63360626DAB28 /* Pods_mymedicos_mymedicosUITests.framework */,
+				E81E6B4A923BAB2478E3A89E /* Pods_mymedicosTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1527,14 +1525,12 @@
 		62F93FC4718656BCFED57D65 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0F3C45553957496A551E85D2 /* Pods-mymedicos.debug.xcconfig */,
-				1F5399C9466272D06DE28554 /* Pods-mymedicos.release.xcconfig */,
-				66E22801B768200070F488C2 /* Pods-mymedicos-mymedicosUITests.debug.xcconfig */,
-				8B37F27599EB2B72C4A72F93 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */,
-				EB5BE003EA47649E9D9D7FAF /* Pods-mymedicosTests.debug.xcconfig */,
-				BE7FE1572FD6570811A75CFE /* Pods-mymedicosTests.release.xcconfig */,
-				389D1D9D3AD5BE5654A25143 /* Pods-mymedicosUITests.debug.xcconfig */,
-				73F3129DDE2BB1C2562232C8 /* Pods-mymedicosUITests.release.xcconfig */,
+				7926DF9BF91A29C6E8CFBA27 /* Pods-mymedicos.debug.xcconfig */,
+				0FADE04E94B8E6B31ABA246B /* Pods-mymedicos.release.xcconfig */,
+				B52176A7A97D1402772371B3 /* Pods-mymedicos-mymedicosUITests.debug.xcconfig */,
+				215A3C15BFC55B6F351E5651 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */,
+				7F8F14B237386A0D0F40E8CE /* Pods-mymedicosTests.debug.xcconfig */,
+				486344F0303124F038232B00 /* Pods-mymedicosTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1546,11 +1542,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0660E6222C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicos" */;
 			buildPhases = (
-				9A2ED998F6E6830949BAC297 /* [CP] Check Pods Manifest.lock */,
+				6C18B4230113CB27A7883361 /* [CP] Check Pods Manifest.lock */,
 				0660E5F42C56B861008125E9 /* Sources */,
 				0660E5F52C56B861008125E9 /* Frameworks */,
 				0660E5F62C56B861008125E9 /* Resources */,
-				F945958D3A87DC9795B559DD /* [CP] Embed Pods Frameworks */,
+				379F22180076B7B01122116F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1565,7 +1561,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0660E6252C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicosTests" */;
 			buildPhases = (
-				B2AD1B2B2563EA7A0EDA9B9A /* [CP] Check Pods Manifest.lock */,
+				F5EDBB878DA5744815CB8537 /* [CP] Check Pods Manifest.lock */,
 				0660E60A2C56B863008125E9 /* Sources */,
 				0660E60B2C56B863008125E9 /* Frameworks */,
 				0660E60C2C56B863008125E9 /* Resources */,
@@ -1584,11 +1580,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0660E6282C56B863008125E9 /* Build configuration list for PBXNativeTarget "mymedicosUITests" */;
 			buildPhases = (
-				39E1B884D19F77D40931A967 /* [CP] Check Pods Manifest.lock */,
+				202650B6F49E4E455370F4CD /* [CP] Check Pods Manifest.lock */,
 				0660E6142C56B863008125E9 /* Sources */,
 				0660E6152C56B863008125E9 /* Frameworks */,
 				0660E6162C56B863008125E9 /* Resources */,
-				5F8B8EBA5935491138682BD6 /* [CP] Embed Pods Frameworks */,
+				1145FA8A2ACC1115FEFCBAE2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1775,7 +1771,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		39E1B884D19F77D40931A967 /* [CP] Check Pods Manifest.lock */ = {
+		1145FA8A2ACC1115FEFCBAE2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		202650B6F49E4E455370F4CD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1797,24 +1810,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5F8B8EBA5935491138682BD6 /* [CP] Embed Pods Frameworks */ = {
+		379F22180076B7B01122116F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-mymedicos/Pods-mymedicos-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-mymedicos/Pods-mymedicos-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mymedicos-mymedicosUITests/Pods-mymedicos-mymedicosUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mymedicos/Pods-mymedicos-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9A2ED998F6E6830949BAC297 /* [CP] Check Pods Manifest.lock */ = {
+		6C18B4230113CB27A7883361 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1836,7 +1849,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B2AD1B2B2563EA7A0EDA9B9A /* [CP] Check Pods Manifest.lock */ = {
+		F5EDBB878DA5744815CB8537 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1856,23 +1869,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F945958D3A87DC9795B559DD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mymedicos/Pods-mymedicos-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mymedicos/Pods-mymedicos-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mymedicos/Pods-mymedicos-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2221,7 +2217,7 @@
 		};
 		0660E6232C56B863008125E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F3C45553957496A551E85D2 /* Pods-mymedicos.debug.xcconfig */;
+			baseConfigurationReference = 7926DF9BF91A29C6E8CFBA27 /* Pods-mymedicos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2255,7 +2251,7 @@
 		};
 		0660E6242C56B863008125E9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F5399C9466272D06DE28554 /* Pods-mymedicos.release.xcconfig */;
+			baseConfigurationReference = 0FADE04E94B8E6B31ABA246B /* Pods-mymedicos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2289,7 +2285,7 @@
 		};
 		0660E6262C56B863008125E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB5BE003EA47649E9D9D7FAF /* Pods-mymedicosTests.debug.xcconfig */;
+			baseConfigurationReference = 7F8F14B237386A0D0F40E8CE /* Pods-mymedicosTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2309,7 +2305,7 @@
 		};
 		0660E6272C56B863008125E9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE7FE1572FD6570811A75CFE /* Pods-mymedicosTests.release.xcconfig */;
+			baseConfigurationReference = 486344F0303124F038232B00 /* Pods-mymedicosTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2329,7 +2325,7 @@
 		};
 		0660E6292C56B863008125E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66E22801B768200070F488C2 /* Pods-mymedicos-mymedicosUITests.debug.xcconfig */;
+			baseConfigurationReference = B52176A7A97D1402772371B3 /* Pods-mymedicos-mymedicosUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2347,7 +2343,7 @@
 		};
 		0660E62A2C56B863008125E9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B37F27599EB2B72C4A72F93 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */;
+			baseConfigurationReference = 215A3C15BFC55B6F351E5651 /* Pods-mymedicos-mymedicosUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

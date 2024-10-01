@@ -9,35 +9,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        let splashScreenVC = SplashScreenViewController()
-        window?.rootViewController = splashScreenVC
+        if Auth.auth().currentUser != nil {
+            // User is logged in, initialize with splash screen
+            let splashScreenVC = SplashScreenViewController()
+            let navigationController = UINavigationController(rootViewController: splashScreenVC)
+            navigationController.navigationBar.isHidden = true
+            window?.rootViewController = navigationController
+        } else {
+            // No user logged in, directly go to Get Started page
+            let getStartedVC = GetStartedViewController()
+            let navigationController = UINavigationController(rootViewController: getStartedVC)
+            navigationController.navigationBar.isHidden = true
+            window?.rootViewController = navigationController
+        }
         window?.makeKeyAndVisible()
 
-        loadDataInBackground { [weak self] in
-            self?.checkAuthStatusAndNavigate(splashScreenVC)
+        if Auth.auth().currentUser != nil {
+            // Delayed tasks for logged in users, like loading additional data
+            loadDataInBackground { [weak self] in
+                guard let navigationController = self?.window?.rootViewController as? UINavigationController,
+                      let splashScreenVC = navigationController.viewControllers.first as? SplashScreenViewController else { return }
+                splashScreenVC.moveToMainAppScreen()
+            }
         }
     }
 
     private func loadDataInBackground(completion: @escaping () -> Void) {
         DispatchQueue.global(qos: .background).async {
             print("Loading data in the background...")
-            sleep(3) // Simulating network call delay
+            sleep(3) // Simulating a network call delay
             DispatchQueue.main.async {
                 completion()
             }
-        }
-    }
-
-    private func checkAuthStatusAndNavigate(_ splashScreenVC: SplashScreenViewController) {
-        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
-            if let user = user {
-                print("User is logged in with uid: \(user.uid)")
-                splashScreenVC.moveToMainAppScreen() // Navigate to main tab bar
-            } else {
-                print("No user is logged in.")
-                splashScreenVC.moveToMainAppScreen() // Navigate to login screen
-            }
-            self?.window?.makeKeyAndVisible()
         }
     }
 }

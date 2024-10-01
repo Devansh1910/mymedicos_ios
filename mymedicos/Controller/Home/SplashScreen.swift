@@ -3,14 +3,14 @@ import Lottie
 
 class SplashScreenViewController: UIViewController {
 
-    private let animationView = AnimationView()
+    private let animationView = LottieAnimationView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
 
-        animationView.animation = Animation.named("logoanim")
+        animationView.animation = LottieAnimation.named("logoanim")
         animationView.frame = view.bounds
         animationView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         animationView.contentMode = .scaleAspectFit

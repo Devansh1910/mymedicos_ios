@@ -110,9 +110,6 @@ static const NSInteger FIRErrorCodeDurableDeepLinkFailed = -119;
 }
 
 + (nonnull NSArray<FIRComponent *> *)componentsToRegister {
-  // Product requirement is enforced by CocoaPod. Not technical requirement for analytics.
-  FIRDependency *analyticsDep = [FIRDependency dependencyWithProtocol:@protocol(FIRAnalyticsInterop)
-                                                           isRequired:NO];
   FIRComponentCreationBlock creationBlock =
       ^id _Nullable(FIRComponentContainer *container, BOOL *isCacheable) {
     // Don't return an instance when it's not the default app.
@@ -129,8 +126,7 @@ static const NSInteger FIRErrorCodeDurableDeepLinkFailed = -119;
     id<FIRAnalyticsInterop> analytics = FIR_COMPONENT(FIRAnalyticsInterop, container);
     FIRDynamicLinks *dynamicLinks = [[FIRDynamicLinks alloc] initWithAnalytics:analytics];
     [dynamicLinks configureDynamicLinks:container.app];
-    // Check for pending Dynamic Link automatically if enabled, otherwise we expect the developer to
-    // call strong match FDL API to retrieve a pending link.
+
     if ([FIRDynamicLinks isAutomaticRetrievalEnabled]) {
       [dynamicLinks checkForPendingDynamicLink];
     }
@@ -139,7 +135,6 @@ static const NSInteger FIRErrorCodeDurableDeepLinkFailed = -119;
   FIRComponent *dynamicLinksProvider =
       [FIRComponent componentWithProtocol:@protocol(FIRDynamicLinksInstanceProvider)
                       instantiationTiming:FIRInstantiationTimingEagerInDefaultApp
-                             dependencies:@[ analyticsDep ]
                             creationBlock:creationBlock];
 
   return @[ dynamicLinksProvider ];
@@ -367,7 +362,7 @@ static const NSInteger FIRErrorCodeDurableDeepLinkFailed = -119;
   }
 
   if ([url.path isEqualToString:@"/link"] && [url.host isEqualToString:@"google"]) {
-    // This URL is a callback url from a fingerprint match
+    // This URL is a callback url from a device heuristics based match
     // Extract information from query.
     NSString *query = url.query;
 
@@ -413,15 +408,43 @@ static const NSInteger FIRErrorCodeDurableDeepLinkFailed = -119;
 
   if ([self canParseUniversalLinkURL:url]) {
     if (url.query.length > 0) {
-      NSDictionary *parameters = FIRDLDictionaryFromQuery(url.query);
+      NSDictionary<NSString *, NSString *> *parameters = FIRDLDictionaryFromQuery(url.query);
       if (parameters[kFIRDLParameterLink]) {
-        FIRDynamicLink *dynamicLink = [[FIRDynamicLink alloc] init];
         NSString *urlString = parameters[kFIRDLParameterLink];
         NSURL *deepLinkURL = [NSURL URLWithString:urlString];
         if (deepLinkURL) {
-          dynamicLink.url = deepLinkURL;
+          NSMutableDictionary *paramsDictionary = [[NSMutableDictionary alloc]
+              initWithDictionary:@{kFIRDLParameterDeepLinkIdentifier : urlString}];
+
+          if (parameters[kFIRDLParameterSource] != nil) {
+            [paramsDictionary setValue:parameters[kFIRDLParameterSource]
+                                forKey:kFIRDLParameterSource];
+          }
+
+          if (parameters[kFIRDLParameterMedium] != nil) {
+            [paramsDictionary setValue:parameters[kFIRDLParameterMedium]
+                                forKey:kFIRDLParameterMedium];
+          }
+
+          if (parameters[kFIRDLParameterTerm] != nil) {
+            [paramsDictionary setValue:parameters[kFIRDLParameterTerm] forKey:kFIRDLParameterTerm];
+          }
+
+          if (parameters[kFIRDLParameterCampaign] != nil) {
+            [paramsDictionary setValue:parameters[kFIRDLParameterCampaign]
+                                forKey:(kFIRDLParameterCampaign)];
+          }
+
+          if (parameters[kFIRDLParameterContent] != nil) {
+            [paramsDictionary setValue:parameters[kFIRDLParameterContent]
+                                forKey:kFIRDLParameterContent];
+          }
+
+          FIRDynamicLink *dynamicLink =
+              [[FIRDynamicLink alloc] initWithParametersDictionary:paramsDictionary];
           dynamicLink.matchType = FIRDLMatchTypeUnique;
           dynamicLink.minimumAppVersion = parameters[kFIRDLParameterMinimumAppVersion];
+
           // Call resolveShortLink:completion: to do logging.
           // TODO: Create dedicated logging function to prevent this.
           [self.dynamicLinkNetworking
@@ -671,7 +694,7 @@ static NSString *kSelfDiagnoseOutputFooter =
   NSDictionary *plistMap = (NSDictionary *)plistData;
 
   // analyze entitlements and print diagnostic information
-  // we can't detect erorrs, information p[rinted here may hint developer or will help support
+  // we can't detect errors, information p[rinted here may hint developer or will help support
   // to identify the issue
   NSMutableString *outputString = [[NSMutableString alloc] init];
 

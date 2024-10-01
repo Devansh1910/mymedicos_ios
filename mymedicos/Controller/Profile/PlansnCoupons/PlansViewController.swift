@@ -171,6 +171,8 @@ class PlansViewController: UIViewController {
         let selectedCollection = collectionNames[segmentIndex]
         let cacheKey = NSString(string: selectedCollection)
         
+        print(selectedCollection)
+        
         if let cachedPlans = cache.object(forKey: cacheKey) {
             layoutPlansFromCache(cachedPlans)
         } else {
@@ -189,9 +191,9 @@ class PlansViewController: UIViewController {
                         documentID: document.documentID,
                         title: data["PlanName"] as? String ?? "N/A",
                         subtitle: data["PlanTagline"] as? String ?? "N/A",
-                        startingPrice: "\(data["Discount_Price"] as? Int ?? 0)",
-                        discountedPrice: "\(data["PlanPrice"] as? Int ?? 0)",
-                        originalPrice: "\(data["PlanPrice"] as? Int ?? 0)",
+                        startingPrice: "\(data["Discount_Price"] as? String ?? "0")",
+                        discountedPrice: "\(data["PlanPrice"] as? String ?? "0")",
+                        originalPrice: "\(data["PlanPrice"] as? String ?? "0")",
                         features: (data["PlanFeatures"] as? [String]) ?? []
                     )
                     plansArray.append(planData)
@@ -214,9 +216,12 @@ class PlansViewController: UIViewController {
             planView.configure(with: plan)
             plansScrollView.addSubview(planView)
 
-            // Set the closure to handle navigation when "Enroll Now" is tapped, passing the document ID and title
+            // Update the closure to include the selected collection name
             planView.enrollAction = { [weak self] documentID in
-                self?.navigateToPlanInsiderViewController(with: plan.documentID, planTitle: plan.title)
+                let selectedSegmentIndex = self?.segmentControl.selectedSegmentIndex ?? 0
+                let collectionNames = ["PG", "FMGE", "NEET SS"]
+                let selectedCollection = collectionNames[selectedSegmentIndex]
+                self?.navigateToPlanInsiderViewController(with: documentID, planTitle: plan.title, collection: selectedCollection)
             }
 
             offsetX += planView.frame.width + 10
@@ -227,18 +232,15 @@ class PlansViewController: UIViewController {
         plansScrollView.frame.size.height = tallestHeight
     }
 
-
-    private func navigateToPlanInsiderViewController(with documentID: String, planTitle: String) {
+    private func navigateToPlanInsiderViewController(with documentID: String, planTitle: String, collection: String) {
         let planInsiderVC = PlansInderViewController()
-        planInsiderVC.title = planTitle
-        planInsiderVC.documentID = documentID  // Pass the documentID here
+        planInsiderVC.title = planTitle // This sets the navigation bar title
+        planInsiderVC.documentID = documentID
+        planInsiderVC.selectedCollection = collection  // Pass the selected collection here
         planInsiderVC.view.backgroundColor = .white
         planInsiderVC.overrideUserInterfaceStyle = .light
-
         navigationController?.pushViewController(planInsiderVC, animated: true)
     }
-
-
 
     @objc private func planTapped(_ sender: UITapGestureRecognizer) {
         guard let tappedView = sender.view as? PlansNeetPgUIView else { return }
